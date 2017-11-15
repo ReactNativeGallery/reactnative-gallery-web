@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "next": "4.1.4",
+    "prop-types": "15.6.0",
     "react": "16.1.0",
     "react-dom": "16.1.0"
   }

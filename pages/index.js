@@ -1,8 +1,11 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+
 const textAlignCenter = {
   textAlign: 'center'
 }
 
-export default () => (
+const LandingPage = ({ type }) => (
   <div>
     <div className="bg-img"></div>
     <section>
@@ -43,7 +46,7 @@ export default () => (
                       <input
                         type="hidden"
                         name="TYPE"
-                        value={''}
+                        value={type}
                       />
                     </div>
                   </div>
@@ -61,3 +64,18 @@ export default () => (
     </section>
   </div>
 )
+
+LandingPage.propTypes = {
+  type: PropTypes.string.isRequired,
+}
+
+LandingPage.defaultProps = {
+  type: 'developer'
+}
+
+LandingPage.getInitialProps = async ({ query }) => {
+  const { utm_campaign } = query
+  return { type: utm_campaign !== 'developer' ? 'headhunter' : 'developer'}
+}
+
+export default LandingPage
