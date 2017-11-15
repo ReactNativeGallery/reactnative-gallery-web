@@ -30,7 +30,7 @@ const LandingPage = ({ type }) => (
               </div>
             </div>
             <div className="row">
-              <form className="form form-horizontal user-signup__form" name="form" noValidate="" action="" method="POST" target="_blank">
+              <form className="form form-horizontal user-signup__form" name="form" noValidate="" action="https://xavier-carpentier.us7.list-manage.com/subscribe/post?u=4ce4b6f2b07a9f4f5836245a9&amp;id=8445b37233" method="POST" target="_blank">
                 <div className="mt-table--full">
                   <div className="mt-td--centered-vertical user-signup__col-1">
                     <div className="user-signup__form-group m-lg-v form-group col-sm-12">
@@ -38,7 +38,6 @@ const LandingPage = ({ type }) => (
                         type="email"
                         name="EMAIL"
                         className="form-control form-control__input user-signup__email"
-                        pattern="/^[a-zA-Z0-9+-_]+(\.[_a-zA-Z0-9+]+)*@[a-zA-Z0-9+-_]+(\.[a-zA-Z0-9+-_]+)*(\.[a-zA-Z]+)$/"
                         placeholder="Email"
                         aria-required="true"
                         required="required"
@@ -75,7 +74,7 @@ LandingPage.defaultProps = {
 
 LandingPage.getInitialProps = async ({ query }) => {
   const { utm_campaign } = query
-  return { type: utm_campaign !== 'developer' ? 'headhunter' : 'developer'}
+  return { type: utm_campaign ? utm_campaign : 'developer'}
 }
 
 export default LandingPage
