@@ -25,7 +25,7 @@ const LandingPage = ({ type }) => (
                 </p>
                 <p style={textAlignCenter}>
                   <img src="/static/images/clean-hr.png" alt="" className="clean-hr insert--image wrap-off-align-center"/>
-                  <span style={{fontSize: 14}}>Enter your email address if you want to be inform when it's ready:</span>
+                  <span style={{fontSize: 14}}>Enter your email address if you want to be informed when it's ready 🎉</span>
                 </p>
               </div>
             </div>
