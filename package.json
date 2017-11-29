@@ -5,12 +5,14 @@
   "author": "Xavier Carpentier <contact@xaviercarpentier.com> (http://xaviercarpentier.com/)",
   "license": "MIT",
   "scripts": {
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start -p $PORT",
+    "start": "NODE_ENV=production node server.js",
     "heroku-postbuild": "next build"
   },
   "dependencies": {
+    "express": "4.16.2",
+    "newrelic": "2.4.1",
     "next": "4.1.4",
     "prop-types": "15.6.0",
     "react": "16.1.0",
