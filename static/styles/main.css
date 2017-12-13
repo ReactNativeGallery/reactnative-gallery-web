@@ -214,3 +214,53 @@ h1 {
     font-size: 75px;
   }
 }
+
+.casestudy-img {
+  position: relative;
+  padding: 55px 14px;
+  background: #222;
+  border-radius: 26px;
+  box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.2);
+  border: solid 2px #000;
+  max-width: 350px;
+}
+
+.casestudy-img.span {
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  left: 60%;
+  margin-left: -34px;
+  bottom: 13px;
+  z-index: 3;
+  background: #303233;
+  background: -moz-linear-gradient(-45deg, #303233 0%, #b5b7b9 50%, #f0f2f2 69%, #303233 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #303233), color-stop(50%, #b5b7b9), color-stop(69%, #f0f2f2), color-stop(100%, #303233));
+  background: -webkit-linear-gradient(-45deg, #303233 0%, #b5b7b9 50%, #f0f2f2 69%, #303233 100%);
+  background: -o-linear-gradient(-45deg, #303233 0%, #b5b7b9 50%, #f0f2f2 69%, #303233 100%);
+  background: -ms-linear-gradient(-45deg, #303233 0%, #b5b7b9 50%, #f0f2f2 69%, #303233 100%);
+  background: linear-gradient(135deg, #303233 0%, #b5b7b9 50%, #f0f2f2 69%, #303233 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#303233', endColorstr='#303233',GradientType=1 );
+  background: #080808;
+  background: -moz-linear-gradient(-45deg, #080808 0%, #464646 50%, #080808 100%);
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #080808), color-stop(50%, #464646), color-stop(100%, #080808));
+  background: -webkit-linear-gradient(-45deg, #080808 0%, #464646 50%, #080808 100%);
+  background: -o-linear-gradient(-45deg, #080808 0%, #464646 50%, #080808 100%);
+  background: -ms-linear-gradient(-45deg, #080808 0%, #464646 50%, #080808 100%);
+  background: linear-gradient(135deg, #080808 0%, #464646 50%, #080808 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#080808', endColorstr='#080808',GradientType=1 );
+}
+
+.casestudy-img.span:before {
+  background: #080808;
+  position: absolute;
+  content: '';
+  -webkit-border-radius: 100%;
+  border-radius: 100%;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  top: 4px;
+  left: 4px;
+}

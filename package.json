@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "express": "4.16.2",
+    "express-enforces-ssl": "1.1.0",
+    "helmet": "3.9.0",
     "newrelic": "2.4.1",
     "next": "4.1.4",
     "prop-types": "15.6.0",
