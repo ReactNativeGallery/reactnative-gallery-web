@@ -2,35 +2,55 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const textAlignCenter = {
-  textAlign: 'center'
+  textAlign: 'center',
 }
 
 const LandingPage = ({ type }) => (
   <div>
-    <div className="bg-img"></div>
+    <div className="bg-img" />
     <section>
       <div className="floating-signup__wrap col-xs-12 col-md-6 col-xs-offset-0 col-md-offset-3 floaty-vertical--middle floaty-horizontal--center floaty-unfloat-at--xs">
         <div className="floating-signup rel">
           <div className="container-fluid rel">
             <div className="row">
               <div className="user-signup__intro">
-                <h1 style={{fontSize: 50,...textAlignCenter}}>Show and tell for React Native developers</h1>
+                <h1 style={{ fontSize: 50, ...textAlignCenter }}>
+                  Show and tell for React Native developers
+                </h1>
                 <p style={textAlignCenter}>
-                  <img src="/static/images/spacer.png" alt="" className="spacer insert--image wrap-off-align-center"/><br/>
+                  <img
+                    src="/static/images/spacer.png"
+                    alt=""
+                    className="spacer insert--image wrap-off-align-center"
+                  />
+                  <br />
                 </p>
-                <p style={{...textAlignCenter,fontSize: 19 , color: 'lightgrey'}}>
-                  <strong style={{color: 'white'}}>What are you working on?</strong>
-                  <br/>
+                <p style={{ ...textAlignCenter, fontSize: 19, color: 'lightgrey' }}>
+                  <strong style={{ color: 'white' }}>What are you working on?</strong>
+                  <br />
                   React Native Gallery is where developers get popularity and hired.
                 </p>
                 <p style={textAlignCenter}>
-                  <img src="/static/images/clean-hr.png" alt="" className="clean-hr insert--image wrap-off-align-center"/>
-                  <span style={{fontSize: 14}}>Enter your email address if you want to be informed when it's ready 🎉</span>
+                  <img
+                    src="/static/images/clean-hr.png"
+                    alt=""
+                    className="clean-hr insert--image wrap-off-align-center"
+                  />
+                  <span style={{ fontSize: 14 }}>
+                    Enter your email address if you want to be informed when it's ready:
+                  </span>
                 </p>
               </div>
             </div>
             <div className="row">
-              <form className="form form-horizontal user-signup__form" name="form" noValidate="" action="https://xavier-carpentier.us7.list-manage.com/subscribe/post?u=4ce4b6f2b07a9f4f5836245a9&amp;id=8445b37233" method="POST" target="_blank">
+              <form
+                className="form form-horizontal user-signup__form"
+                name="form"
+                noValidate=""
+                action="https://xavier-carpentier.us7.list-manage.com/subscribe/post?u=4ce4b6f2b07a9f4f5836245a9&amp;id=8445b37233"
+                method="POST"
+                target="_blank"
+              >
                 <div className="mt-table--full">
                   <div className="mt-td--centered-vertical user-signup__col-1">
                     <div className="user-signup__form-group m-lg-v form-group col-sm-12">
@@ -41,17 +61,15 @@ const LandingPage = ({ type }) => (
                         placeholder="Email"
                         aria-required="true"
                         required="required"
-                        />
-                      <input
-                        type="hidden"
-                        name="TYPE"
-                        value={type}
                       />
+                      <input type="hidden" name="TYPE" value={type} />
                     </div>
                   </div>
                   <div className="mt-td--centered-vertical user-signup__col-2">
                     <div className="user-signup__form-group m-lg-v form-group text-center">
-                      <button type="submit" className="btn btn-default submit user-signup__submit"><span>SUBMIT</span></button>
+                      <button type="submit" className="btn btn-default submit user-signup__submit">
+                        <span>SUBMIT</span>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -69,12 +87,12 @@ LandingPage.propTypes = {
 }
 
 LandingPage.defaultProps = {
-  type: 'developer'
+  type: 'developer',
 }
 
 LandingPage.getInitialProps = async ({ query }) => {
   const { utm_campaign } = query
-  return { type: utm_campaign ? utm_campaign : 'developer'}
+  return { type: utm_campaign ? utm_campaign : 'developer' }
 }
 
 export default LandingPage
