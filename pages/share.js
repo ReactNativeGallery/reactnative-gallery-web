@@ -1,36 +1,45 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Gif from '../components/Gif'
 
-
-
-const Share = ({ id, hd }) => (
+const Share = ({ gifs, hd }) => (
   <div className="row">
-      <div className="col-sm-4">
-          <div className="casestudy-img">
-            <div
-              className="gfyitem"
-              data-hd={hd}
-              data-id={id}
-              data-responsive />
-              <span></span>
-          </div>
+    {gifs.map((gif, index) => (
+      <div key={`gif-${index}`} className="col-sm-4">
+        <Gif gifId={gif} hd />
       </div>
+    ))}
+    <style global jsx>{`
+      body {
+        background: #fff;
+      }
+    `}</style>
   </div>
 )
 
 Share.propTypes = {
-  id: PropTypes.string.isRequired,
-  hd: PropTypes.bool.isRequired
+  gifs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  hd: PropTypes.bool.isRequired,
 }
 
 Share.defaultProps = {
-  id: 'astonishingknobbydutchsmoushond',
-  hd: false
+  gifs: [],
+  hd: true,
 }
 
 Share.getInitialProps = async ({ query }) => {
-  const { id, hd } = query
-  return { id, hd: !!hd }
+  const { hd } = query
+  return {
+    gifs: [
+      'UncomfortableWeightyIndigowingedparrot',
+      'astonishingknobbydutchsmoushond',
+      'AlarmedCapitalBoubou',
+      'HandsomeInnocentAnura',
+      'IlliterateSecondDassie',
+      'TemptingTimelyBeauceron',
+    ],
+    hd: !!hd,
+  }
 }
 
 export default Share
