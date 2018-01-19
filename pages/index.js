@@ -25,10 +25,19 @@ const LandingPage = ({ type }) => (
                   />
                   <br />
                 </p>
-                <p style={{ ...textAlignCenter, fontSize: 19, color: 'lightgrey' }}>
-                  <strong style={{ color: 'white' }}>What are you working on?</strong>
+                <p
+                  style={{
+                    ...textAlignCenter,
+                    fontSize: 19,
+                    color: 'lightgrey',
+                  }}
+                >
+                  <strong style={{ color: 'white' }}>
+                    What are you working on?
+                  </strong>
                   <br />
-                  React Native Gallery is where developers get popularity and hired.
+                  React Native Gallery is where developers get popularity and
+                  hired.
                 </p>
                 <p style={textAlignCenter}>
                   <img
@@ -37,7 +46,8 @@ const LandingPage = ({ type }) => (
                     className="clean-hr insert--image wrap-off-align-center"
                   />
                   <span style={{ fontSize: 14 }}>
-                    Enter your email address if you want to be informed when it's ready:
+                    Enter your email address if you want to be informed when
+                    it's ready:
                   </span>
                 </p>
               </div>
@@ -67,7 +77,10 @@ const LandingPage = ({ type }) => (
                   </div>
                   <div className="mt-td--centered-vertical user-signup__col-2">
                     <div className="user-signup__form-group m-lg-v form-group text-center">
-                      <button type="submit" className="btn btn-default submit user-signup__submit">
+                      <button
+                        type="submit"
+                        className="btn btn-default submit user-signup__submit"
+                      >
                         <span>SUBMIT</span>
                       </button>
                     </div>
