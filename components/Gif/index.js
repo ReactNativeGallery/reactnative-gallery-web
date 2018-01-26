@@ -5,11 +5,6 @@ const Gif = ({ gifId, hd }) => (
   <div className="casestudy-img">
     <div className="gfyitem" data-hd={hd} data-id={gifId} data-responsive />
     <span />
-    <style global jsx>{`
-      .casestudy-img {
-        max-width: 315px;
-      }
-    `}</style>
   </div>
 )
 

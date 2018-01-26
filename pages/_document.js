@@ -1,5 +1,5 @@
 import Document, { Head, Main, NextScript } from 'next/document'
-import flush from 'styled-jsx/server'
+import { ServerStyleSheet } from 'styled-components'
 
 const scripts = [
   `(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create", "UA-109685698-1", "auto");ga("send", "pageview");`,
@@ -9,15 +9,19 @@ const scripts = [
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
-    const { html, head, errorHtml, chunks } = renderPage()
-    const styles = flush()
-    return { html, head, errorHtml, chunks, styles }
+    const sheet = new ServerStyleSheet()
+    const page = renderPage(App => props =>
+      sheet.collectStyles(<App {...props} />),
+    )
+    const styleTags = sheet.getStyleElement()
+    return { ...page, styleTags }
   }
 
   render() {
     return (
       <html>
         <Head>
+          <title>React Native Gallery</title>
           <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
           <meta
             name="description"
@@ -26,7 +30,7 @@ export default class MyDocument extends Document {
           />
           <meta
             name="keywords"
-            content="react-native, react-native example, gif, giphy"
+            content="react-native, react-native example, gallery"
             property="keywords"
           />
           <meta
@@ -64,7 +68,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Montserrat"
             rel="stylesheet"
           />
-          <title>React Native Gallery</title>
+          {this.props.styleTags}
         </Head>
         <body>
           <Main />

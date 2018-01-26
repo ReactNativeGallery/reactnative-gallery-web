@@ -18,6 +18,10 @@
     "next": "4.1.4",
     "prop-types": "15.6.0",
     "react": "16.1.0",
-    "react-dom": "16.1.0"
+    "react-dom": "16.1.0",
+    "styled-components": "3.0.2"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "1.5.0"
   }
 }
