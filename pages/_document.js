@@ -55,16 +55,6 @@ export default class MyDocument extends Document {
           />
           <link rel="icon" href="/static/images/favicon.ico" />
           <link
-            type="text/css"
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          />
-          <link
-            type="text/css"
-            rel="stylesheet"
-            href="/static/styles/main.css"
-          />
-          <link
             href="https://fonts.googleapis.com/css?family=Montserrat"
             rel="stylesheet"
           />

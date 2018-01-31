@@ -4536,6 +4536,12 @@ styled-components@3.0.2:
     stylis "^3.4.0"
     supports-color "^3.2.3"
 
+styled-css-grid@0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/styled-css-grid/-/styled-css-grid-0.8.2.tgz#3b9f850a431b65443bd1c85525322fec729adaea"
+  dependencies:
+    prop-types "^15.6.0"
+
 styled-jsx@2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/styled-jsx/-/styled-jsx-2.1.1.tgz#e7481c7554df50d605cdc84a4e53c58fec3449b5"
