@@ -1,5 +1,5 @@
 node_modules
 .next
 tmp
-newrelic_agent.log
 .vscode
+*.log
