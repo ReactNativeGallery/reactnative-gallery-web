@@ -20,13 +20,14 @@ const Home = ({ gifs }) => (
             gifs.map(gif => (
               <Cell>
                 <Gif gifId={gif} />
-                <p>love</p>
+                <div>love</div>
+                <div>comment</div>
               </Cell>
             ))}
         </Grid>
       </Cell>
 
-      <Cell width={12}>Footer</Cell>
+      <Cell width={12}>About</Cell>
     </Grid>
   </Wrapper>
 )
@@ -34,6 +35,7 @@ const Home = ({ gifs }) => (
 Home.getInitialProps = () => {
   return {
     gifs: [
+      'FlatThickArkshell',
       'astonishingknobbydutchsmoushond',
       'AlarmedCapitalBoubou',
       'HandsomeInnocentAnura',
