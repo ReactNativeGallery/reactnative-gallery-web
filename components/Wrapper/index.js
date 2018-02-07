@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Wrapper = styled.section`
-  padding: 2em;
+  padding: 1em 7em;
   background: #fff;
   font-family: 'Montserrat', sans-serif;
   min-height: 100%;
@@ -11,7 +11,11 @@ const Wrapper = styled.section`
   height: auto;
   line-height: 1.42857;
   word-wrap: normal;
-  color: #888;
+  color: #fff;
+  background-color: rgb(25, 8, 1);
+  @media (max-width: 700px) {
+    padding: 1em 3em;
+  }
 `
 
 export default Wrapper

@@ -5,3 +5,5 @@ export const transformRow = gifs =>
       rows,
     [],
   )
+
+export const isProd = () => process.env.NODE_ENV === 'production'
