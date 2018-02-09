@@ -2,7 +2,8 @@
   "name": "reactnative-gallery",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Xavier Carpentier <contact@xaviercarpentier.com> (http://xaviercarpentier.com/)",
+  "author":
+    "Xavier Carpentier <contact@xaviercarpentier.com> (http://xaviercarpentier.com/)",
   "license": "MIT",
   "scripts": {
     "dev": "node server.js",
@@ -22,9 +23,7 @@
     "react-dom": "16.1.0",
     "react-feather": "1.0.8",
     "styled-components": "3.0.2",
-    "styled-css-grid": "0.8.2"
-  },
-  "devDependencies": {
+    "styled-css-grid": "0.8.2",
     "babel-plugin-styled-components": "1.5.0"
   }
 }
