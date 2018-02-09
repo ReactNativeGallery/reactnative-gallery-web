@@ -3,3 +3,4 @@ node_modules
 tmp
 .vscode
 *.log
+newrelic_agent.log

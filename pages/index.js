@@ -1,111 +1,95 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Wrapper from '../components/Wrapper'
+import Title from '../components/Title'
+import Subtitle from '../components/Subtitle'
+import Gif from '../components/Gif'
+import Love from '../components/Love'
+import Background from '../components/Background'
+import MailchimpForm, {
+  MailchimpInput,
+  MailchimpButton,
+} from '../components/MailchimpForm'
+import Comment from '../components/Comment'
+import FadeIn from '../components/FadeIn'
+import SlideInUp from '../components/SlideInUp'
+import { Share } from 'react-feather'
+import { transformRow } from '../utils'
+import { Grid, Cell } from 'styled-css-grid'
+import Link from 'next/link'
 
-const textAlignCenter = {
-  textAlign: 'center',
-}
+const Home = ({ gifs, type }) => (
+  <Wrapper>
+    <Background />
+    <Grid columns="12" style={{ zIndex: 100, position: 'relative' }}>
+      <Cell width={12}>
+        <FadeIn>
+          <Title>Show and tell for React Native developers</Title>
+          <Subtitle>What are you working on?</Subtitle>
+          <Subtitle style={{ color: '#aaa' }}>
+            React Native Gallery is where developers get popularity and hired.
+          </Subtitle>
+          <Subtitle style={{ fontSize: 14, marginTop: 50 }}>
+            Enter your email address if you want to be informed when it's ready:
+          </Subtitle>
+          <MailchimpForm
+            name="form"
+            noValidate=""
+            action="https://xavier-carpentier.us7.list-manage.com/subscribe/post?u=4ce4b6f2b07a9f4f5836245a9&amp;id=8445b37233"
+            method="POST"
+            target="_blank"
+          >
+            <MailchimpInput
+              type="email"
+              name="EMAIL"
+              placeholder="Email"
+              ariaRequired="true"
+              required="required"
+            />
 
-const LandingPage = ({ type }) => (
-  <div>
-    <div className="bg-img" />
-    <section>
-      <div className="floating-signup__wrap col-xs-12 col-md-6 col-xs-offset-0 col-md-offset-3 floaty-vertical--middle floaty-horizontal--center floaty-unfloat-at--xs">
-        <div className="floating-signup rel">
-          <div className="container-fluid rel">
-            <div className="row">
-              <div className="user-signup__intro">
-                <h1 style={{ fontSize: 50, ...textAlignCenter }}>
-                  Show and tell for React Native developers
-                </h1>
-                <p style={textAlignCenter}>
-                  <img
-                    src="/static/images/spacer.png"
-                    alt=""
-                    className="spacer insert--image wrap-off-align-center"
-                  />
-                  <br />
-                </p>
-                <p
-                  style={{
-                    ...textAlignCenter,
-                    fontSize: 19,
-                    color: 'lightgrey',
-                  }}
-                >
-                  <strong style={{ color: 'white' }}>
-                    What are you working on?
-                  </strong>
-                  <br />
-                  React Native Gallery is where developers get popularity and
-                  hired.
-                </p>
-                <p style={textAlignCenter}>
-                  <img
-                    src="/static/images/clean-hr.png"
-                    alt=""
-                    className="clean-hr insert--image wrap-off-align-center"
-                  />
-                  <span style={{ fontSize: 14 }}>
-                    Enter your email address if you want to be informed when
-                    it's ready:
-                  </span>
-                </p>
-              </div>
-            </div>
-            <div className="row">
-              <form
-                className="form form-horizontal user-signup__form"
-                name="form"
-                noValidate=""
-                action="https://xavier-carpentier.us7.list-manage.com/subscribe/post?u=4ce4b6f2b07a9f4f5836245a9&amp;id=8445b37233"
-                method="POST"
-                target="_blank"
-              >
-                <div className="mt-table--full">
-                  <div className="mt-td--centered-vertical user-signup__col-1">
-                    <div className="user-signup__form-group m-lg-v form-group col-sm-12">
-                      <input
-                        type="email"
-                        name="EMAIL"
-                        className="form-control form-control__input user-signup__email"
-                        placeholder="Email"
-                        aria-required="true"
-                        required="required"
-                      />
-                      <input type="hidden" name="TYPE" value={type} />
-                    </div>
-                  </div>
-                  <div className="mt-td--centered-vertical user-signup__col-2">
-                    <div className="user-signup__form-group m-lg-v form-group text-center">
-                      <button
-                        type="submit"
-                        className="btn btn-default submit user-signup__submit"
-                      >
-                        <span>SUBMIT</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+            <MailchimpButton type="submit">SUBMIT</MailchimpButton>
+            <input type="hidden" name="TYPE" value={type} />
+          </MailchimpForm>
+        </FadeIn>
+      </Cell>
+      <Cell width={12} style={{ maxWidth: 800, width: '100%', margin: 'auto' }}>
+        <Grid columns="repeat(auto-fit,minmax(200px,1fr))">
+          {gifs &&
+            gifs.map((gif, index) => (
+              <Cell key={gif}>
+                <FadeIn timer={index + 3} delay={index}>
+                  <SlideInUp timer={index * 0.5 + 0.25} delay={index * 120}>
+                    <Gif gifId={gif} />
+                  </SlideInUp>
+                </FadeIn>
+              </Cell>
+            ))}
+        </Grid>
+      </Cell>
+    </Grid>
+  </Wrapper>
 )
 
-LandingPage.propTypes = {
-  type: PropTypes.string.isRequired,
-}
-
-LandingPage.defaultProps = {
+Home.defaultProps = {
   type: 'developer',
 }
 
-LandingPage.getInitialProps = async ({ query }) => {
+Home.getInitialProps = async ({ query }) => {
   const { utm_campaign } = query
-  return { type: utm_campaign ? utm_campaign : 'developer' }
+  return {
+    type: utm_campaign ? utm_campaign : 'developer',
+    gifs: [
+      'FlatThickArkshell',
+      'ThatSlimyBeardedcollie',
+      'AstonishingKnobbyDutchsmoushond',
+      'SmoggyWetCicada',
+      'UncomfortableWeightyIndigowingedparrot',
+      'AlarmedCapitalBoubou',
+      'HandsomeInnocentAnura',
+      'IlliterateSecondDassie',
+      'TemptingTimelyBeauceron',
+    ],
+  }
 }
 
-export default LandingPage
+export default Home
