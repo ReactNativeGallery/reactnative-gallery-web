@@ -8,7 +8,7 @@ import Love from '../components/Love'
 import Background from '../components/Background'
 import MailchimpForm, {
   MailchimpInput,
-  MailchimpButton,
+  MailchimpButton
 } from '../components/MailchimpForm'
 import Comment from '../components/Comment'
 import FadeIn from '../components/FadeIn'
@@ -71,7 +71,7 @@ const Home = ({ gifs, type }) => (
 )
 
 Home.defaultProps = {
-  type: 'developer',
+  type: 'developer'
 }
 
 Home.getInitialProps = async ({ query }) => {
@@ -83,12 +83,12 @@ Home.getInitialProps = async ({ query }) => {
       'ThatSlimyBeardedcollie',
       'AstonishingKnobbyDutchsmoushond',
       'SmoggyWetCicada',
-      'UncomfortableWeightyIndigowingedparrot',
+      'AmpleHugeFrog',
       'AlarmedCapitalBoubou',
       'HandsomeInnocentAnura',
       'IlliterateSecondDassie',
-      'TemptingTimelyBeauceron',
-    ],
+      'TemptingTimelyBeauceron'
+    ]
   }
 }
 
