@@ -95,9 +95,9 @@ Home.getInitialProps = async ({ query }) => {
     gifs: [
       'FlatThickArkshell',
       'ThatSlimyBeardedcollie',
+      'DimwittedUnrealisticChrysalis',
       'AstonishingKnobbyDutchsmoushond',
       'SmoggyWetCicada',
-      'DimwittedUnrealisticChrysalis',
       'AlarmedCapitalBoubou',
       'HandsomeInnocentAnura',
       'IlliterateSecondDassie',
