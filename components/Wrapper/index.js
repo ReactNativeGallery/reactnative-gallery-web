@@ -5,13 +5,13 @@ const Wrapper = styled.section`
   background: #fff;
   font-family: 'Montserrat', sans-serif;
   min-height: 100%;
-  font-size: 17px;
+  font-size: 19px;
   margin: 0;
   width: auto;
   height: auto;
   line-height: 1.42857;
   word-wrap: normal;
-  color: #fff;
+  color: #333;
   z-index: 1;
   background-color: rgb(25, 8, 1);
   @media (max-width: 700px) {

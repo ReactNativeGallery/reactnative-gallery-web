@@ -4,6 +4,7 @@ import Wrapper from '../components/Wrapper'
 import Title from '../components/Title'
 import Subtitle from '../components/Subtitle'
 import Gif from '../components/Gif'
+import Notice from '../components/Notice'
 import Love from '../components/Love'
 import Background from '../components/Background'
 import MailchimpForm, {
@@ -26,10 +27,20 @@ const Home = ({ gifs, type }) => (
         <FadeIn>
           <Title>Show and tell for React Native developers</Title>
           <Subtitle>What are you working on?</Subtitle>
-          <Subtitle style={{ color: '#aaa' }}>
+          <Subtitle style={{ color: '#555', fontSize: 15 }}>
             React Native Gallery is where developers get popularity and hired.
           </Subtitle>
-          <Subtitle style={{ fontSize: 14, marginTop: 50 }}>
+          <Subtitle
+            style={{
+              fontSize: 14,
+              marginTop: 50,
+              backgroundColor: 'rgba(255, 255, 255, 0.3)',
+              maxWidth: 550,
+              marginTop: 60,
+              width: '100%',
+              margin: 'auto'
+            }}
+          >
             Enter your email address if you want to be informed when it's ready:
           </Subtitle>
           <MailchimpForm
@@ -53,6 +64,9 @@ const Home = ({ gifs, type }) => (
         </FadeIn>
       </Cell>
       <Cell width={12} style={{ maxWidth: 800, width: '100%', margin: 'auto' }}>
+        <FadeIn>
+          <Notice />
+        </FadeIn>
         <Grid columns="repeat(auto-fit,minmax(200px,1fr))">
           {gifs &&
             gifs.map((gif, index) => (
@@ -83,7 +97,7 @@ Home.getInitialProps = async ({ query }) => {
       'ThatSlimyBeardedcollie',
       'AstonishingKnobbyDutchsmoushond',
       'SmoggyWetCicada',
-      'AmpleHugeFrog',
+      'DimwittedUnrealisticChrysalis',
       'AlarmedCapitalBoubou',
       'HandsomeInnocentAnura',
       'IlliterateSecondDassie',

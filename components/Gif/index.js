@@ -29,7 +29,7 @@ const Sizer = styled.div`
 `
 
 const Play = styled.div`
-  @media (max-width: 500px) {
+  @media (max-width: 700px) {
     position: absolute;
     z-index: 100;
     margin: 0px auto;
@@ -44,12 +44,12 @@ const Play = styled.div`
 
 class Gif extends Component {
   static propTypes = {
-    gifId: PropTypes.string.isRequired,
+    gifId: PropTypes.string.isRequired
   }
 
   state = {
     play: false,
-    mouseover: false,
+    mouseover: false
   }
 
   onMouseEnterHandler = () => {
@@ -95,17 +95,11 @@ class Gif extends Component {
               height: '100%',
               position: 'absolute',
               top: 0,
-              left: 0,
+              left: 0
             }}
           >
-            <source
-              src={`https://giant.gfycat.com/${gifId}.webm`}
-              type="video/webm"
-            />
-            <source
-              src={`https://giant.gfycat.com/${gifId}.mp4`}
-              type="video/mp4"
-            />
+            <source src={`https://giant.gfycat.com/${gifId}.webm`} type="video/webm" />
+            <source src={`https://giant.gfycat.com/${gifId}.mp4`} type="video/mp4" />
           </video>
         </GifContainer>
       </Smartphone>

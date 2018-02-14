@@ -9,6 +9,10 @@ const axiosInstance = axios.create({
   headers: { 'Content-Type': 'application/json' }
 })
 
+const uploadInstance = axios.create({
+  baseURL: 'https://filedrop.gfycat.com'
+})
+
 const getAccessTokenAsync = async (client_id, client_secret) => {
   const result = await axiosInstance.post('oauth/token', {
     grant_type: 'client_credentials',

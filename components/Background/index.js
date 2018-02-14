@@ -6,7 +6,7 @@ const Background = styled.div`
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0.35;
+  opacity: 0.75;
   position: fixed;
   top: 0;
   right: 0;
@@ -14,6 +14,8 @@ const Background = styled.div`
   left: 0;
   content: '';
   z-index: 0;
+  -webkit-filter: blur(3px);
+  filter: blur(3px);
 `
 
 export default Background
