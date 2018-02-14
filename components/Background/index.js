@@ -6,7 +6,6 @@ const Background = styled.div`
   background-position: 50% 50%;
   background-size: cover;
   background-repeat: no-repeat;
-  opacity: 0.75;
   position: fixed;
   top: 0;
   right: 0;
