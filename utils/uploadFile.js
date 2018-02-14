@@ -34,29 +34,29 @@ const requestGifKey = async () => {
 }
 
 const uploadFileFromLocal = (filename, filepath, contentType) => {
-  const formData = {
-    custom_file: {
-      value: fs.createReadStream(filepath),
-      options: {
-        filename,
-        contentType
-      }
-    }
-  }
-  return new Promise((resolve, reject) => {
-    request.post(
-      { url: 'https://filedrop.gfycat.com', formData },
-      (err, httpResponse, body) => {
-        if (err) {
-          return reject(`upload failed: ${err}`)
-        }
-        if (httpResponse.statusCode >= 400) {
-          return reject(`upload failed: ${body}`)
-        }
-        resolve(`Upload successful!  Server responded with: ${body}`)
-      }
-    )
-  })
+  // const formData = {
+  //   custom_file: {
+  //     value: fs.createReadStream(filepath),
+  //     options: {
+  //       filename,
+  //       contentType
+  //     }
+  //   }
+  // }
+  // return new Promise((resolve, reject) => {
+  //   request.put(
+  //     { url: `https://filedrop.gfycat.com/${filename}`, formData },
+  //     (err, httpResponse, body) => {
+  //       if (err) {
+  //         return reject(`upload failed: ${err}`)
+  //       }
+  //       if (httpResponse.statusCode >= 400) {
+  //         return reject(`upload failed: ${body}`)
+  //       }
+  //       resolve(`Upload successful!  Server responded with: ${body}`)
+  //     }
+  //   )
+  // })
 }
 ;(async function() {
   try {
