@@ -28,10 +28,7 @@ const Home = ({ gifs, type, action }) => (
       columns="12"
       style={{
         zIndex: 100,
-        position: 'relative',
-        padding: 10,
-        paddingBottom: 30,
-        backgroundColor: 'rgba(255,255,255,0.2)'
+        position: 'relative'
       }}
     >
       <Cell width={12} style={{}}>
