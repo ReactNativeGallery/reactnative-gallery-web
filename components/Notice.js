@@ -1,6 +1,6 @@
 import { PlayCircle } from 'react-feather'
 import styled from 'styled-components'
-import Subtitle from '../Subtitle'
+import Subtitle from './Subtitle'
 
 const NoticeContainer = styled.div`
   display: flex;

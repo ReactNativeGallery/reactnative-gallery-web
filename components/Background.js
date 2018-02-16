@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Background = styled.div`
-  background-image: url('/static/images/background.jpeg');
+  background-image: url('/static/images/background_blur.jpeg');
   background-attachment: scroll;
   background-position: 50% 50%;
   background-size: cover;
@@ -13,8 +13,6 @@ const Background = styled.div`
   left: 0;
   content: '';
   z-index: 0;
-  -webkit-filter: blur(3px);
-  filter: blur(3px);
 `
 
 export default Background
