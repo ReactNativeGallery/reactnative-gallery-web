@@ -47,7 +47,7 @@ export default class MyDocument extends Document {
           />
           <meta
             name="og:image"
-            content="/static/images/background.jpeg"
+            content="/static/images/background_blur.jpeg"
             property="og:image"
           />
           <link rel="icon" href="/static/images/favicon.ico" />

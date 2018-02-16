@@ -38,19 +38,6 @@ const Home = ({ gifs, type, action }) => (
             React Native Gallery is where developers get visibility{' '}
             {type !== 'developer' && 'and hired'}
           </Subtitle>
-          <CleanHr />
-          <Paragraph
-            style={{
-              marginTop: 50,
-              maxWidth: 550,
-              marginTop: 60,
-              width: '100%',
-              margin: 'auto',
-              textAlign: 'center'
-            }}
-          >
-            Enter your email address if you want to be informed when it's ready
-          </Paragraph>
           <MailchimpForm action={action} type={type} />
         </FadeIn>
       </Cell>

@@ -1,5 +1,7 @@
 import styled from 'styled-components'
-import Hideable from '../components/Hideable'
+import Hideable from './Hideable'
+import CleanHr from './CleanHr'
+import Paragraph from './Paragraph'
 import { Share, Check } from 'react-feather'
 
 const MailchimpForm = styled.form`
@@ -50,21 +52,42 @@ export const MailchimpButton = styled.button`
 `
 
 export default ({ action, type }) => (
-  <MailchimpForm name="form" noValidate="" action={action} method="POST" target="_blank">
-    <MailchimpInput
-      type="email"
-      name="EMAIL"
-      placeholder="Email"
-      ariaRequired="true"
-      required="required"
-    />
+  <div>
+    <CleanHr />
+    <Paragraph
+      style={{
+        marginTop: 50,
+        maxWidth: 550,
+        marginTop: 60,
+        width: '100%',
+        margin: 'auto',
+        textAlign: 'center'
+      }}
+    >
+      Enter your email address if you want to be informed when it's ready
+    </Paragraph>
+    <MailchimpForm
+      name="form"
+      noValidate=""
+      action={action}
+      method="POST"
+      target="_blank"
+    >
+      <MailchimpInput
+        type="email"
+        name="EMAIL"
+        placeholder="Email"
+        ariaRequired="true"
+        required="required"
+      />
 
-    <MailchimpButton type="submit">
-      <Hideable xs>SUBMIT</Hideable>
-      <Hideable md>
-        <Check />
-      </Hideable>
-    </MailchimpButton>
-    <input type="hidden" name="TYPE" value={type} />
-  </MailchimpForm>
+      <MailchimpButton type="submit">
+        <Hideable xs>SUBMIT</Hideable>
+        <Hideable md>
+          <Check />
+        </Hideable>
+      </MailchimpButton>
+      <input type="hidden" name="TYPE" value={type} />
+    </MailchimpForm>
+  </div>
 )
