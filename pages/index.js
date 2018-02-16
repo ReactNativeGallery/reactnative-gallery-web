@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Wrapper from '../components/Wrapper'
 import Title from '../components/Title'
-import Hideable from '../components/Hideable'
 import Subtitle from '../components/Subtitle'
 import Paragraph from '../components/Paragraph'
 import Gif from '../components/Gif'
@@ -16,7 +15,7 @@ import MailchimpForm, {
 import Comment from '../components/Comment'
 import FadeIn from '../components/FadeIn'
 import SlideInUp from '../components/SlideInUp'
-import { Share, Check } from 'react-feather'
+import { Share } from 'react-feather'
 import { transformRow } from '../utils'
 import { Grid, Cell } from 'styled-css-grid'
 import Link from 'next/link'
@@ -56,29 +55,7 @@ const Home = ({ gifs, type, action }) => (
           >
             Enter your email address if you want to be informed when it's ready
           </Paragraph>
-          <MailchimpForm
-            name="form"
-            noValidate=""
-            action={action}
-            method="POST"
-            target="_blank"
-          >
-            <MailchimpInput
-              type="email"
-              name="EMAIL"
-              placeholder="Email"
-              ariaRequired="true"
-              required="required"
-            />
-
-            <MailchimpButton type="submit">
-              <Hideable xs>SUBMIT</Hideable>
-              <Hideable md>
-                <Check />
-              </Hideable>
-            </MailchimpButton>
-            <input type="hidden" name="TYPE" value={type} />
-          </MailchimpForm>
+          <MailchimpForm action={action} type={type} />
         </FadeIn>
       </Cell>
       <Cell width={12} style={{ maxWidth: 800, width: '100%', margin: 'auto' }}>
@@ -92,36 +69,12 @@ const Home = ({ gifs, type, action }) => (
             gifs.map((gif, index) => (
               <Cell key={gif}>
                 <FadeIn timer={index + 3} delay={index}>
-                  <SlideInUp timer={index * 0.5 + 0.25} delay={index * 120}>
-                    <Gif gifId={gif} />
-                  </SlideInUp>
+                  <Gif gifId={gif} />
                 </FadeIn>
               </Cell>
             ))}
         </Grid>
-        <MailchimpForm
-          name="form"
-          noValidate=""
-          action={action}
-          method="POST"
-          target="_blank"
-        >
-          <MailchimpInput
-            type="email"
-            name="EMAIL"
-            placeholder="Email"
-            ariaRequired="true"
-            required="required"
-          />
-
-          <MailchimpButton type="submit">
-            <Hideable xs>SUBMIT</Hideable>
-            <Hideable md>
-              <Check />
-            </Hideable>
-          </MailchimpButton>
-          <input type="hidden" name="TYPE" value={type} />
-        </MailchimpForm>
+        <MailchimpForm action={action} type={type} />
       </Cell>
     </Grid>
   </Wrapper>

@@ -57,7 +57,7 @@ export default class MyDocument extends Document {
           />
           {this.props.styleTags}
         </Head>
-        <body style={{ margin: 0, backgroundColor: 'rgb(105, 94, 89)' }}>
+        <body style={{ margin: 0, backgroundColor: 'rgba(105, 94, 89, 0.2)' }}>
           <Main />
           <NextScript />
           {scripts.map(script => <script dangerouslySetInnerHTML={{ __html: script }} />)}
