@@ -25,7 +25,6 @@ const Home = ({ gifs, type, action }) => (
   <Wrapper>
     <Background />
     <Grid
-      columns="12"
       style={{
         zIndex: 100,
         position: 'relative'
@@ -61,7 +60,7 @@ const Home = ({ gifs, type, action }) => (
             <Notice />
           </div>
         </FadeIn>
-        <Grid columns="repeat(auto-fit,minmax(200px,1fr))">
+        <Grid columns="repeat(auto-fit,minmax(200px,1fr))" gap="20px">
           {gifs &&
             gifs.map((gif, index) => (
               <Cell key={gif}>

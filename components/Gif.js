@@ -87,6 +87,7 @@ class Gif extends Component {
             ref={ref => (this.video = ref)}
             autoPlay={false}
             loop
+            preload="auto"
             playsInline
             muted
             poster={`https://thumbs.gfycat.com/${gifId}-poster.jpg`}

@@ -27,6 +27,12 @@ export const MailchimpInput = styled.input`
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
+  &:required {
+    box-shadow: none;
+  }
+  &:invalid {
+    box-shadow: none;
+  }
 `
 
 export const MailchimpButton = styled.button`

@@ -13,6 +13,8 @@ const Wrapper = styled.section`
   word-wrap: normal;
   color: #333;
   z-index: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   @media (min-width: 481px) {
     padding: 1em 4em;
     font-size: 14px;
