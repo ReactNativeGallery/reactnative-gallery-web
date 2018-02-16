@@ -1,18 +1,20 @@
 import { PlayCircle } from 'react-feather'
 import styled from 'styled-components'
-import Subtitle from './Subtitle'
 
 const NoticeContainer = styled.div`
   display: flex;
+  flex-shrink: 1;
+  flex-grow: 0;
   flex-direction: row;
-  width: 188px;
   margin-bottom: 15px;
   margin-left: 10px;
-  background-color: #333;
+  padding: 2px;
+  background-color: #444;
+  border: 1px #999 solid;
   opacity: 0.7;
   color: white;
-  border-radius: 10px;
-  @media (max-width: 700px) {
+  border-radius: 15px;
+  @media (max-width: 769px) {
     display: none;
   }
 `
@@ -20,13 +22,13 @@ const NoticeContainer = styled.div`
 const NoticeText = styled.small`
   margin-right: 5px;
   margin-left: 5px;
-  font-size: 14px;
+  font-size: 12px;
 `
 
 const Notice = props => (
   <NoticeContainer>
-    <PlayCircle size={20} />
-    <NoticeText>Hover to play a video</NoticeText>
+    <PlayCircle size={17} />
+    <NoticeText>Hover to play app video</NoticeText>
   </NoticeContainer>
 )
 

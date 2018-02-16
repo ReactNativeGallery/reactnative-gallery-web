@@ -29,7 +29,7 @@ const Sizer = styled.div`
 `
 
 const Play = styled.div`
-  @media (max-width: 700px) {
+  @media (max-width: 769px) {
     position: absolute;
     z-index: 100;
     margin: 0px auto;
