@@ -20,6 +20,7 @@
     "newrelic": "2.4.1",
     "next": "4.1.4",
     "prop-types": "15.6.0",
+    "rc-progress": "2.2.5",
     "react": "16.1.0",
     "react-animations": "1.0.0",
     "react-dom": "16.1.0",

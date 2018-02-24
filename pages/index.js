@@ -5,14 +5,11 @@ import Title from '../components/Title'
 import Subtitle from '../components/Subtitle'
 import Gif from '../components/Gif'
 import Notice from '../components/Notice'
-import Background from '../components/Background'
 import MailchimpForm from '../components/MailchimpForm'
-import FadeIn from '../components/FadeIn'
 import { Grid, Cell } from 'styled-css-grid'
 
 const Home = ({ gifs, type, action }) => (
   <Wrapper>
-    <Background />
     <Grid
       style={{
         zIndex: 100,

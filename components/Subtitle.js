@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 const Subtitle = styled.h3`
+  position: relative;
+  z-index: 100;
   text-align: center;
   @media (min-width: 481px) {
     font-size: 20px;

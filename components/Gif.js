@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const Smartphone = styled.div`
+export const Smartphone = styled.div`
   position: relative;
   padding: 45px 14px;
   background: #222;
@@ -10,12 +10,13 @@ const Smartphone = styled.div`
   box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.2);
   border: solid 2px #111;
   max-width: 275px;
-  min-width: 150px;
+  min-width: 200px;
   min-height: 250px;
-  cursor: url(/static/images/play-circle.svg), auto;
+  cursor: ${({ cursorPointer }) =>
+    cursorPointer ? 'pointer' : 'url(/static/images/play-circle.svg), auto;'};
 `
 
-const GifContainer = styled.div`
+export const GifContainer = styled.div`
   position: relative;
   padding: 0px;
   font-size: 0px;
@@ -23,7 +24,7 @@ const GifContainer = styled.div`
   margin: 0px auto;
 `
 
-const Sizer = styled.div`
+export const Sizer = styled.div`
   position: relative;
   padding-bottom: 180%;
 `

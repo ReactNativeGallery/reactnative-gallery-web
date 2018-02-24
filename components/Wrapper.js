@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Background from './Background'
 
 const Wrapper = styled.section`
   padding: 1em 4em;
@@ -26,4 +27,11 @@ const Wrapper = styled.section`
   }
 `
 
-export default Wrapper
+export default function({ children }) {
+  return (
+    <Wrapper>
+      <Background />
+      {children}
+    </Wrapper>
+  )
+}
