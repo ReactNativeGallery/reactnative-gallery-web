@@ -27,10 +27,10 @@ const Wrapper = styled.section`
   }
 `
 
-export default function({ children }) {
+export default function({ children, background }) {
   return (
     <Wrapper>
-      <Background />
+      {background && <Background />}
       {children}
     </Wrapper>
   )

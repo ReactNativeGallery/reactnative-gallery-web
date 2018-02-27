@@ -9,7 +9,7 @@ import MailchimpForm from '../components/MailchimpForm'
 import { Grid, Cell } from 'styled-css-grid'
 
 const Home = ({ gifs, type, action }) => (
-  <Wrapper>
+  <Wrapper background>
     <Grid
       style={{
         zIndex: 100,
