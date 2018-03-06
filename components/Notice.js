@@ -14,6 +14,7 @@ const NoticeContainer = styled.div`
   opacity: 0.7;
   color: white;
   border-radius: 15px;
+  cursor: help;
   @media (max-width: 769px) {
     display: none;
   }
