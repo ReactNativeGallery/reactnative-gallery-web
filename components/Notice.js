@@ -1,4 +1,4 @@
-import { PlayCircle } from 'react-feather'
+import { Info } from 'react-feather'
 import styled from 'styled-components'
 
 const NoticeContainer = styled.div`
@@ -28,7 +28,7 @@ const NoticeText = styled.small`
 
 const Notice = props => (
   <NoticeContainer>
-    <PlayCircle size={17} />
+    <Info size={17} />
     <NoticeText>Hover to play app video</NoticeText>
   </NoticeContainer>
 )
