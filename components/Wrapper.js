@@ -17,9 +17,8 @@ const Wrapper = styled.section`
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   @media (min-width: 481px) {
-    padding: 1em 4em;
-    font-size: 14px;
-    padding: 0;
+    font-size: 16px;
+    padding: 1em 3em;
   }
   @media (min-width: 769px) {
     font-size: 16px;

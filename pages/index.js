@@ -26,7 +26,7 @@ const Home = ({ gifs, type, action }) => (
         </Subtitle>
       </Cell>
       <Cell width={12} style={{ maxWidth: 800, width: '100%', margin: 'auto' }}>
-        <Paragraph
+        <div
           style={{
             backgroundColor: 'rgba(255, 255, 255, 0.9)',
             padding: 30,
@@ -34,7 +34,9 @@ const Home = ({ gifs, type, action }) => (
             borderWidth: 1,
             borderColor: '#BBB8A9',
             borderStyle: 'solid',
-            boxShadow: '1px 1px 3px grey'
+            color: '#444',
+            boxShadow: '1px 1px 3px grey',
+            textShadow: '0.2px 0.2px lightgrey'
           }}
         >
           <Paragraph>
@@ -71,7 +73,7 @@ const Home = ({ gifs, type, action }) => (
             category or popularity, or simply do a full-text search to find what you are
             looking for.
           </Paragraph>
-        </Paragraph>
+        </div>
         <MailchimpForm action={action} type={type} />
         <div style={{ display: 'flex' }}>
           <Notice />
