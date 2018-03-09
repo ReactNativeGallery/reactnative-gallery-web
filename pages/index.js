@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Wrapper from '../components/Wrapper'
 import Title from '../components/Title'
 import Subtitle from '../components/Subtitle'
+import Paragraph from '../components/Paragraph'
 import Gif from '../components/Gif'
 import Notice from '../components/Notice'
 import MailchimpForm from '../components/MailchimpForm'
@@ -23,9 +24,48 @@ const Home = ({ gifs, type, action }) => (
           React Native Gallery is where developers get visibility{' '}
           {type !== 'developer' && 'and hired'}
         </Subtitle>
-        <MailchimpForm action={action} type={type} />
       </Cell>
       <Cell width={12} style={{ maxWidth: 800, width: '100%', margin: 'auto' }}>
+        <Paragraph
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+            padding: 15,
+            borderRadius: 15
+          }}
+        >
+          <Paragraph>
+            <b>Reactnative.gallery</b> is a website where you can visualize apps and open
+            source components as videos. Created by a react-native developer who realized
+            that a way to visually share applications and simple mobile developments was
+            sorely lacking, in particular for animations, navigation transitions,
+            navigation drawers or simply smooth, fluid applications.
+          </Paragraph>
+          <Paragraph>
+            It is impossible to show these aspects with simple screenshots. And installing
+            the app just to see it is too much hassle.
+          </Paragraph>
+          <Paragraph>
+            <b>Reactnative.gallery</b> makes it possible to not only visualize apps at a
+            glance using videos, but also to describe the app, categorize it, do a search
+            and above all share it with the rest of the community.
+          </Paragraph>
+          <Paragraph>
+            GitHub is loaded with react-native repositories containing one or more
+            animated gifs of apps or components, which are unfortunately assimilated to
+            any media type.
+          </Paragraph>
+          <Paragraph>
+            For open-source developers, you can login with GitHub and your animated gifs
+            will be automatically recognized and shared, and then can receive feedback
+            from the community (comments and the number of views and likes are displayed).
+          </Paragraph>
+          <Paragraph>
+            For those who are searching for a particular component, you can search by
+            category or popularity, or simply do a full-text search to find what you are
+            looking for.
+          </Paragraph>
+        </Paragraph>
+        <MailchimpForm action={action} type={type} />
         <div style={{ display: 'flex' }}>
           <Notice />
         </div>
@@ -37,7 +77,6 @@ const Home = ({ gifs, type, action }) => (
               </Cell>
             ))}
         </Grid>
-        <MailchimpForm action={action} type={type} />
       </Cell>
     </Grid>
   </Wrapper>
