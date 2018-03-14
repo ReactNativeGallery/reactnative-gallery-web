@@ -1,6 +1,6 @@
 # 🎨 [reactnative.gallery](https://reactnative.gallery) website
 
-[![CircleCI](https://circleci.com/gh/ReactNativeGallery/reactnative-gallery-web/tree/master.svg?style=svg)](https://circleci.com/gh/ReactNativeGallery/reactnative-gallery-web/tree/master)
+[![CircleCI](https://circleci.com/gh/ReactNativeGallery/reactnative-gallery-web/tree/master.svg?style=shield)](https://circleci.com/gh/ReactNativeGallery/reactnative-gallery-web/tree/master)
 [![codecov](https://codecov.io/gh/ReactNativeGallery/reactnative-gallery-web/branch/master/graph/badge.svg)](https://codecov.io/gh/ReactNativeGallery/reactnative-gallery-web)
 ## 🗣 Pitch
 
