@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Background /> toMatchSnapshot 1`] = `
+<div
+  className="Background-s1pndi9l-0 izkYGM"
+/>
+`;
+
+exports[`Background can be created 1`] = `
+<div
+  className="Background-s1pndi9l-0 izkYGM"
+/>
+`;

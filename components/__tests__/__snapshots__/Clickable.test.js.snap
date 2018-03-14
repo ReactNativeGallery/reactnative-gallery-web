@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Clickable /> toMatchSnapshot 1`] = `
+<a
+  className="Clickable-s3in9z9-0 fGsmJS"
+/>
+`;

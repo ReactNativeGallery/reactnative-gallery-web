@@ -1,3 +1,4 @@
+import React from 'react'
 import { Info } from 'react-feather'
 import styled from 'styled-components'
 
@@ -26,7 +27,7 @@ const NoticeText = styled.small`
   font-size: 12px;
 `
 
-const Notice = props => (
+const Notice = () => (
   <NoticeContainer>
     <Info size={17} />
     <NoticeText>Hover to play app video</NoticeText>

@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MailchimpForm /> toMatchSnapshot 1`] = `
+<div>
+  <div
+    className="CleanHr-u75eti-0 fnhkPK"
+  />
+  <p
+    className="Paragraph__Subtitle-s1secd56-0 iVQIYc"
+    style={
+      Object {
+        "margin": "auto",
+        "marginTop": 60,
+        "maxWidth": 550,
+        "textAlign": "center",
+        "width": "100%",
+      }
+    }
+  >
+    Enter your email address if you want to be informed when it's ready
+  </p>
+  <form
+    action="test"
+    className="MailchimpForm-s1jd0qpd-0 gwLiEU"
+    method="POST"
+    name="form"
+    noValidate=""
+    target="_blank"
+  >
+    <input
+      className="MailchimpForm__MailchimpInput-s1jd0qpd-1 hkXAOt"
+      name="EMAIL"
+      placeholder="Email"
+      required="required"
+      type="email"
+    />
+    <button
+      className="MailchimpForm__MailchimpButton-s1jd0qpd-2 bHDbCA"
+      type="submit"
+    >
+      <span
+        className="Hideable-lb4mgy-0 bDYHzV"
+      >
+        SUBMIT
+      </span>
+      <span
+        className="Hideable-lb4mgy-0 UfVDy"
+      >
+        <svg
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polyline
+            points="20 6 9 17 4 12"
+          />
+        </svg>
+      </span>
+    </button>
+    <input
+      name="TYPE"
+      type="hidden"
+      value="test"
+    />
+  </form>
+</div>
+`;

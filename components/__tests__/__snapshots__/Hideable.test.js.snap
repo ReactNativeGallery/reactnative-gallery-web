@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Hideable /> toMatchSnapshot 1`] = `
+<span
+  className="Hideable-lb4mgy-0 chPphA"
+/>
+`;

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FadeIn /> toMatchSnapshot 1`] = `
+<div
+  className="FadeIn-s1muu1d1-0 jOnkYB"
+/>
+`;

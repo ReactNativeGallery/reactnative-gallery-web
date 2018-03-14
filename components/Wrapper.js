@@ -1,3 +1,5 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Background from './Background'
 
@@ -26,7 +28,7 @@ const Wrapper = styled.section`
   }
 `
 
-export default function({ children, background }) {
+function Wrap({ children, background }) {
   return (
     <Wrapper>
       {background && <Background />}
@@ -34,3 +36,14 @@ export default function({ children, background }) {
     </Wrapper>
   )
 }
+
+Wrap.defaultProps = {
+  background: false
+}
+
+Wrap.propTypes = {
+  children: PropTypes.element.isRequired,
+  background: PropTypes.bool
+}
+
+export default Wrap

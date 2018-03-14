@@ -1,0 +1,13 @@
+import React from 'react'
+import renderer from 'react-test-renderer'
+import {{ properCase name }} from '../{{ properCase name }}'
+
+it('{{ properCase name }} can be created', () => {
+  const comp = renderer.create(<{{ properCase name }} />)
+  expect(comp).toBeDefined()
+})
+
+it('<{{ properCase name }} /> toMatchSnapshot', () => {
+  const tree = renderer.create(<{{ properCase name }} />).toJSON()
+  expect(tree).toMatchSnapshot()
+})

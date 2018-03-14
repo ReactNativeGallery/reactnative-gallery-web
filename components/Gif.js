@@ -13,7 +13,7 @@ export const Smartphone = styled.div`
   min-width: 200px;
   min-height: 250px;
   cursor: ${({ cursorPointer }) =>
-    cursorPointer ? 'pointer' : 'url(/static/images/play-circle.svg), auto;'};
+    (cursorPointer ? 'pointer' : 'url(/static/images/play-circle.svg), auto;')};
 `
 
 export const GifContainer = styled.div`
@@ -85,7 +85,10 @@ class Gif extends Component {
           <Play show={!this.state.play} />
           <Sizer />
           <video
-            ref={ref => (this.video = ref)}
+            ref={(ref) => {
+              this.video = ref
+              return undefined
+            }}
             autoPlay={false}
             loop
             playsInline
@@ -99,6 +102,7 @@ class Gif extends Component {
               left: 0
             }}
           >
+            <track kind="captions" />
             <source src={`https://giant.gfycat.com/${gifId}.webm`} type="video/webm" />
             <source src={`https://giant.gfycat.com/${gifId}.mp4`} type="video/mp4" />
           </video>

@@ -1,3 +1,4 @@
+import React from 'react'
 import { MessageCircle } from 'react-feather'
 
 const Comment = props => <MessageCircle {...props} />

@@ -3,15 +3,11 @@ const axios = require('axios')
 const axiosInstance = axios.create({
   baseURL: 'https://api.gfycat.com/v1/',
   timeout: 30000,
-  headers: { 'Content-Type': 'application/json' }
-})
-
-const uploadInstance = axios.create({
-  baseURL: 'https://filedrop.gfycat.com'
+  headers: { 'Content-Type': 'application/json' },
 })
 
 const tokenData = {
-  token: undefined
+  token: undefined,
 }
 
 export const getToken = async () => {
@@ -20,13 +16,13 @@ export const getToken = async () => {
   return tokenData.token
 }
 
-export const getStatusAsync = async id => {
+export const getStatusAsync = async (id) => {
   const result = await axiosInstance.get(
     `gfycats/fetch/status/${id}`,
     tokenData.token && {
       headers: {
-        Authorization: `Bearer ${tokenData.token}`
-      }
+        Authorization: `Bearer ${tokenData.token}`,
+      },
     }
   )
 
@@ -44,8 +40,8 @@ export const requestGifKeyAsync = async () => {
     { noMd5: true },
     {
       headers: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     }
   )
 
@@ -58,6 +54,6 @@ export const requestGifKeyAsync = async () => {
 export const uploadAsync = async (id, file, onUploadProgress) => {
   axios.put(`https://filedrop.gfycat.com/${id}`, file, {
     headers: { 'Content-Type': file.type },
-    onUploadProgress
+    onUploadProgress,
   })
 }

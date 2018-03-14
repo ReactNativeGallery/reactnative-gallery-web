@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BounceInUp /> toMatchSnapshot 1`] = `
+<div
+  className="BounceInUp-s7n96d-0 lazCtI"
+/>
+`;

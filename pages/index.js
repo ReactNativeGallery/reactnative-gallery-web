@@ -1,4 +1,6 @@
+/* eslint camelcase: 0 */
 import React from 'react'
+import { Grid, Cell } from 'styled-css-grid'
 import PropTypes from 'prop-types'
 import Wrapper from '../components/Wrapper'
 import Title from '../components/Title'
@@ -7,14 +9,13 @@ import Paragraph from '../components/Paragraph'
 import Gif from '../components/Gif'
 import Notice from '../components/Notice'
 import MailchimpForm from '../components/MailchimpForm'
-import { Grid, Cell } from 'styled-css-grid'
 
 const Home = ({ gifs, type, action }) => (
   <Wrapper background>
     <Grid
       style={{
         zIndex: 100,
-        position: 'relative'
+        position: 'relative',
       }}
     >
       <Cell width={12}>
@@ -36,42 +37,44 @@ const Home = ({ gifs, type, action }) => (
             borderStyle: 'solid',
             color: '#444',
             boxShadow: '1px 1px 3px grey',
-            textShadow: '0.2px 0.2px lightgrey'
+            textShadow: '0.2px 0.2px lightgrey',
           }}
         >
           <Paragraph>
-            <strong>Reactnative.gallery</strong> is a website where you can visualize apps
-            and open source components as videos.<br />
-            <br />Created by a react-native developer who realized that a way to visually
-            share applications and simple mobile developments was sorely lacking, in
-            particular for animations, navigation transitions, navigation drawers or
-            simply smooth, fluid applications.
+            <strong>Reactnative.gallery</strong> is a website where you can
+            visualize apps and open source components as videos.<br />
+            <br />Created by a react-native developer who realized that a way to
+            visually share applications and simple mobile developments was
+            sorely lacking, in particular for animations, navigation
+            transitions, navigation drawers or simply smooth, fluid
+            applications.
           </Paragraph>
           <Paragraph>
-            It is impossible to show these aspects with simple screenshots. And installing
-            the app just to see it is too much hassle.
+            It is impossible to show these aspects with simple screenshots. And
+            installing the app just to see it is too much hassle.
           </Paragraph>
           <Paragraph>
             <strong>Reactnative.gallery</strong> makes it possible to not only{' '}
-            <strong>visualize apps at a glance</strong> using videos, but also to describe
-            the app, categorize it, do a search and above all{' '}
+            <strong>visualize apps at a glance</strong> using videos, but also
+            to describe the app, categorize it, do a search and above all{' '}
             <strong>share it with the rest of the community</strong>.
           </Paragraph>
           <Paragraph>
-            GitHub is loaded with react-native repositories containing one or more
-            animated gifs of apps or components, which are unfortunately assimilated to
-            any media type.
+            GitHub is loaded with react-native repositories containing one or
+            more animated gifs of apps or components, which are unfortunately
+            assimilated to any media type.
           </Paragraph>
           <Paragraph>
-            For open-source developers, you can login with GitHub and your animated gifs
-            will be <strong>automatically recognized and shared</strong>, and then can
-            receive feedback from the community (comments and the number of views and
-            likes are displayed).
+            For open-source developers, you can login with GitHub and your
+            animated gifs will be{' '}
+            <strong>automatically recognized and shared</strong>, and then can
+            receive feedback from the community (comments and the number of
+            views and likes are displayed).
           </Paragraph>
           <Paragraph>
-            For those who are searching for a particular component, you can search by
-            category or popularity, or simply do a full-text search to find what you are
-            looking for.
+            For those who are searching for a particular component, you can
+            search by category or popularity, or simply do a full-text search to
+            find what you are looking for.
           </Paragraph>
         </div>
         <MailchimpForm action={action} type={type} />
@@ -80,7 +83,7 @@ const Home = ({ gifs, type, action }) => (
         </div>
         <Grid columns="repeat(auto-fit,minmax(200px,1fr))" gap="20px">
           {gifs &&
-            gifs.map((gif, index) => (
+            gifs.map(gif => (
               <Cell key={gif}>
                 <Gif gifId={gif} />
               </Cell>
@@ -91,16 +94,22 @@ const Home = ({ gifs, type, action }) => (
   </Wrapper>
 )
 
+Home.propTypes = {
+  gifs: PropTypes.arrayOf(PropTypes.string).isRequired,
+  type: PropTypes.string,
+  action: PropTypes.string,
+}
+
 Home.defaultProps = {
   type: 'developer',
   action:
-    'https://xavier-carpentier.us7.list-manage.com/subscribe/post?u=4ce4b6f2b07a9f4f5836245a9&amp;id=8445b37233'
+    'https://xavier-carpentier.us7.list-manage.com/subscribe/post?u=4ce4b6f2b07a9f4f5836245a9&amp;id=8445b37233',
 }
 
 Home.getInitialProps = async ({ query }) => {
   const { utm_campaign } = query
   return {
-    type: utm_campaign ? utm_campaign : 'developer',
+    type: utm_campaign || 'developer',
     gifs: [
       'FlatThickArkshell',
       'ThatSlimyBeardedcollie',
@@ -110,8 +119,8 @@ Home.getInitialProps = async ({ query }) => {
       'AlarmedCapitalBoubou',
       'HandsomeInnocentAnura',
       'IlliterateSecondDassie',
-      'TemptingTimelyBeauceron'
-    ]
+      'TemptingTimelyBeauceron',
+    ],
   }
 }
 

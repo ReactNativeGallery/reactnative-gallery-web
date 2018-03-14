@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Pulse /> toMatchSnapshot 1`] = `
+<div
+  className="Pulse-s1pfiyxk-0 fABGZs"
+/>
+`;

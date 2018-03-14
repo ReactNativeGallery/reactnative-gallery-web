@@ -8,6 +8,9 @@ machine:
 dependencies:
   override:
     - yarn global add codecov
+    - yarn global add jsinspect
+    - npm i -g npm-check-updates
+    - yarn global add nsp
     - yarn --no-progress --no-emoji --ignore-engines
   cache_directories:
     - "node_modules"
@@ -16,8 +19,11 @@ dependencies:
 
 test:
   override:
-    - yarn run lint
-    - yarn run test:coverage
+    - yarn check-deps
+    - yarn check-security
+    - yarn check-duplicate
+    - yarn lint
+    - yarn test --coverage
     - codecov
 
 deployment:

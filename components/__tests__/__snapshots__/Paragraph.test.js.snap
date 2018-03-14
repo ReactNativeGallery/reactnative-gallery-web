@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Paragraph /> toMatchSnapshot 1`] = `
+<p
+  className="Paragraph__Subtitle-s1secd56-0 iVQIYc"
+/>
+`;

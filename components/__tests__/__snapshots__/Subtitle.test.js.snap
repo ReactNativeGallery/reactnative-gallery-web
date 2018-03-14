@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Subtitle /> toMatchSnapshot 1`] = `
+<h3
+  className="Subtitle-s1pqjucr-0 hiZkTY"
+/>
+`;

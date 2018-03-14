@@ -1,27 +1,14 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import styled, { keyframes } from 'styled-components'
 import { Grid, Cell } from 'styled-css-grid'
-import {
-  PlayCircle,
-  Video as VideoIcon,
-  Upload as UploadIcon,
-  ChevronRight,
-  Film,
-  FolderPlus
-} from 'react-feather'
+import { Upload as UploadIcon, ChevronRight, Film, FolderPlus } from 'react-feather'
 import { tada } from 'react-animations'
 
 import { Circle } from 'rc-progress'
 import Wrapper from '../components/Wrapper'
 import Subtitle from '../components/Subtitle'
 import { Smartphone, GifContainer, Sizer } from '../components/Gif'
-import {
-  requestGifKeyAsync,
-  upload,
-  uploadAsync,
-  getStatusAsync
-} from '../utils/uploadFile'
+import { requestGifKeyAsync, uploadAsync, getStatusAsync } from '../utils/uploadFile'
 
 const pulser = keyframes`${tada}`
 
@@ -105,32 +92,36 @@ const Video = styled.video`
   left: 0;
 `
 
-const renderIcon = Comp => (
-  <Comp style={{ marginBottom: -2, marginRight: 3.5 }} size="22" />
-)
+const renderIcon = Comp => <Comp style={{ marginBottom: -2, marginRight: 3.5 }} size="22" />
 
 class Upload extends Component {
-  state = {
-    file: undefined,
-    isGif: true,
-    isVideo: false,
-    preview: false,
-    percentCompleted: 0,
-    status: { task: 'uploading' }
+  constructor(props) {
+    super(props)
+    this.state = {
+      file: undefined,
+      isGif: true,
+      isVideo: false,
+      preview: false,
+      percentCompleted: 0,
+      status: { task: 'uploading' }
+    }
   }
-  handleChange = e => {
+
+  handleChange = (e) => {
     const file = e.target.files[0]
     const isGif = file.type === 'image/gif'
-    const wait = Math.round(file.size / 1200)
-    this.setState({ file, isGif, isVideo: !isGif, preview: false })
+    this.setState({
+      file,
+      isGif,
+      isVideo: !isGif,
+      preview: false
+    })
   }
   upload = async () => {
     const id = await requestGifKeyAsync()
-    await uploadAsync(id, this.state.file, progressEvent => {
-      const percentCompleted = Math.floor(
-        progressEvent.loaded * 100 / progressEvent.total
-      )
-      console.log(percentCompleted)
+    await uploadAsync(id, this.state.file, (progressEvent) => {
+      const loaded = progressEvent.loaded * 100
+      const percentCompleted = Math.floor(loaded / progressEvent.total)
       this.setState({
         percentCompleted:
           this.state.percentCompleted > percentCompleted
@@ -140,21 +131,21 @@ class Upload extends Component {
     })
     const intervalID = setInterval(async () => {
       const status = await getStatusAsync(id)
-      console.log(status)
       const progress = Number(status.progress || 0.01) * 100
-      this.setState({ status, percentCompleted: progress > 100 ? 100 : progress })
-      if (
-        !status ||
-        (status.task && status.task === 'complete') ||
-        status.task === 'error'
-      ) {
+      this.setState({
+        status,
+        percentCompleted: progress > 100 ? 100 : progress
+      })
+      if (!status || (status.task && status.task === 'complete') || status.task === 'error') {
         clearInterval(intervalID)
       }
     }, 7000)
   }
   next = () => <ChevronRight size="50" color="#777" style={{ marginBottom: -20 }} />
   render() {
-    const { file, isGif, isVideo, preview, percentCompleted, status } = this.state
+    const {
+      file, isGif, isVideo, preview, percentCompleted, status
+    } = this.state
     return (
       <Wrapper>
         <Subtitle>Upload Video & Gif</Subtitle>
@@ -179,10 +170,7 @@ class Upload extends Component {
             }}
           >
             {!file && (
-              <Smartphone
-                cursorPointer
-                onClick={() => this.inputFile && this.inputFile.click()}
-              >
+              <Smartphone onClick={() => this.inputFile && this.inputFile.click()} cursorPointer>
                 <GifContainer>
                   <Sizer />
                   <Empty>
@@ -209,10 +197,7 @@ class Upload extends Component {
               )}
 
             {percentCompleted > 0 && (
-              <Smartphone
-                cursorPointer
-                onClick={() => this.inputFile && this.inputFile.click()}
-              >
+              <Smartphone cursorPointer onClick={() => this.inputFile && this.inputFile.click()}>
                 <GifContainer>
                   <Sizer />
                   <Empty>
@@ -223,14 +208,12 @@ class Upload extends Component {
                           strokeWidth={7}
                           strokeColor="#00a651"
                           strokeLinecap="square"
-                          trailColor={'#ccc'}
+                          trailColor="#ccc"
                         />
                       </div>
                       {status && (
                         <Status>
-                          {status.task === 'NotFoundo'
-                            ? 'preparing encoding'
-                            : status.task}
+                          {status.task === 'NotFoundo' ? 'preparing encoding' : status.task}
                           <br />
                           {percentCompleted}%
                         </Status>
@@ -262,7 +245,10 @@ class Upload extends Component {
                   </Label>
                   <input
                     style={{ display: 'none' }}
-                    ref={ref => (this.inputFile = ref)}
+                    ref={(ref) => {
+                      this.inputFile = ref
+                      return undefined
+                    }}
                     id="file"
                     type="file"
                     accept=".gif, .mp4, .mov"
@@ -284,8 +270,6 @@ class Upload extends Component {
 
 Upload.defaultProps = {}
 
-Upload.getInitialProps = ({}) => {
-  return {}
-}
+Upload.getInitialProps = () => ({})
 
 export default Upload

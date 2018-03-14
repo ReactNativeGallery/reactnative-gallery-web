@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Notice /> toMatchSnapshot 1`] = `
+<div
+  className="Notice__NoticeContainer-s1hmz53f-0 cZEKhZ"
+>
+  <svg
+    fill="none"
+    height={17}
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+    width={17}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="12"
+      cy="12"
+      r="10"
+    />
+    <line
+      x1="12"
+      x2="12"
+      y1="16"
+      y2="12"
+    />
+    <line
+      x1="12"
+      x2="12"
+      y1="8"
+      y2="8"
+    />
+  </svg>
+  <small
+    className="Notice__NoticeText-s1hmz53f-1 cGzDwR"
+  >
+    Hover to play app video
+  </small>
+</div>
+`;

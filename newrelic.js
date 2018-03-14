@@ -1,8 +1,11 @@
-'use strict'
+require('dotenv').config()
+
+const { NEWRELIC_LICENSE_KEY } = process.env
+
 exports.config = {
   app_name: ['reactnative.gallery'],
-  license_key: 'c530ed7e2eafb69da57ea8df2c54ad5048118a59',
+  license_key: NEWRELIC_LICENSE_KEY,
   logging: {
-    level: 'info'
-  }
+    level: 'info',
+  },
 }

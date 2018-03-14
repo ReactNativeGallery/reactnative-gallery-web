@@ -1,8 +1,10 @@
+import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { Check } from 'react-feather'
 import Hideable from './Hideable'
 import CleanHr from './CleanHr'
 import Paragraph from './Paragraph'
-import { Share, Check } from 'react-feather'
 
 const MailchimpForm = styled.form`
   margin: 0 auto;
@@ -51,12 +53,11 @@ export const MailchimpButton = styled.button`
   line-height: 0.5em;
 `
 
-export default ({ action, type }) => (
+const Mailchimp = ({ action, type }) => (
   <div>
     <CleanHr />
     <Paragraph
       style={{
-        marginTop: 50,
         maxWidth: 550,
         marginTop: 60,
         width: '100%',
@@ -64,15 +65,9 @@ export default ({ action, type }) => (
         textAlign: 'center'
       }}
     >
-      Enter your email address if you want to be informed when it's ready
+      {"Enter your email address if you want to be informed when it's ready"}
     </Paragraph>
-    <MailchimpForm
-      name="form"
-      noValidate=""
-      action={action}
-      method="POST"
-      target="_blank"
-    >
+    <MailchimpForm name="form" noValidate="" action={action} method="POST" target="_blank">
       <MailchimpInput
         type="email"
         name="EMAIL"
@@ -91,3 +86,10 @@ export default ({ action, type }) => (
     </MailchimpForm>
   </div>
 )
+
+Mailchimp.propTypes = {
+  action: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired
+}
+
+export default Mailchimp

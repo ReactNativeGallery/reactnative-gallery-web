@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Gif /> toMatchSnapshot 1`] = `
+<div
+  className="Gif__Smartphone-qqwjgf-0 cdqpxg"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <div
+    className="Gif__GifContainer-qqwjgf-1 bOJfPr"
+  >
+    <div
+      className="Gif__Play-qqwjgf-3 eCFIZh"
+    />
+    <div
+      className="Gif__Sizer-qqwjgf-2 kyNagA"
+    />
+    <video
+      autoPlay={false}
+      loop={true}
+      muted={true}
+      playsInline={true}
+      poster="https://thumbs.gfycat.com/test-poster.jpg"
+      style={
+        Object {
+          "height": "100%",
+          "left": 0,
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+        }
+      }
+    >
+      <track
+        kind="captions"
+      />
+      <source
+        src="https://giant.gfycat.com/test.webm"
+        type="video/webm"
+      />
+      <source
+        src="https://giant.gfycat.com/test.mp4"
+        type="video/mp4"
+      />
+    </video>
+  </div>
+</div>
+`;

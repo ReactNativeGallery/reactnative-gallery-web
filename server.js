@@ -12,11 +12,11 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-const getAccessTokenAsync = async (client_id, client_secret) => {
+const getAccessTokenAsync = async (clientId, clientSecret) => {
   const result = await axios.post('https://api.gfycat.com/v1/oauth/token', {
     grant_type: 'client_credentials',
-    client_id,
-    client_secret
+    client_id: clientId,
+    client_secret: clientSecret,
   })
   if (result.status === 200 && result.data) {
     return result.data.access_token
@@ -28,21 +28,27 @@ app.prepare().then(() => {
   const server = express()
 
   server.use(helmet())
+  if (!dev) {
+    server.use(expressEnforcesSSL())
+  }
   server.disable('x-powered-by')
+  server.enable('trust proxy')
 
   server.head('/tk', async (req, res) => {
     const { GFYCAT_CLIENT_ID, GFYCAT_CLIENT_SECRET } = process.env
-    const token = await getAccessTokenAsync(GFYCAT_CLIENT_ID, GFYCAT_CLIENT_SECRET)
+    const token = await getAccessTokenAsync(
+      GFYCAT_CLIENT_ID,
+      GFYCAT_CLIENT_SECRET
+    )
     res.header('X-TK', token)
     return res.send()
   })
 
-  server.get('*', (req, res) => {
-    return handle(req, res)
-  })
+  server.get('*', (req, res) => handle(req, res))
 
-  server.listen(port, err => {
+  server.listen(port, (err) => {
     if (err) throw err
-    console.log(`> Ready on http://localhost:${port}`)
+    // eslint-disable-next-line
+    console.log(`> Ready on http://localhost:${port}`);
   })
 })
