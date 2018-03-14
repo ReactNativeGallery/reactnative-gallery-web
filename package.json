@@ -18,7 +18,7 @@
     "express-enforces-ssl": "1.1.0",
     "helmet": "3.9.0",
     "newrelic": "2.4.1",
-    "next": "4.1.4",
+    "next": "4.2.3",
     "prop-types": "15.6.0",
     "rc-progress": "2.2.5",
     "react": "16.1.0",
