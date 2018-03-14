@@ -18,7 +18,7 @@ For those who are searching for a particular component, you can search by catego
 
 ## 🏗 ToDo list
 
-* [ ] eslint & jest
+* [x] eslint & jest
 * [ ] Load gifs list from ElasticSearch
 * [ ] Use sashido for user connection management
 * [ ] Connection with GitHub for developers
