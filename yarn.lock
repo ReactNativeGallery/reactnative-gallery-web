@@ -92,6 +92,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
+"@newrelic/koa@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@newrelic/koa/-/koa-1.0.0.tgz#17b9d3addcdbf96ff2e1e11074a6942b23f08410"
+
 "@newrelic/native-metrics@^2.1.0":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@newrelic/native-metrics/-/native-metrics-2.1.2.tgz#9a595dc602654b717188a294507087a51e79fba3"
@@ -4949,10 +4953,11 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-newrelic@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-3.1.0.tgz#77027a113d9396ca5cfb48c1aa9fe0db281c1d68"
+newrelic@3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-3.2.0.tgz#78c4a616b2cf4584fdbfb33b807fab6dd2c0b0c0"
   dependencies:
+    "@newrelic/koa" "^1.0.0"
     async "^2.1.4"
     concat-stream "^1.5.0"
     https-proxy-agent "^0.3.6"
