@@ -2,6 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/ReactNativeGallery/reactnative-gallery-web/tree/master.svg?style=shield)](https://circleci.com/gh/ReactNativeGallery/reactnative-gallery-web/tree/master)
 [![codecov](https://codecov.io/gh/ReactNativeGallery/reactnative-gallery-web/branch/master/graph/badge.svg)](https://codecov.io/gh/ReactNativeGallery/reactnative-gallery-web)
+[![slack](https://slack.reactnative.gallery/badge.svg)](https://slack.reactnative.gallery)
+
 ## 🗣 Pitch
 
 **Reactnative.gallery** is a website where you can visualize apps and open source components as videos. Created by a react-native developer who realized that a way to visually share applications and simple mobile developments was sorely lacking, in particular for animations, navigation transitions, navigation drawers or simply smooth, fluid applications.
