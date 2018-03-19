@@ -4,10 +4,10 @@ const elasticsearch = require('elasticsearch')
 const invariant = require('invariant')
 const fs = require('fs')
 
-const { BONSAI_URL } = process.env
+const { ES_URL } = process.env
 
 const client = new elasticsearch.Client({
-  host: BONSAI_URL
+  host: ES_URL
 })
 
 const pingAsync = async () => {
