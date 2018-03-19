@@ -1,9 +1,9 @@
-export const transformRow = gifs =>
-  gifs.reduce(
-    (rows, key, index) =>
-      (index % 3 === 0 ? rows.push([key]) : rows[rows.length - 1].push(key)) &&
-      rows,
-    []
-  )
+/* eslint import/prefer-default-export: 0 */
+const isProd = () => process.env.NODE_ENV === 'production'
 
-export const isProd = () => process.env.NODE_ENV === 'production'
+const isFocus = cssValue => props => (props.focus ? cssValue : null)
+
+module.exports = {
+  isProd,
+  isFocus
+}

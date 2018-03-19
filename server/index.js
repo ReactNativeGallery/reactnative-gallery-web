@@ -5,6 +5,8 @@ const express = require('express')
 const axios = require('axios')
 const next = require('next')
 const helmet = require('helmet')
+const bodyParser = require('body-parser')
+const { setEsEndpoints } = require('./es/endpoints')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -27,6 +29,7 @@ app.prepare().then(() => {
   const server = express()
 
   server.use(helmet())
+  server.use(bodyParser.json())
   server.disable('x-powered-by')
   server.enable('trust proxy')
 
@@ -36,7 +39,7 @@ app.prepare().then(() => {
     res.header('X-TK', token)
     return res.send()
   })
-
+  setEsEndpoints(server)
   server.get('*', (req, res) => handle(req, res))
 
   server.listen(port, (err) => {

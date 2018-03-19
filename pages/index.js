@@ -1,5 +1,6 @@
 /* eslint camelcase: 0 */
 import React from 'react'
+import { propOr } from 'ramda'
 import { Grid, Cell } from 'styled-css-grid'
 import PropTypes from 'prop-types'
 import Wrapper from '../components/Wrapper'
@@ -10,6 +11,7 @@ import Gif from '../components/Gif'
 import Notice from '../components/Notice'
 import Hideable from '../components/Hideable'
 import MailchimpForm from '../components/MailchimpForm'
+import { getGifsAsync } from '../utils/uploadFile'
 
 const Home = ({ gifs, type, action }) => (
   <Wrapper background footer>
@@ -108,21 +110,12 @@ Home.defaultProps = {
     'https://xavier-carpentier.us7.list-manage.com/subscribe/post?u=4ce4b6f2b07a9f4f5836245a9&amp;id=8445b37233'
 }
 
-Home.getInitialProps = async ({ query }) => {
+Home.getInitialProps = async ({ query, req }) => {
   const { utm_campaign } = query
+  const gifs = await getGifsAsync(req)
   return {
     type: utm_campaign || 'developer',
-    gifs: [
-      'FlatThickArkshell',
-      'ThatSlimyBeardedcollie',
-      'DimwittedUnrealisticChrysalis',
-      'AstonishingKnobbyDutchsmoushond',
-      'SmoggyWetCicada',
-      'AlarmedCapitalBoubou',
-      'HandsomeInnocentAnura',
-      'IlliterateSecondDassie',
-      'TemptingTimelyBeauceron'
-    ]
+    gifs: gifs.map(propOr('FlatThickArkshell', '_id'))
   }
 }
 

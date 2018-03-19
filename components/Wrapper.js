@@ -5,6 +5,10 @@ import Background from './Background'
 import Footer from './Footer'
 
 const Wrapper = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   padding: 1em 3em;
   background: #fff;
   font-family: 'Open Sans', sans-serif;
@@ -46,7 +50,7 @@ Wrap.defaultProps = {
 }
 
 Wrap.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element]),
   background: PropTypes.bool,
   footer: PropTypes.bool
 }

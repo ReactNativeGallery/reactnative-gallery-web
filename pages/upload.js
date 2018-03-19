@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { Grid, Cell } from 'styled-css-grid'
-import { Upload as UploadIcon, ChevronRight, Film, FolderPlus } from 'react-feather'
-import { tada } from 'react-animations'
-
+import { Upload as UploadIcon, Film, FolderPlus } from 'react-feather'
 import { Circle } from 'rc-progress'
+import { renderIcon, Next } from '../components/Icon'
+
+import { isFocus } from '../utils'
 import Wrapper from '../components/Wrapper'
+import { NumberItem, NumberList } from '../components/NumberList'
 import Subtitle from '../components/Subtitle'
 import { Smartphone, GifContainer, Sizer } from '../components/Gif'
-import { requestGifKeyAsync, uploadAsync, getStatusAsync } from '../utils/uploadFile'
-
-const pulser = keyframes`${tada}`
-
-const checkHasFile = cssValue => props => (props.hasFile ? cssValue : null)
+import {
+  requestGifKeyAsync,
+  uploadAsync,
+  getStatusAsync,
+  createGifAsync
+} from '../utils/uploadFile'
 
 const Label = styled.label`
   cursor: pointer;
@@ -22,33 +25,11 @@ const Label = styled.label`
   opacity: 0.85;
   &:hover {
     background-color: #00a65f;
-    background-color: ${checkHasFile('transparent')};
+    background-color: ${isFocus('transparent')};
   }
-  background-color: ${checkHasFile('transparent')};
-  color: ${checkHasFile('#333')};
-  padding-left: ${checkHasFile('0px')};
-`
-
-const NumberList = styled.ol`
-  padding: 15px;
-  list-style: none;
-  display: inline;
-  background-color: 'rgba(255, 255, 255, 1)';
-  opacity: 0.85;
-`
-
-const NumberItem = styled.li`
-  display: inline-block;
-  padding: 15px;
-  margin-bottom: 35px;
-  border-radius: 15px;
-  font-size: 20px;
-  font-weight: bold;
-  background-color: #ccc;
-  background-color: ${checkHasFile('#00a651')};
-  color: ${checkHasFile('#fff')};
-  cursor: ${checkHasFile('pointer')};
-  animation: ${checkHasFile(`1.5s ${pulser}`)};
+  background-color: ${isFocus('transparent')};
+  color: ${isFocus('#333')};
+  padding-left: ${isFocus('0px')};
 `
 
 const Img = styled.img`
@@ -92,8 +73,6 @@ const Video = styled.video`
   left: 0;
 `
 
-const renderIcon = Comp => <Comp style={{ marginBottom: -2, marginRight: 3.5 }} size="22" />
-
 class Upload extends Component {
   constructor(props) {
     super(props)
@@ -129,6 +108,9 @@ class Upload extends Component {
             : percentCompleted
       })
     })
+
+    await createGifAsync(id)
+
     const intervalID = setInterval(async () => {
       const status = await getStatusAsync(id)
       const progress = Number(status.progress || 0.01) * 100
@@ -137,11 +119,14 @@ class Upload extends Component {
         percentCompleted: progress > 100 ? 100 : progress
       })
       if (!status || (status.task && status.task === 'complete') || status.task === 'error') {
+        if (status.task === 'complete') {
+          window.location.href = '/'
+        }
         clearInterval(intervalID)
       }
     }, 7000)
   }
-  next = () => <ChevronRight size="50" color="#777" style={{ marginBottom: -20 }} />
+
   render() {
     const {
       file, isGif, isVideo, preview, percentCompleted, status
@@ -238,9 +223,9 @@ class Upload extends Component {
             }}
           >
             <NumberList>
-              <NumberItem hasFile={!file}>
+              <NumberItem focus={!file}>
                 <form>
-                  <Label hasFile={!!file} htmlFor="file">
+                  <Label focus={!!file} htmlFor="file">
                     {renderIcon(FolderPlus)} select it
                   </Label>
                   <input
@@ -256,8 +241,8 @@ class Upload extends Component {
                   />
                 </form>
               </NumberItem>
-              {this.next()}
-              <NumberItem hasFile={!!file && !preview} onClick={this.upload}>
+              <Next />
+              <NumberItem focus={!!file && !preview} onClick={this.upload}>
                 {renderIcon(UploadIcon)} upload it
               </NumberItem>
             </NumberList>

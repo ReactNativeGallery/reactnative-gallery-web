@@ -3,19 +3,17 @@ import styled from 'styled-components'
 import { Github, Mail, Minus } from 'react-feather'
 
 const Footer = styled.section`
-  position: absolute;
-  left: 0;
-  right: 0;
+  position: relative;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 25px;
   margin-top: 100px;
-  background-color: #fff;
+  background-color: transparent;
   min-height: 100px;
   z-index: 1000;
   text-align: center;
-  color: #333;
 `
 
 const Link = styled.a`

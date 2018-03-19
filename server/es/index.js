@@ -51,9 +51,34 @@ const initIndexTypeAsync = async (index, type) => {
     if (isLocalMappingExist(index, type)) {
       mapping = getLocalMapping(index, type)
     }
-    createTypeAsync(index, type, mapping)
+    return createTypeAsync(index, type, mapping)
   }
+  return { message: 'succeeded, nothing created' }
 }
+
+const documentBulkable = curry((index, type, doc) => [
+  {
+    index: {
+      _index: index,
+      _type: type,
+      _id: doc && doc.id
+    }
+  },
+  doc
+])
+
+const bulkAsync = bulkables =>
+  invariant(bulkables, 'bulkables should be defined') ||
+  invariant(bulkables.length, 'bulkables should not be empty') ||
+  invariant(bulkables.length % 2 === 0, 'bulkables length should be an even number') ||
+  client.bulk({ body: bulkables })
+
+const getAllAsync = (index, type) =>
+  invariant(index, 'index should be defined') ||
+  invariant(type, 'type should be defined') ||
+  client.msearch({
+    body: [{ index, type }, { query: { match_all: {} } }]
+  })
 
 module.exports = {
   pingAsync,
@@ -62,5 +87,10 @@ module.exports = {
   getLocalMapping,
   initIndexTypeAsync,
   isIndexExistAsync,
-  isTypeExistAsync
+  isTypeExistAsync,
+  createIndexAsync,
+  createTypeAsync,
+  documentBulkable,
+  bulkAsync,
+  getAllAsync
 }

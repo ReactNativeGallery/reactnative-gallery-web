@@ -2,7 +2,7 @@
 
 exports[`<Footer /> toMatchSnapshot 1`] = `
 <section
-  className="Footer-s19zc472-0 cjLHqP"
+  className="Footer-s19zc472-0 kcdnnY"
 >
   <a
     className="Footer__Link-s19zc472-1 kgBtyw"

@@ -19,6 +19,7 @@
   "dependencies": {
     "axios": "0.18.0",
     "babel-plugin-styled-components": "1.5.1",
+    "body-parser": "1.18.2",
     "dotenv": "5.0.1",
     "elasticsearch": "14.2.1",
     "express": "4.16.3",
@@ -54,12 +55,17 @@
     "react-test-renderer": "16.2.0"
   },
   "lint-staged": {
-    "**/*.js": ["yarn lint --fix", "git add"]
+    "**/*.js": [
+      "yarn lint --fix",
+      "git add"
+    ]
   },
   "jest": {
     "transform": {
       "^.+\\.js$": "babel-jest"
     },
-    "setupFiles": ["./testSetup.js"]
+    "setupFiles": [
+      "./testSetup.js"
+    ]
   }
 }
