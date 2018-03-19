@@ -2,9 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Background from './Background'
+import Footer from './Footer'
 
 const Wrapper = styled.section`
-  padding: 1em 4em;
+  padding: 1em 3em;
   background: #fff;
   font-family: 'Open Sans', sans-serif;
   min-height: 100%;
@@ -28,22 +29,26 @@ const Wrapper = styled.section`
   }
 `
 
-function Wrap({ children, background }) {
+function Wrap({ children, background, footer }) {
   return (
     <Wrapper>
       {background && <Background />}
       {children}
+      {footer && <Footer />}
     </Wrapper>
   )
 }
 
 Wrap.defaultProps = {
-  background: false
+  background: false,
+  footer: false,
+  children: () => <p />
 }
 
 Wrap.propTypes = {
-  children: PropTypes.element.isRequired,
-  background: PropTypes.bool
+  children: PropTypes.element,
+  background: PropTypes.bool,
+  footer: PropTypes.bool
 }
 
 export default Wrap

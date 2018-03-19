@@ -21,6 +21,7 @@ For those who are searching for a particular component, you can search by catego
 ## 🏗 ToDo list
 
 * [x] eslint & jest
+* [ ] responsive design (fix iOS display)
 * [ ] Load gifs list from ElasticSearch
 * [ ] Use sashido for user connection management
 * [ ] Connection with GitHub for developers
