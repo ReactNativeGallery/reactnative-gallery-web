@@ -56,6 +56,7 @@ const initIndexTypeAsync = async (index, type) => {
 }
 
 module.exports = {
+  pingAsync,
   getLocalMappingPath,
   isLocalMappingExist,
   getLocalMapping,

@@ -1,6 +1,10 @@
 const es = require('../es')
 const mapping = require('../mappings/gallery_gif.json')
 
+it('es.pingAsync', async () => {
+  expect(await es.pingAsync()).toBe(true)
+})
+
 it('es.getLocalMappingPath', () => {
   expect(es.getLocalMappingPath('toto', 'titi', 'tata')).toBe('toto/mappings/titi_tata.json')
 })
