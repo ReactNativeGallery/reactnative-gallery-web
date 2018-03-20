@@ -80,6 +80,20 @@ const getAllAsync = (index, type) =>
     body: [{ index, type }, { query: { match_all: {} } }]
   })
 
+const getByIdAsync = curry((index, type, id) =>
+  client.get({
+    index,
+    type,
+    id
+  }))
+
+const deleteByIdAsync = curry((index, type, id) =>
+  client.delete({
+    index,
+    type,
+    id
+  }))
+
 module.exports = {
   pingAsync,
   getLocalMappingPath,
@@ -92,5 +106,7 @@ module.exports = {
   createTypeAsync,
   documentBulkable,
   bulkAsync,
-  getAllAsync
+  getAllAsync,
+  getByIdAsync,
+  deleteByIdAsync
 }

@@ -12,3 +12,11 @@ it('gif.createGifAsync', async () => {
 it('gif.readAllGifAsync', async () => {
   expect(await gif.readAllGifAsync()).toEqual([])
 })
+
+it('gif.getGifByIdAsync', async () => {
+  expect(await gif.getGifByIdAsync(1)).toEqual({ index: 'gallery', type: 'gif', id: 1 })
+})
+
+it('gif.deleteGifByIdAsync', async () => {
+  expect(await gif.deleteGifByIdAsync(1)).toEqual({ index: 'gallery', type: 'gif', id: 1 })
+})

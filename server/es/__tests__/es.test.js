@@ -130,3 +130,19 @@ it('es.getAllAsync success', async () => {
     body: [{ index: 'testIndex', type: 'testType' }, { query: { match_all: {} } }]
   })
 })
+
+it('es.getByIdAsync success', async () => {
+  expect(await es.getByIdAsync('testIndex', 'testType', 'id')).toEqual({
+    index: 'testIndex',
+    type: 'testType',
+    id: 'id'
+  })
+})
+
+it('es.deleteByIdAsync success', async () => {
+  expect(await es.deleteByIdAsync('testIndex', 'testType', 'id')).toEqual({
+    index: 'testIndex',
+    type: 'testType',
+    id: 'id'
+  })
+})
