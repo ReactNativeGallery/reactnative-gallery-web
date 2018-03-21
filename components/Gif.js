@@ -4,11 +4,11 @@ import styled from 'styled-components'
 
 export const Smartphone = styled.div`
   position: relative;
-  padding: 45px 14px;
+  padding: 44px 14px;
   background: #222;
-  border-radius: 26px;
+  border-radius: 35px;
   box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.2);
-  border: solid 2px #111;
+  border: solid 1px #222;
   max-width: 275px;
   min-width: 200px;
   min-height: 250px;

@@ -132,7 +132,7 @@ class Upload extends Component {
       file, isGif, isVideo, preview, percentCompleted, status
     } = this.state
     return (
-      <Wrapper footer>
+      <Wrapper background footer>
         <Subtitle>Upload Video & Gif</Subtitle>
         <Grid
           style={{

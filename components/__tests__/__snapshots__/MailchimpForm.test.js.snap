@@ -5,20 +5,6 @@ exports[`<MailchimpForm /> toMatchSnapshot 1`] = `
   <div
     className="CleanHr-u75eti-0 fnhkPK"
   />
-  <p
-    className="Paragraph__Subtitle-s1secd56-0 iVQIYc"
-    style={
-      Object {
-        "margin": "auto",
-        "marginTop": 60,
-        "maxWidth": 550,
-        "textAlign": "center",
-        "width": "100%",
-      }
-    }
-  >
-    Enter your email address if you want to be informed when it's ready
-  </p>
   <form
     action="test"
     className="MailchimpForm-s1jd0qpd-0 gwLiEU"
@@ -30,7 +16,7 @@ exports[`<MailchimpForm /> toMatchSnapshot 1`] = `
     <input
       className="MailchimpForm__MailchimpInput-s1jd0qpd-1 hkXAOt"
       name="EMAIL"
-      placeholder="Email"
+      placeholder="Enter your email address if you want to be informed when it's ready"
       required="required"
       type="email"
     />

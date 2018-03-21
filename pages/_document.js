@@ -47,7 +47,7 @@ export default class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
           {this.props.styleTags}
         </Head>
-        <body style={{ margin: 0, backgroundColor: '#fff' }}>
+        <body style={{ margin: 0, backgroundColor: '#be93c5' }}>
           <Main />
           <NextScript />
           {scripts.map(script => <script dangerouslySetInnerHTML={{ __html: script }} />)}

@@ -10,10 +10,12 @@ const NoticeContainer = styled.div`
   margin-bottom: 15px;
   margin-left: 10px;
   padding: 2px;
-  background-color: #444;
+  background: #7bc6cc;
+  background: -webkit-linear-gradient(to right, #be93c5, #7bc6cc);
+  background: linear-gradient(to right, #be93c5, #7bc6cc);
   border: 1px #999 solid;
-  opacity: 0.7;
-  color: white;
+  opacity: 0.9;
+  color: #fff;
   border-radius: 15px;
   cursor: help;
   @media (max-width: 769px) {
@@ -25,6 +27,7 @@ const NoticeText = styled.small`
   margin-right: 5px;
   margin-left: 5px;
   font-size: 12px;
+  font-weight: bold;
 `
 
 const Notice = () => (

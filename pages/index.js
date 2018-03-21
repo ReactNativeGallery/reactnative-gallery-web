@@ -31,10 +31,25 @@ const Home = ({ gifs, type, action }) => (
       </Cell>
 
       <Cell width={12} style={{ maxWidth: 800, width: '100%', margin: 'auto' }}>
+        <MailchimpForm action={action} type={type} />
+        <Hideable xs>
+          <div style={{ display: 'flex' }}>
+            <Notice />
+          </div>
+        </Hideable>
+        <Grid columns="repeat(auto-fit,minmax(200px,1fr))" gap="20px">
+          {gifs &&
+            gifs.map(gif => (
+              <Cell key={gif}>
+                <Gif gifId={gif} />
+              </Cell>
+            ))}
+        </Grid>
         <Hideable xs>
           <div
             style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.9)',
+              marginTop: 30,
+              backgroundColor: 'rgba(255, 255, 255, 0.72)',
               padding: 30,
               borderRadius: 15,
               borderWidth: 1,
@@ -78,20 +93,7 @@ const Home = ({ gifs, type, action }) => (
             </Paragraph>
           </div>
         </Hideable>
-        <MailchimpForm action={action} type={type} />
-        <Hideable xs>
-          <div style={{ display: 'flex' }}>
-            <Notice />
-          </div>
-        </Hideable>
-        <Grid columns="repeat(auto-fit,minmax(200px,1fr))" gap="20px">
-          {gifs &&
-            gifs.map(gif => (
-              <Cell key={gif}>
-                <Gif gifId={gif} />
-              </Cell>
-            ))}
-        </Grid>
+
         <MailchimpForm action={action} type={type} />
       </Cell>
     </Grid>

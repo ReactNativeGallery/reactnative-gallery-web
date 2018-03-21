@@ -4,6 +4,7 @@ const Subtitle = styled.h3`
   position: relative;
   z-index: 100;
   text-align: center;
+  color: #fff;
   @media (min-width: 481px) {
     font-size: 20px;
   }

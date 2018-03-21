@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 
 const Background = styled.div`
-  background-image: url('/static/images/background_blur.jpeg');
+  background: #be93c5;
+  background: -webkit-linear-gradient(to right, #7bc6cc, #be93c5);
+  background: linear-gradient(to right, #7bc6cc, #be93c5);
   background-attachment: scroll;
   background-position: 50% 50%;
   background-size: cover;

@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { Check } from 'react-feather'
 import Hideable from './Hideable'
 import CleanHr from './CleanHr'
-import Paragraph from './Paragraph'
 
 const MailchimpForm = styled.form`
   margin: 0 auto;
@@ -56,22 +55,11 @@ export const MailchimpButton = styled.button`
 const Mailchimp = ({ action, type }) => (
   <div>
     <CleanHr />
-    <Paragraph
-      style={{
-        maxWidth: 550,
-        marginTop: 60,
-        width: '100%',
-        margin: 'auto',
-        textAlign: 'center'
-      }}
-    >
-      {"Enter your email address if you want to be informed when it's ready"}
-    </Paragraph>
     <MailchimpForm name="form" noValidate="" action={action} method="POST" target="_blank">
       <MailchimpInput
         type="email"
         name="EMAIL"
-        placeholder="Email"
+        placeholder="Enter your email address if you want to be informed when it's ready"
         ariaRequired="true"
         required="required"
       />

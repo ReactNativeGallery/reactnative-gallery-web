@@ -22,7 +22,7 @@ For those who are searching for a particular component, you can search by catego
 
 * [x] eslint & jest
 * [x] responsive design (fix iOS display)
-* [x] Load gifs list from ElasticSearch
+* [x] Load, create & update gifs list from ElasticSearch
 * [ ] Use sashido for user connection management?
 * [ ] Connection with GitHub for developers
 * [ ] Connection with LinkedIn for headhunter

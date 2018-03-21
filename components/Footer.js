@@ -17,9 +17,9 @@ const Footer = styled.section`
 `
 
 const Link = styled.a`
-  color: #333;
+  color: #fff;
   &:visited: {
-    color: #333;
+    color: #fff;
   }
 `
 function Foot() {
@@ -32,7 +32,7 @@ function Foot() {
       >
         <Github />
       </Link>
-      <Minus style={{ paddingLeft: 15, paddingRight: 15 }} />
+      <Minus style={{ paddingLeft: 15, paddingRight: 15, color: '#fff' }} />
       <Link href="mailto:xcapetir+rng@gmail.com" target="_blank" rel="noopener noreferrer">
         <Mail />
       </Link>

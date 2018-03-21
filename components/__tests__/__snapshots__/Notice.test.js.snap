@@ -2,7 +2,7 @@
 
 exports[`<Notice /> toMatchSnapshot 1`] = `
 <div
-  className="Notice__NoticeContainer-s1hmz53f-0 cZEKhZ"
+  className="Notice__NoticeContainer-s1hmz53f-0 YdfNl"
 >
   <svg
     fill="none"
@@ -34,7 +34,7 @@ exports[`<Notice /> toMatchSnapshot 1`] = `
     />
   </svg>
   <small
-    className="Notice__NoticeText-s1hmz53f-1 cGzDwR"
+    className="Notice__NoticeText-s1hmz53f-1 gBfhZM"
   >
     Hover to play app video
   </small>

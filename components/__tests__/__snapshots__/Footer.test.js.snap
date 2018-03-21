@@ -5,7 +5,7 @@ exports[`<Footer /> toMatchSnapshot 1`] = `
   className="Footer-s19zc472-0 kcdnnY"
 >
   <a
-    className="Footer__Link-s19zc472-1 kgBtyw"
+    className="Footer__Link-s19zc472-1 kXrRDJ"
     href="https://github.com/ReactNativeGallery/reactnative-gallery-web"
     rel="noopener noreferrer"
     target="_blank"
@@ -35,6 +35,7 @@ exports[`<Footer /> toMatchSnapshot 1`] = `
     strokeWidth="2"
     style={
       Object {
+        "color": "#fff",
         "paddingLeft": 15,
         "paddingRight": 15,
       }
@@ -51,7 +52,7 @@ exports[`<Footer /> toMatchSnapshot 1`] = `
     />
   </svg>
   <a
-    className="Footer__Link-s19zc472-1 kgBtyw"
+    className="Footer__Link-s19zc472-1 kXrRDJ"
     href="mailto:xcapetir+rng@gmail.com"
     rel="noopener noreferrer"
     target="_blank"
