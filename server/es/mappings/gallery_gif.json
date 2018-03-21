@@ -50,6 +50,9 @@
     "uploadedAt": {
       "type": "date"
     },
+    "createdAt": {
+      "type": "date"
+    },
     "updatedAt": {
       "type": "date"
     }

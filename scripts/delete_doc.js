@@ -1,28 +1,18 @@
 #!/usr/bin/env node
-/* eslint no-console: 0 */
 const { deleteByIdAsync } = require('../server/es')
+const {
+  invariants, logError, logInfo, jsonToString
+} = require('../utils')
 
+// eslint-disable-next-line
 const [_, __, index, type, id] = process.argv;
 (async () => {
   try {
-    console.log(_, '\r\n', '\r\n', __, '\r\n')
-    if (!index) {
-      console.warn('No index found in command arguments')
-      return
-    }
-    if (!type) {
-      console.warn('No type found in command arguments')
-      return
-    }
-    if (!id) {
-      console.warn('No id found in command arguments')
-      return
-    }
-
+    invariants({ index, type, id })
     const response = await deleteByIdAsync(index, type, id)
-    console.log(JSON.stringify(response, null, 2))
+    logInfo(`Delete doc with index=${index} type=${type} id=${id} succeeded \n\n ${jsonToString(response)}`)
   } catch (error) {
-    console.error(error.message)
+    logError(error)
     process.exit(1)
   }
 })()

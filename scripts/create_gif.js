@@ -1,28 +1,27 @@
 #!/usr/bin/env node
-/* eslint no-console: 0 */
-const { createGifAsync } = require('../server/es/gif')
-const { now } = require('../utils')
 
+const { createGifAsync } = require('../server/es/gif')
+const {
+  now, invariants, logError, logInfo, jsonToString
+} = require('../utils')
+
+// eslint-disable-next-line
 const [_, __, id] = process.argv;
 (async () => {
   try {
-    console.log(_, '\r\n', '\r\n', __, '\r\n')
-    if (!id) {
-      console.warn('No id found in command arguments')
-      return
-    }
-
+    invariants({ id })
     const response = await createGifAsync({
       id,
       uploadedAt: now(),
       like: 0,
       numberOfView: 0,
       published: true,
+      createdAt: now(),
       updatedAt: now()
     })
-    console.log(`create all gifs: ${id} succeeded`, JSON.stringify(response, null, 2))
+    logInfo(`Create gif with id=${id} succeeded \n\n${jsonToString(response)}`)
   } catch (error) {
-    console.error(error.message)
+    logError(error)
     process.exit(1)
   }
 })()

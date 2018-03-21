@@ -67,6 +67,7 @@ const createGifAsync = (id, base) =>
     like: 0,
     numberOfView: 0,
     published: true,
+    createdAt: now(),
     updatedAt: now()
   })
 

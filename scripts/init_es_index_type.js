@@ -1,15 +1,18 @@
 #!/usr/bin/env node
-/* eslint no-console: 0 */
 const { initIndexTypeAsync } = require('../server/es')
+const {
+  invariants, logError, logInfo, jsonToString
+} = require('../utils')
 
+// eslint-disable-next-line
 const [_, __, index, type] = process.argv;
 (async () => {
   try {
-    console.log(_, '\r\n', '\r\n', __, '\r\n')
+    invariants({ index, type })
     const result = await initIndexTypeAsync(index, type)
-    console.log(`init ${index}, ${type} succeeded`, result)
+    logInfo(`init ${index}, ${type} succeeded \n\n${jsonToString(result)}`)
   } catch (error) {
-    console.error(error.message)
+    logError(error)
     process.exit(1)
   }
 })()
