@@ -1,4 +1,5 @@
-const { isProd } = require('.')
+require('isomorphic-fetch')
+const { now, baseApi } = require('.')
 
 const axios = require('axios')
 
@@ -59,9 +60,9 @@ const uploadAsync = (id, file, onUploadProgress) =>
     onUploadProgress
   })
 
-const now = () => new Date()
 const createGifAsync = (id, base) =>
-  axios.put(`${base || ''}/gifs/${id}`, {
+  axios.post(`${base || ''}/gifs/`, {
+    id,
     uploadedAt: now(),
     like: 0,
     numberOfView: 0,
@@ -70,14 +71,8 @@ const createGifAsync = (id, base) =>
   })
 
 const getGifsAsync = async (req) => {
-  const scheme = isProd() ? 'https' : 'http'
-  const url =
-    req && req.headers && req.headers.host
-      ? `${scheme}://${req.headers.host}`
-      : window.location.origin
-
-  const result = await axios.get(`${url}/gifs`)
-  return result.data
+  const result = await fetch(`${baseApi(req)}/gifs`)
+  return result.json()
 }
 
 module.exports = {

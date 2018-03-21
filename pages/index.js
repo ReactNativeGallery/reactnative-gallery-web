@@ -115,7 +115,7 @@ Home.getInitialProps = async ({ query, req }) => {
   const gifs = await getGifsAsync(req)
   return {
     type: utm_campaign || 'developer',
-    gifs: gifs.map(propOr('FlatThickArkshell', '_id'))
+    gifs: gifs.map(propOr('FlatThickArkshell', 'id'))
   }
 }
 

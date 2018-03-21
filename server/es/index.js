@@ -80,6 +80,7 @@ const getAllAsync = (index, type) =>
     body: [{ index, type }, { query: { match_all: {} } }]
   })
 
+// TODO: bulkable
 const getByIdAsync = curry((index, type, id) =>
   client.get({
     index,
@@ -87,12 +88,15 @@ const getByIdAsync = curry((index, type, id) =>
     id
   }))
 
+// TODO: bulkable
 const deleteByIdAsync = curry((index, type, id) =>
   client.delete({
     index,
     type,
     id
   }))
+
+// TODO: update
 
 module.exports = {
   pingAsync,

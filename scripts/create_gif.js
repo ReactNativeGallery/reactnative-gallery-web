@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /* eslint no-console: 0 */
 const { createGifAsync } = require('../server/es/gif')
+const { now } = require('../utils')
 
 const [_, __, id] = process.argv;
 (async () => {
@@ -13,11 +14,11 @@ const [_, __, id] = process.argv;
 
     const response = await createGifAsync({
       id,
-      uploadedAt: new Date(),
+      uploadedAt: now(),
       like: 0,
       numberOfView: 0,
       published: true,
-      updatedAt: new Date()
+      updatedAt: now()
     })
     console.log(`create all gifs: ${id} succeeded`, JSON.stringify(response, null, 2))
   } catch (error) {

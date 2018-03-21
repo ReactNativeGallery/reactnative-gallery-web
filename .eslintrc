@@ -10,6 +10,7 @@
     "window": false,
     "it": false,
     "expect": false,
-    "jest": false
+    "jest": false,
+    "fetch": false
   }
 }

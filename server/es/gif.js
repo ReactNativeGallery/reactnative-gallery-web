@@ -1,6 +1,6 @@
 require('dotenv').config()
 const {
-  compose, pathOr, propOr, head, curry
+  compose, pathOr, propOr, head, curry, map
 } = require('ramda')
 const { then, catchP, log } = require('../../utils/pointFreePromise')
 const {
@@ -20,6 +20,7 @@ const createGifAsync = doc => bulkAsync(gifBulkBase(doc))
 const readAllGifAsync = () =>
   compose(
     catchP(log),
+    then(map(propOr({}, '_source'))),
     then(pathOr([], ['hits', 'hits'])),
     then(head),
     then(propOr([], ['responses'])),
