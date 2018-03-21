@@ -55,11 +55,17 @@ export const MailchimpButton = styled.button`
 const Mailchimp = ({ action, type }) => (
   <div>
     <CleanHr />
-    <MailchimpForm name="form" noValidate="" action={action} method="POST" target="_blank">
+    <MailchimpForm
+      name="form"
+      noValidate=""
+      action={action}
+      method="POST"
+      target="_blank"
+    >
       <MailchimpInput
         type="email"
         name="EMAIL"
-        placeholder="Enter your email address if you want to be informed when it's ready"
+        placeholder="Enter your email address if you want to be informed"
         ariaRequired="true"
         required="required"
       />

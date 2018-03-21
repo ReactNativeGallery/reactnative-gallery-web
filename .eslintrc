@@ -4,7 +4,8 @@
   "rules": {
     "comma-dangle": 0,
     "semi": ["error", "never"],
-    "react/jsx-filename-extension": 0
+    "react/jsx-filename-extension": 0,
+    "max-len": ["error", { "code": 80 }]
   },
   "globals": {
     "window": false,

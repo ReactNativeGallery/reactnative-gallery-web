@@ -8,6 +8,8 @@ it('MailchimpForm can be created', () => {
 })
 
 it('<MailchimpForm /> toMatchSnapshot', () => {
-  const tree = renderer.create(<MailchimpForm action="test" type="test" />).toJSON()
+  const tree = renderer
+    .create(<MailchimpForm action="test" type="test" />)
+    .toJSON()
   expect(tree).toMatchSnapshot()
 })

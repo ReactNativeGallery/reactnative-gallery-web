@@ -5,7 +5,8 @@ const chalk = require('chalk')
 const jsonToString = obj => JSON.stringify(obj, null, 2)
 
 const invariants = objToCheck =>
-  Object.keys(objToCheck).forEach(k => invariant(objToCheck[k], `"${k}" is undefined`))
+  Object.keys(objToCheck).forEach(k =>
+    invariant(objToCheck[k], `"${k}" is undefined`))
 
 const logError = err => console.error(chalk.red(`[ERROR] ${err.message}`))
 

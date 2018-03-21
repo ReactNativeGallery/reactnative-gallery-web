@@ -4,18 +4,18 @@ const {
 } = require('ramda')
 const { then, catchP, log } = require('../../utils/pointFreePromise')
 const {
-  documentBulkable, bulkAsync, getAllAsync, getByIdAsync, deleteByIdAsync
+  bulkOperation, bulkAsync, getAllAsync, getByIdAsync, deleteByIdAsync
 } = require('./')
 
 const { GALLERY_INDEX, GALLERY_TYPE } = process.env
 
-const gifBulkBase = documentBulkable(GALLERY_INDEX, GALLERY_TYPE)
+const indexGifBulkBase = bulkOperation('index', GALLERY_INDEX, GALLERY_TYPE)
 
 const getGifByIdAsync = getByIdAsync(GALLERY_INDEX, GALLERY_TYPE)
 
 const deleteGifByIdAsync = deleteByIdAsync(GALLERY_INDEX, GALLERY_TYPE)
 
-const createGifAsync = doc => bulkAsync(gifBulkBase(doc))
+const createGifAsync = doc => compose(bulkAsync, indexGifBulkBase)(doc)
 
 const readAllGifAsync = () =>
   compose(

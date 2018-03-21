@@ -50,7 +50,10 @@ Wrap.defaultProps = {
 }
 
 Wrap.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.element), PropTypes.element]),
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.element
+  ]),
   background: PropTypes.bool,
   footer: PropTypes.bool
 }

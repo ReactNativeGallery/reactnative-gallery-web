@@ -10,7 +10,7 @@ const [_, __, index, type, id] = process.argv;
   try {
     invariants({ index, type, id })
     const response = await getByIdAsync(index, type, id)
-    logInfo(`Get doc with index=${index} type=${type} id=${id} succeeded \n\n${jsonToString(response)}`)
+    logInfo(`index=${index} type=${type} id=${id} \n${jsonToString(response)}`)
   } catch (error) {
     logError(error)
     process.exit(1)

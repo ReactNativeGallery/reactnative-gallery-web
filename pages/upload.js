@@ -118,7 +118,11 @@ class Upload extends Component {
         status,
         percentCompleted: progress > 100 ? 100 : progress
       })
-      if (!status || (status.task && status.task === 'complete') || status.task === 'error') {
+      if (
+        !status ||
+        (status.task && status.task === 'complete') ||
+        status.task === 'error'
+      ) {
         if (status.task === 'complete') {
           window.location.href = '/'
         }
@@ -129,7 +133,12 @@ class Upload extends Component {
 
   render() {
     const {
-      file, isGif, isVideo, preview, percentCompleted, status
+      file,
+      isGif,
+      isVideo,
+      preview,
+      percentCompleted,
+      status
     } = this.state
     return (
       <Wrapper background footer>
@@ -155,7 +164,10 @@ class Upload extends Component {
             }}
           >
             {!file && (
-              <Smartphone onClick={() => this.inputFile && this.inputFile.click()} cursorPointer>
+              <Smartphone
+                onClick={() => this.inputFile && this.inputFile.click()}
+                cursorPointer
+              >
                 <GifContainer>
                   <Sizer />
                   <Empty>
@@ -182,7 +194,10 @@ class Upload extends Component {
               )}
 
             {percentCompleted > 0 && (
-              <Smartphone cursorPointer onClick={() => this.inputFile && this.inputFile.click()}>
+              <Smartphone
+                cursorPointer
+                onClick={() => this.inputFile && this.inputFile.click()}
+              >
                 <GifContainer>
                   <Sizer />
                   <Empty>
@@ -198,7 +213,9 @@ class Upload extends Component {
                       </div>
                       {status && (
                         <Status>
-                          {status.task === 'NotFoundo' ? 'preparing encoding' : status.task}
+                          {status.task === 'NotFoundo'
+                            ? 'preparing encoding'
+                            : status.task}
                           <br />
                           {percentCompleted}%
                         </Status>

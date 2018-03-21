@@ -35,7 +35,10 @@ app.prepare().then(() => {
 
   server.head('/tk', async (req, res) => {
     const { GFYCAT_CLIENT_ID, GFYCAT_CLIENT_SECRET } = process.env
-    const token = await getAccessTokenAsync(GFYCAT_CLIENT_ID, GFYCAT_CLIENT_SECRET)
+    const token = await getAccessTokenAsync(
+      GFYCAT_CLIENT_ID,
+      GFYCAT_CLIENT_SECRET
+    )
     res.header('X-TK', token)
     return res.send()
   })

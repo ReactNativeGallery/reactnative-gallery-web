@@ -5,8 +5,8 @@ it('es.pingAsync', async () => {
   expect(await es.pingAsync()).toBe(true)
 })
 
-it('es.getLocalMappingPath', () => {
-  expect(es.getLocalMappingPath('toto', 'titi', 'tata')).toBe('toto/mappings/titi_tata.json')
+it('es.mappingPath', () => {
+  expect(es.mappingPath('t', 'ti', 'ta')).toBe('t/mappings/ti_ta.json')
 })
 
 it('es.isLocalMappingExist', () => {
@@ -89,8 +89,11 @@ it('es.createTypeAsync mapping undefined', async () => {
   }
 })
 
-it('es.documentBulkable', () => {
-  expect(es.documentBulkable('indexTest', 'typeTest', { key: 'value', id: 'test' })).toEqual([
+it('es.bulkOperation', () => {
+  expect(es.bulkOperation('index', 'indexTest', 'typeTest', {
+    key: 'value',
+    id: 'test'
+  })).toEqual([
     { index: { _index: 'indexTest', _type: 'typeTest', _id: 'test' } },
     { key: 'value', id: 'test' }
   ])
@@ -121,13 +124,19 @@ it('es.bulkAsync, bulkables length should be an even number', async () => {
 })
 
 it('es.bulkAsync success', async () => {
-  const bulk = es.documentBulkable('indexTest', 'typeTest', { key: 'value', id: 'idTest' })
+  const bulk = es.bulkOperation('indexTest', 'typeTest', {
+    key: 'value',
+    id: 'idTest'
+  })
   expect(await es.bulkAsync(bulk)).toEqual({ body: bulk })
 })
 
 it('es.getAllAsync success', async () => {
   expect(await es.getAllAsync('testIndex', 'testType')).toEqual({
-    body: [{ index: 'testIndex', type: 'testType' }, { query: { match_all: {} } }]
+    body: [
+      { index: 'testIndex', type: 'testType' },
+      { query: { match_all: {} } }
+    ]
   })
 })
 
@@ -145,4 +154,14 @@ it('es.deleteByIdAsync success', async () => {
     type: 'testType',
     id: 'id'
   })
+})
+
+it('es.compact', () => {
+  expect(es.compact([
+    null,
+    undefined,
+    {},
+    { doc: { prop: 'value' } },
+    { doc: { prop: 'value2' } }
+  ])).toEqual([{ doc: { prop: 'value' } }, { doc: { prop: 'value2' } }])
 })

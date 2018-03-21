@@ -103,8 +103,14 @@ class Gif extends Component {
             }}
           >
             <track kind="captions" />
-            <source src={`https://giant.gfycat.com/${gifId}.webm`} type="video/webm" />
-            <source src={`https://giant.gfycat.com/${gifId}.mp4`} type="video/mp4" />
+            <source
+              src={`https://giant.gfycat.com/${gifId}.webm`}
+              type="video/webm"
+            />
+            <source
+              src={`https://giant.gfycat.com/${gifId}.mp4`}
+              type="video/mp4"
+            />
           </video>
         </GifContainer>
       </Smartphone>

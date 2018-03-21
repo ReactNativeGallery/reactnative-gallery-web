@@ -1,4 +1,4 @@
-/* eslint react/no-danger: 0 */
+/* eslint react/no-danger: 0, max-len: 0 */
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
@@ -14,7 +14,8 @@ const scripts = [
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet()
-    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />))
+    const page = renderPage(App => props =>
+      sheet.collectStyles(<App {...props} />))
     const styleTags = sheet.getStyleElement()
     return { ...page, styleTags }
   }
@@ -35,22 +36,39 @@ export default class MyDocument extends Document {
             content="react-native, react native example, gallery"
             property="keywords"
           />
-          <meta name="viewport" content="width=device-width, initial-scale=1" property="viewport" />
-          <meta name="og:title" content="React Native Gallery" property="og:title" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1"
+            property="viewport"
+          />
+          <meta
+            name="og:title"
+            content="React Native Gallery"
+            property="og:title"
+          />
           <meta
             name="og:description"
             content="Show and tell for React Native developers"
             property="og:description"
           />
-          <meta name="og:image" content="/static/images/background_blur.jpeg" property="og:image" />
+          <meta
+            name="og:image"
+            content="/static/images/background_blur.jpeg"
+            property="og:image"
+          />
           <link rel="icon" href="/static/images/favicon.ico" />
-          <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans"
+            rel="stylesheet"
+          />
           {this.props.styleTags}
         </Head>
         <body style={{ margin: 0, backgroundColor: '#be93c5' }}>
           <Main />
           <NextScript />
-          {scripts.map(script => <script dangerouslySetInnerHTML={{ __html: script }} />)}
+          {scripts.map(script => (
+            <script dangerouslySetInnerHTML={{ __html: script }} />
+          ))}
         </body>
       </html>
     )
