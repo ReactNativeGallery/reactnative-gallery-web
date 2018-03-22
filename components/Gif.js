@@ -10,7 +10,7 @@ export const Smartphone = styled.div`
   box-shadow: inset 0 0 3px 0 rgb(79, 86, 95, 0.2);
   border: solid 1px rgb(79, 86, 95, 0.2);
   max-width: 275px;
-  min-width: 200px;
+  min-width: 170px;
   min-height: 250px;
   cursor: ${({ cursorPointer }) =>
     (cursorPointer ? 'pointer' : 'url(/static/images/play-circle.svg), auto;')};
