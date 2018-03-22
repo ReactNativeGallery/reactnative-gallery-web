@@ -25,7 +25,6 @@ For those who are searching for a particular component, you can search by catego
 * [x] Load, create & update gifs list from ElasticSearch
 * [ ] Use sashido for user connection management?
 * [ ] Connection with GitHub for developers
-* [ ] Connection with LinkedIn for headhunter
 * [ ] Like a gif
 * [ ] Comment a gif
 * [ ] Number of view
