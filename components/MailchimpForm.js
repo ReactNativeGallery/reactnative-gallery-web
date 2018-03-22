@@ -17,7 +17,7 @@ const MailchimpForm = styled.form`
 
 export const MailchimpInput = styled.input`
   border-width: 0;
-  border-radius: 0;
+  border-radius: 5px 0 0 5px;
   font-size: 14px;
   height: 50px;
   display: block;
@@ -30,6 +30,9 @@ export const MailchimpInput = styled.input`
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   &:required {
     box-shadow: none;
   }
@@ -42,12 +45,14 @@ export const MailchimpButton = styled.button`
   display: block;
   margin: 0 auto;
   border-width: 0;
-  border-radius: 0;
+  border-radius: 0 5px 5px 0;
   font-size: 14px;
   padding-right: 20px;
   padding-left: 20px;
   height: 50px;
-  background-color: #00a651;
+  background: #76b852;
+  background: -webkit-linear-gradient(to right, #8dc26f, #76b852);
+  background: linear-gradient(to right, #8dc26f, #76b852);
   color: #fff;
   line-height: 0.5em;
 `

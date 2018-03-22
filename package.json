@@ -40,6 +40,7 @@
     "styled-css-grid": "0.8.2"
   },
   "devDependencies": {
+    "babel-cli": "6.26.0",
     "babel-eslint": "8.2.2",
     "babel-jest": "22.4.1",
     "babel-preset-env": "1.6.1",

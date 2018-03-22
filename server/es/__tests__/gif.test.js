@@ -23,8 +23,6 @@ it('gif.getGifByIdAsync', async () => {
 
 it('gif.deleteGifByIdAsync', async () => {
   expect(await gif.deleteGifByIdAsync(1)).toEqual({
-    index: 'gallery',
-    type: 'gif',
-    id: 1
+    body: [{ delete: { _id: '1', _index: 'gallery', _type: 'gif' } }]
   })
 })

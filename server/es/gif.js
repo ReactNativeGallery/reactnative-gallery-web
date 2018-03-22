@@ -4,18 +4,29 @@ const {
 } = require('ramda')
 const { then, catchP, log } = require('../../utils/pointFreePromise')
 const {
-  bulkOperation, bulkAsync, getAllAsync, getByIdAsync, deleteByIdAsync
+  bulkAsync,
+  getAllAsync,
+  getByIdAsync,
+  bulkIndex,
+  bulkDelete,
+  bulkUpdate
 } = require('./')
 
 const { GALLERY_INDEX, GALLERY_TYPE } = process.env
 
-const indexGifBulkBase = bulkOperation('index', GALLERY_INDEX, GALLERY_TYPE)
+const indexGifBulkBase = bulkIndex(GALLERY_INDEX, GALLERY_TYPE)
+
+const deleteGifBulkBase = bulkDelete(GALLERY_INDEX, GALLERY_TYPE)
+
+const updateGifBulkBase = bulkUpdate(GALLERY_INDEX, GALLERY_TYPE)
 
 const getGifByIdAsync = getByIdAsync(GALLERY_INDEX, GALLERY_TYPE)
 
-const deleteGifByIdAsync = deleteByIdAsync(GALLERY_INDEX, GALLERY_TYPE)
+const deleteGifByIdAsync = compose(bulkAsync, deleteGifBulkBase)
 
-const createGifAsync = doc => compose(bulkAsync, indexGifBulkBase)(doc)
+const updateGifByIdAsync = compose(bulkAsync, updateGifBulkBase)
+
+const createGifAsync = compose(bulkAsync, indexGifBulkBase)
 
 const readAllGifAsync = () =>
   compose(
@@ -28,8 +39,9 @@ const readAllGifAsync = () =>
   )(GALLERY_INDEX, GALLERY_TYPE)
 
 module.exports = {
-  createGifAsync,
   readAllGifAsync,
   getGifByIdAsync,
-  deleteGifByIdAsync
+  createGifAsync,
+  deleteGifByIdAsync,
+  updateGifByIdAsync
 }

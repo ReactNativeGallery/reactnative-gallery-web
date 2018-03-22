@@ -2,10 +2,15 @@
 
 exports[`<Gif /> toMatchSnapshot 1`] = `
 <div
-  className="Gif__Smartphone-qqwjgf-0 hkJotQ"
+  className="Gif__Smartphone-qqwjgf-0 hHlVvm"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  style={
+    Object {
+      "background": false,
+    }
+  }
 >
   <div
     className="Gif__GifContainer-qqwjgf-1 bOJfPr"
@@ -44,6 +49,13 @@ exports[`<Gif /> toMatchSnapshot 1`] = `
         type="video/mp4"
       />
     </video>
+  </div>
+  <div
+    className="Gif__ButtonContainer-qqwjgf-4 czuZdh"
+  >
+    <div
+      className="Gif__Button-qqwjgf-5 gsrsAX"
+    />
   </div>
 </div>
 `;

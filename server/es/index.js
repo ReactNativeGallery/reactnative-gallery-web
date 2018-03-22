@@ -1,3 +1,4 @@
+/* eslint no-underscore-dangle: 0 */
 require('dotenv').config()
 const {
   compose, curry, isEmpty, is, filter
@@ -5,12 +6,19 @@ const {
 const elasticsearch = require('elasticsearch')
 const invariant = require('invariant')
 const fs = require('fs')
+const { tmatches } = require('../../utils')
 
 const { ES_URL } = process.env
 
 const client = new elasticsearch.Client({
   host: ES_URL
 })
+
+const OPE = {
+  DELETE: 'delete',
+  INDEX: 'index',
+  UPDATE: 'index'
+}
 
 const pingAsync = () => client.ping({ requestTimeout: 1000 })
 
@@ -64,17 +72,30 @@ const initIndexTypeAsync = async (index, type) => {
 
 const compact = filter(item => !isEmpty(item) && is(Object, item))
 
+const idify = idlike =>
+  tmatches(idlike)({
+    number: x => `${x}`,
+    string: x => x,
+    object: x => `${x.id || x._id}`
+  })
+
 const bulkOperation = curry((ope, index, type, doc) =>
   compact([
     {
       [ope]: {
         _index: index,
         _type: type,
-        _id: doc && doc.id
+        _id: idify(doc)
       }
     },
     doc
   ]))
+
+const bulkIndex = bulkOperation(OPE.INDEX)
+
+const bulkUpdate = bulkOperation(OPE.UPDATE)
+
+const bulkDelete = bulkOperation(OPE.DELETE)
 
 const bulkAsync = bulkables =>
   invariant(bulkables, 'bulkables should be defined') ||
@@ -95,16 +116,6 @@ const getByIdAsync = curry((index, type, id) =>
     id
   }))
 
-// TODO: bulkable
-const deleteByIdAsync = curry((index, type, id) =>
-  client.delete({
-    index,
-    type,
-    id
-  }))
-
-// TODO: update
-
 module.exports = {
   pingAsync,
   mappingPath,
@@ -115,10 +126,13 @@ module.exports = {
   isTypeExistAsync,
   createIndexAsync,
   createTypeAsync,
-  bulkOperation,
-  bulkAsync,
   getAllAsync,
   getByIdAsync,
-  deleteByIdAsync,
-  compact
+  compact,
+  bulkOperation,
+  bulkAsync,
+  bulkIndex,
+  bulkUpdate,
+  bulkDelete,
+  idify
 }

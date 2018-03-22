@@ -14,14 +14,14 @@ exports[`<MailchimpForm /> toMatchSnapshot 1`] = `
     target="_blank"
   >
     <input
-      className="MailchimpForm__MailchimpInput-s1jd0qpd-1 hkXAOt"
+      className="MailchimpForm__MailchimpInput-s1jd0qpd-1 dSSfzX"
       name="EMAIL"
       placeholder="Enter your email address if you want to be informed"
       required="required"
       type="email"
     />
     <button
-      className="MailchimpForm__MailchimpButton-s1jd0qpd-2 bHDbCA"
+      className="MailchimpForm__MailchimpButton-s1jd0qpd-2 dnChpm"
       type="submit"
     >
       <span

@@ -4,11 +4,11 @@ import styled from 'styled-components'
 
 export const Smartphone = styled.div`
   position: relative;
-  padding: 44px 14px;
-  background: #222;
-  border-radius: 35px;
-  box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.2);
-  border: solid 1px #222;
+  padding: 65px 12px;
+  background: #404040;
+  border-radius: 38px;
+  box-shadow: inset 0 0 3px 0 rgb(79, 86, 95, 0.2);
+  border: solid 1px rgb(79, 86, 95, 0.2);
   max-width: 275px;
   min-width: 200px;
   min-height: 250px;
@@ -41,6 +41,22 @@ const Play = styled.div`
     content: url(/static/images/play-circle.svg);
     display: ${props => (props.show ? 'block' : 'none')};
   }
+`
+
+const ButtonContainer = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 45px;
+  right: 0;
+  padding-top: 7px;
+`
+
+const Button = styled.div`
+  margin: 0px auto;
+  border: solid 3px #707070;
+  width: 45px;
+  height: 45px;
+  border-radius: 90px;
 `
 
 class Gif extends Component {
@@ -80,6 +96,9 @@ class Gif extends Component {
         onMouseEnter={this.onMouseEnterHandler}
         onMouseLeave={this.onMouseLeaveHandler}
         onClick={this.onClick}
+        style={{
+          background: this.state.play && '#141414'
+        }}
       >
         <GifContainer>
           <Play show={!this.state.play} />
@@ -113,6 +132,9 @@ class Gif extends Component {
             />
           </video>
         </GifContainer>
+        <ButtonContainer>
+          <Button />
+        </ButtonContainer>
       </Smartphone>
     )
   }

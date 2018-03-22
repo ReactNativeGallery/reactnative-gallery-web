@@ -148,14 +148,6 @@ it('es.getByIdAsync success', async () => {
   })
 })
 
-it('es.deleteByIdAsync success', async () => {
-  expect(await es.deleteByIdAsync('testIndex', 'testType', 'id')).toEqual({
-    index: 'testIndex',
-    type: 'testType',
-    id: 'id'
-  })
-})
-
 it('es.compact', () => {
   expect(es.compact([
     null,
@@ -164,4 +156,10 @@ it('es.compact', () => {
     { doc: { prop: 'value' } },
     { doc: { prop: 'value2' } }
   ])).toEqual([{ doc: { prop: 'value' } }, { doc: { prop: 'value2' } }])
+})
+
+it('es.idify', () => {
+  expect(es.idify(1)).toBe('1')
+  expect(es.idify('id')).toBe('id')
+  expect(es.idify({ id: 'id' })).toBe('id')
 })
