@@ -20,12 +20,8 @@ For those who are searching for a particular component, you can search by catego
 
 ## 🏗 ToDo list
 
-* [x] eslint & jest
-* [x] responsive design (fix iOS display)
-* [x] Load, create & update gifs list from ElasticSearch
-* [ ] Use sashido for user connection management?
-* [ ] Connection with GitHub for developers
-* [ ] Connection with LinkedIn for headhunter
+* [ ] Load, create & update gifs
+* [ ] User management
 * [ ] Like a gif
 * [ ] Comment a gif
 * [ ] Number of view
