@@ -4,8 +4,10 @@ require('dotenv').config()
 const express = require('express')
 const axios = require('axios')
 const next = require('next')
+const fs = require('fs')
 const helmet = require('helmet')
 const bodyParser = require('body-parser')
+const { join } = require('path')
 const { setEsEndpoints } = require('./es/endpoints')
 
 const port = parseInt(process.env.PORT, 10) || 3000
@@ -42,7 +44,21 @@ app.prepare().then(() => {
     res.header('X-TK', token)
     return res.send()
   })
+
   setEsEndpoints(server)
+
+  server.get('/robots.txt', (req, res) => {
+    const path = join(__dirname, 'robots.txt')
+    res.type('text/plain')
+    res.send(fs.readFileSync(path, { encoding: 'utf8' }))
+  })
+
+  server.get('/sitemap.xml', (req, res) => {
+    const path = join(__dirname, 'sitemap.xml')
+    res.type('application/xml')
+    res.send(fs.readFileSync(path, { encoding: 'utf8' }))
+  })
+
   server.get('*', (req, res) => handle(req, res))
 
   server.listen(port, (err) => {

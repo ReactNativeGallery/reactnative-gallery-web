@@ -1,0 +1,19 @@
+User-agent: BLEXBot
+User-Agent: AhrefsBot
+User-Agent: ia_archiver
+User-Agent: ia_archiver/1.6
+User-Agent: Mozilla/4.0 (compatible; BullsEye; Windows 95)
+User-Agent: MS Search 4.0 Robot
+User-Agent: MS Search 5.0 Robot
+User-Agent: Naverbot
+User-Agent: SemrushBot
+User-Agent: SeznamBot/3.0
+User-Agent: Sogou web spider
+User-Agent: Xenu Link Sleuth/1.3.8
+User-Agent: Xenu's
+User-Agent: Xenu's Link Sleuth 1.1c
+User-Agent: yandex
+User-Agent: YandexBot
+Disallow: /
+
+Sitemap: https://reactnative.gallery/sitemap.xml
