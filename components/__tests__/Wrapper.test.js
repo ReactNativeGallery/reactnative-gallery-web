@@ -8,6 +8,10 @@ const compToTest = (
   </Wrapper>
 )
 
+const compToTest2 = <Wrapper />
+
+const compToTest3 = <Wrapper footer />
+
 it('Wrapper can be created', () => {
   const comp = renderer.create(compToTest)
   expect(comp).toBeDefined()
@@ -15,5 +19,15 @@ it('Wrapper can be created', () => {
 
 it('<Wrapper /> toMatchSnapshot', () => {
   const tree = renderer.create(compToTest).toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+it('<Wrapper /> toMatchSnapshot', () => {
+  const tree = renderer.create(compToTest2).toJSON()
+  expect(tree).toMatchSnapshot()
+})
+
+it('<Wrapper /> toMatchSnapshot', () => {
+  const tree = renderer.create(compToTest3).toJSON()
   expect(tree).toMatchSnapshot()
 })

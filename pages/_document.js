@@ -61,9 +61,10 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Open+Sans"
             rel="stylesheet"
           />
+          <link href="/static/styles/main.css" rel="stylesheet" />
           {this.props.styleTags}
         </Head>
-        <body style={{ margin: 0, backgroundColor: '#be93c5' }}>
+        <body>
           <Main />
           <NextScript />
           {scripts.map(script => (

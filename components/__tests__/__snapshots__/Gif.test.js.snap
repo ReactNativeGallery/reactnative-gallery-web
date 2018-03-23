@@ -2,7 +2,7 @@
 
 exports[`<Gif /> toMatchSnapshot 1`] = `
 <div
-  className="Gif__Smartphone-qqwjgf-0 ipMnbZ"
+  className="Smartphone-s165niw0-0 beVsoo"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -13,13 +13,13 @@ exports[`<Gif /> toMatchSnapshot 1`] = `
   }
 >
   <div
-    className="Gif__GifContainer-qqwjgf-1 bOJfPr"
+    className="GifContainer-s1wbubqp-0 fvwRPH"
   >
     <div
-      className="Gif__Play-qqwjgf-3 eCFIZh"
+      className="Play-s10ikt1c-0 cmvcXj"
     />
     <div
-      className="Gif__Sizer-qqwjgf-2 kyNagA"
+      className="Gif__Sizer-s1j91rz1-0 gpJmvZ"
     />
     <video
       autoPlay={false}
@@ -27,6 +27,7 @@ exports[`<Gif /> toMatchSnapshot 1`] = `
       muted={true}
       playsInline={true}
       poster="https://thumbs.gfycat.com/test-poster.jpg"
+      preload="none"
       style={
         Object {
           "height": "100%",
@@ -51,10 +52,10 @@ exports[`<Gif /> toMatchSnapshot 1`] = `
     </video>
   </div>
   <div
-    className="Gif__ButtonContainer-qqwjgf-4 czuZdh"
+    className="Button__ButtonContainer-s1yo1pni-0 kZcYqm"
   >
     <div
-      className="Gif__Button-qqwjgf-5 gsrsAX"
+      className="Button-s1yo1pni-1 bJdzWb"
     />
   </div>
 </div>

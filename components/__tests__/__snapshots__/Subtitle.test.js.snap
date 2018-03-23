@@ -5,3 +5,9 @@ exports[`<Subtitle /> toMatchSnapshot 1`] = `
   className="Subtitle-s1pqjucr-0 kyHEyY"
 />
 `;
+
+exports[`<Subtitle /> toMatchSnapshot 2 1`] = `
+<h3
+  className="Subtitle-s1pqjucr-0 hQpFcq"
+/>
+`;

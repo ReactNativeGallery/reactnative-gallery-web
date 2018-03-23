@@ -2,14 +2,14 @@
 
 const { createGifAsync } = require('../server/es/gif')
 const {
-  now, invariants, logError, logInfo, jsonToString
+  now, invariantsUndef, logError, logInfo, jsonToString
 } = require('../utils')
 
 // eslint-disable-next-line
 const [_, __, id] = process.argv;
 (async () => {
   try {
-    invariants({ id })
+    invariantsUndef({ id })
     const response = await createGifAsync({
       id,
       uploadedAt: now(),

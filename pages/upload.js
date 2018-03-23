@@ -9,7 +9,9 @@ import { isFocus } from '../utils'
 import Wrapper from '../components/Wrapper'
 import { NumberItem, NumberList } from '../components/NumberList'
 import Subtitle from '../components/Subtitle'
-import { Smartphone, GifContainer, Sizer } from '../components/Gif'
+import { Sizer } from '../components/Gif'
+import Smartphone from '../components/Gif/Smartphone'
+import GifContainer from '../components/Gif/GifContainer'
 import {
   requestGifKeyAsync,
   uploadAsync,
@@ -141,7 +143,7 @@ class Upload extends Component {
       status
     } = this.state
     return (
-      <Wrapper background footer>
+      <Wrapper footer>
         <Subtitle>Upload Video & Gif</Subtitle>
         <Grid
           style={{

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Play /> toMatchSnapshot 1`] = `
+<div
+  className="Play-s10ikt1c-0 eAxzIJ"
+/>
+`;
+
+exports[`<Play /> toMatchSnapshot 2 1`] = `
+<div
+  className="Play-s10ikt1c-0 cmvcXj"
+/>
+`;

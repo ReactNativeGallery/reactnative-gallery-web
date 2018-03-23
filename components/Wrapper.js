@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Background from './Background'
 import Footer from './Footer'
 
 const Wrapper = styled.section`
@@ -10,7 +9,6 @@ const Wrapper = styled.section`
   align-items: center;
   flex-direction: column;
   padding: 1em 3em;
-  background: #fff;
   font-family: 'Open Sans', sans-serif;
   min-height: 100%;
   font-size: 20px;
@@ -33,10 +31,9 @@ const Wrapper = styled.section`
   }
 `
 
-function Wrap({ children, background, footer }) {
+function Wrap({ children, footer }) {
   return (
     <Wrapper>
-      {background && <Background />}
       {children}
       {footer && <Footer />}
     </Wrapper>
@@ -44,9 +41,8 @@ function Wrap({ children, background, footer }) {
 }
 
 Wrap.defaultProps = {
-  background: false,
   footer: false,
-  children: () => <p />
+  children: <p style={{ color: '#f50' }}>Nothing to render</p>
 }
 
 Wrap.propTypes = {
@@ -54,7 +50,6 @@ Wrap.propTypes = {
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element
   ]),
-  background: PropTypes.bool,
   footer: PropTypes.bool
 }
 

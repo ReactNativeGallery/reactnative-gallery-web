@@ -14,7 +14,7 @@ import MailchimpForm from '../components/MailchimpForm'
 import { getGifsAsync } from '../utils/uploadFile'
 
 const Home = ({ gifs, type, action }) => (
-  <Wrapper background footer>
+  <Wrapper footer>
     <Grid
       style={{
         zIndex: 100,

@@ -2,27 +2,28 @@
 const invariant = require('invariant')
 const chalk = require('chalk')
 const { curry } = require('ramda')
+const { website } = require('../package.json')
 
 const jsonToString = obj => JSON.stringify(obj, null, 2)
 
-const invariants = objToCheck =>
+const invariantsUndef = objToCheck =>
   Object.keys(objToCheck).forEach(k =>
     invariant(objToCheck[k], `"${k}" is undefined`))
 
-const logError = err => console.error(chalk.red(`[ERROR] ${err.message}`))
+const logError = err =>
+  console.error(chalk.red(`[ERROR] ${(err && err.message) || err}`))
 
-const logInfo = info => console.error(chalk.blue(`[INFO] ${info}`))
+const logInfo = info => console.log(chalk.blue(`[INFO] ${info}`))
 
-const logWarning = warn => console.error(chalk.yellow(`[WARN] ${warn}`))
+const logWarning = warn => console.warn(chalk.yellow(`[WARN] ${warn}`))
 
-const isProd = () => process.env.NODE_ENV === 'production'
+const isProd = (nodeEnv = process.env.NODE_ENV) => nodeEnv === 'production'
 
 const isFocus = cssValue => props => (props.focus ? cssValue : null)
 
 const now = () => new Date()
 
 const tmatches = curry((toMatch, funObj) => {
-  // TODO: invariant: Object.keys(funObj)...
   const identity = x => x
   const fn = funObj[typeof toMatch] || identity
   return fn(toMatch)
@@ -30,10 +31,12 @@ const tmatches = curry((toMatch, funObj) => {
 
 const baseApi = (req) => {
   const scheme = isProd() ? 'https' : 'http'
-  const url =
-    req && req.headers && req.headers.host
-      ? `${scheme}://${req.headers.host}`
-      : window.location.origin
+  const host = req && req.headers && req.headers.host
+  const origin =
+    !host && window && window.location.origin !== 'null'
+      ? window.location.origin
+      : undefined
+  const url = host ? `${scheme}://${host}` : origin || website
   return url
 }
 
@@ -42,7 +45,7 @@ module.exports = {
   isFocus,
   now,
   baseApi,
-  invariants,
+  invariantsUndef,
   logError,
   logInfo,
   logWarning,

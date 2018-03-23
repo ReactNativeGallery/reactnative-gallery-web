@@ -18,7 +18,7 @@ it('es.getLocalMapping', () => {
 })
 
 it('es.isIndexExistAsync', async () => {
-  expect(await es.isIndexExistAsync('gallery')).toBe(true)
+  expect(await es.isIndexExistAsync('gallery')).toBe(false)
 })
 
 it('es.isIndexExistAsync undefined index', async () => {
@@ -30,7 +30,7 @@ it('es.isIndexExistAsync undefined index', async () => {
 })
 
 it('es.isTypeExistAsync', async () => {
-  expect(await es.isTypeExistAsync('gallery', 'gif')).toBe(true)
+  expect(await es.isTypeExistAsync('gallery', 'gif')).toBe(false)
 })
 
 it('es.isTypeExistAsync index undefined', async () => {
@@ -162,4 +162,15 @@ it('es.idify', () => {
   expect(es.idify(1)).toBe('1')
   expect(es.idify('id')).toBe('id')
   expect(es.idify({ id: 'id' })).toBe('id')
+  expect(es.idify({ _id: 'id' })).toBe('id')
+})
+
+it('es.initIndexTypeAsync', async () => {
+  expect(await es.initIndexTypeAsync('gallery', 'gif')).toEqual({})
+})
+
+it('es.initIndexTypeAsync', async () => {
+  expect(await es.initIndexTypeAsync('yes', 'yes')).toEqual({
+    message: 'succeeded, nothing created'
+  })
 })

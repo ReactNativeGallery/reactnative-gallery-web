@@ -1,63 +1,26 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-
-export const Smartphone = styled.div`
-  position: relative;
-  padding: 65px 12px;
-  background: #404040;
-  border-radius: 38px;
-  box-shadow: inset 0 0 3px 0 rgb(79, 86, 95, 0.2);
-  border: solid 1px rgb(79, 86, 95, 0.2);
-  max-width: 275px;
-  min-width: 170px;
-  min-height: 250px;
-  cursor: ${({ cursorPointer }) =>
-    (cursorPointer ? 'pointer' : 'url(/static/images/play-circle.svg), auto;')};
-`
-
-export const GifContainer = styled.div`
-  position: relative;
-  padding: 0px;
-  font-size: 0px;
-  max-width: 250px;
-  margin: 0px auto;
-`
+import Smartphone from './Smartphone'
+import GifContainer from './GifContainer'
+import Play from './Play'
+import { Button, ButtonContainer } from './Button'
 
 export const Sizer = styled.div`
   position: relative;
   padding-bottom: 180%;
 `
 
-const Play = styled.div`
-  @media (max-width: 769px) {
-    position: absolute;
-    z-index: 100;
-    margin: 0px auto;
-    width: 100%;
-    height: 100%;
-    max-width: 250px;
-    opacity: 0.5;
-    content: url(/static/images/play-circle.svg);
-    display: ${props => (props.show ? 'block' : 'none')};
-  }
-`
-
-const ButtonContainer = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 45px;
-  right: 0;
-  padding-top: 7px;
-`
-
-const Button = styled.div`
-  margin: 0px auto;
-  border: solid 3px #707070;
-  width: 45px;
-  height: 45px;
-  border-radius: 90px;
-`
+const Source = ({ mediatype, id }) => (
+  <source
+    src={`https://giant.gfycat.com/${id}.${mediatype}`}
+    type={`video/${mediatype}`}
+  />
+)
+Source.propTypes = {
+  mediatype: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
+}
 
 class Gif extends Component {
   static propTypes = {
@@ -70,23 +33,31 @@ class Gif extends Component {
   }
 
   onMouseEnterHandler = () => {
-    this.video.play()
+    this.play()
     this.setState({ play: true, mouseover: true })
   }
 
   onMouseLeaveHandler = () => {
-    this.video.pause()
+    this.pause()
     this.setState({ play: false, mouseover: false })
   }
 
   onClick = () => {
     if (this.state.play && !this.state.mouseover) {
-      this.video.pause()
+      this.pause()
       this.setState({ play: false })
     } else {
-      this.video.play()
+      this.play()
       this.setState({ play: true })
     }
+  }
+
+  pause = () => {
+    this.video.pause()
+  }
+
+  play = () => {
+    this.video.play()
   }
 
   render() {
@@ -111,6 +82,7 @@ class Gif extends Component {
             autoPlay={false}
             loop
             playsInline
+            preload="none"
             muted
             poster={`https://thumbs.gfycat.com/${gifId}-poster.jpg`}
             style={{
@@ -122,14 +94,8 @@ class Gif extends Component {
             }}
           >
             <track kind="captions" />
-            <source
-              src={`https://giant.gfycat.com/${gifId}.webm`}
-              type="video/webm"
-            />
-            <source
-              src={`https://giant.gfycat.com/${gifId}.mp4`}
-              type="video/mp4"
-            />
+            <Source id={gifId} mediatype="webm" />
+            <Source id={gifId} mediatype="mp4" />
           </video>
         </GifContainer>
         <ButtonContainer>

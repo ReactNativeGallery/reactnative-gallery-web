@@ -5,8 +5,8 @@ jest.mock('elasticsearch', () => ({
     msearch: searches => Promise.resolve(searches),
     get: ({ index, type, id }) => Promise.resolve({ index, type, id }),
     indices: {
-      exists: () => Promise.resolve(true),
-      existsType: () => Promise.resolve(true),
+      exists: ({ index }) => Promise.resolve(index !== 'gallery'),
+      existsType: ({ type }) => Promise.resolve(type !== 'gif'),
       create: () => Promise.resolve({}),
       putMapping: () => Promise.resolve({})
     }
