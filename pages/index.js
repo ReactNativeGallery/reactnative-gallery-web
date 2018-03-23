@@ -13,7 +13,9 @@ import Hideable from '../components/Hideable'
 import MailchimpForm from '../components/MailchimpForm'
 import { getGifsAsync } from '../utils/uploadFile'
 
-const Home = ({ gifs, type, action }) => (
+const Home = ({
+  gifs, type, action, email
+}) => (
   <Wrapper footer>
     <Grid
       style={{
@@ -31,7 +33,7 @@ const Home = ({ gifs, type, action }) => (
       </Cell>
 
       <Cell width={12} style={{ maxWidth: 800, width: '100%', margin: 'auto' }}>
-        <MailchimpForm action={action} type={type} />
+        <MailchimpForm action={action} type={type} email={email} />
         <Hideable xs>
           <div style={{ display: 'flex' }}>
             <Notice />
@@ -99,7 +101,7 @@ const Home = ({ gifs, type, action }) => (
           </div>
         </Hideable>
 
-        <MailchimpForm action={action} type={type} />
+        <MailchimpForm action={action} type={type} email={email} />
       </Cell>
     </Grid>
   </Wrapper>
@@ -108,7 +110,8 @@ const Home = ({ gifs, type, action }) => (
 Home.propTypes = {
   gifs: PropTypes.arrayOf(PropTypes.string).isRequired,
   type: PropTypes.string,
-  action: PropTypes.string
+  action: PropTypes.string,
+  email: PropTypes.string
 }
 
 const MAILCHIMP_ACTION =
@@ -117,15 +120,17 @@ const MAILCHIMP_ACTION =
 
 Home.defaultProps = {
   type: 'developer',
-  action: MAILCHIMP_ACTION
+  action: MAILCHIMP_ACTION,
+  email: ''
 }
 
 Home.getInitialProps = async ({ query, req }) => {
-  const { utm_campaign } = query
+  const { utm_campaign, email } = query
   const gifs = await getGifsAsync(req)
   return {
     type: utm_campaign || 'developer',
-    gifs: gifs.map(propOr('FlatThickArkshell', 'id'))
+    gifs: gifs.map(propOr('FlatThickArkshell', 'id')),
+    email
   }
 }
 
