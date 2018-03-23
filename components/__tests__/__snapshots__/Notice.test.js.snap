@@ -2,7 +2,7 @@
 
 exports[`<Notice /> toMatchSnapshot 1`] = `
 <div
-  className="Notice__NoticeContainer-s1hmz53f-0 YdfNl"
+  className="Notice__NoticeContainer-s1hmz53f-0 lBPtN"
 >
   <svg
     fill="none"

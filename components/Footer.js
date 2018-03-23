@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Github, Mail, Minus } from 'react-feather'
+import PropTypes from 'prop-types'
+import { Github, Mail, Minus, Slack } from 'react-feather'
 
 const Footer = styled.section`
   position: relative;
@@ -16,32 +17,47 @@ const Footer = styled.section`
   text-align: center;
 `
 
-const Link = styled.a`
+const LinkStyl = styled.a`
   color: #fff;
   &:visited: {
     color: #fff;
   }
 `
-function Foot() {
-  return (
-    <Footer>
-      <Link
-        href="https://github.com/ReactNativeGallery/reactnative-gallery-web"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Github />
-      </Link>
-      <Minus style={{ paddingLeft: 15, paddingRight: 15, color: '#fff' }} />
-      <Link
-        href="mailto:xcapetir+rng@gmail.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Mail />
-      </Link>
-    </Footer>
-  )
+const Link = ({ href, children }) => (
+  <LinkStyl href={href} target="_blank" rel="noopener noreferrer">
+    {children}
+  </LinkStyl>
+)
+Link.propTypes = {
+  href: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired
 }
+
+const HorizontalSeparator = () => (
+  <Minus
+    style={{
+      paddingLeft: 15,
+      paddingRight: 15,
+      color: '#fff',
+      opacity: 0.5
+    }}
+  />
+)
+
+const Foot = () => (
+  <Footer>
+    <Link href="https://github.com/ReactNativeGallery/reactnative-gallery-web">
+      <Github />
+    </Link>
+    <HorizontalSeparator />
+    <Link href="https://slack.reactnative.gallery/">
+      <Slack />
+    </Link>
+    <HorizontalSeparator />
+    <Link href="mailto:xcapetir+rng@gmail.com">
+      <Mail />
+    </Link>
+  </Footer>
+)
 
 export default Foot

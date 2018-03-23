@@ -13,7 +13,7 @@ const NoticeContainer = styled.div`
   background: #7bc6cc;
   background: -webkit-linear-gradient(to right, #be93c5, #7bc6cc);
   background: linear-gradient(to right, #be93c5, #7bc6cc);
-  border: 1px #999 solid;
+  border: 1px #fff solid;
   opacity: 0.9;
   color: #fff;
   border-radius: 15px;

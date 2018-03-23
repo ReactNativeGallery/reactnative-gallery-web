@@ -5,7 +5,7 @@ exports[`<Footer /> toMatchSnapshot 1`] = `
   className="Footer-s19zc472-0 kcdnnY"
 >
   <a
-    className="Footer__Link-s19zc472-1 kXrRDJ"
+    className="Footer__LinkStyl-s19zc472-1 kUMFoz"
     href="https://github.com/ReactNativeGallery/reactnative-gallery-web"
     rel="noopener noreferrer"
     target="_blank"
@@ -36,6 +36,7 @@ exports[`<Footer /> toMatchSnapshot 1`] = `
     style={
       Object {
         "color": "#fff",
+        "opacity": 0.5,
         "paddingLeft": 15,
         "paddingRight": 15,
       }
@@ -52,7 +53,79 @@ exports[`<Footer /> toMatchSnapshot 1`] = `
     />
   </svg>
   <a
-    className="Footer__Link-s19zc472-1 kXrRDJ"
+    className="Footer__LinkStyl-s19zc472-1 kUMFoz"
+    href="https://slack.reactnative.gallery/"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    <svg
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M22.08 9C19.81 1.41 16.54-.35 9 1.92S-.35 7.46 1.92 15 7.46 24.35 15 22.08 24.35 16.54 22.08 9z"
+      />
+      <line
+        x1="12.57"
+        x2="16.15"
+        y1="5.99"
+        y2="16.39"
+      />
+      <line
+        x1="7.85"
+        x2="11.43"
+        y1="7.61"
+        y2="18.01"
+      />
+      <line
+        x1="16.39"
+        x2="5.99"
+        y1="7.85"
+        y2="11.43"
+      />
+      <line
+        x1="18.01"
+        x2="7.61"
+        y1="12.57"
+        y2="16.15"
+      />
+    </svg>
+  </a>
+  <svg
+    fill="none"
+    height="24"
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    style={
+      Object {
+        "color": "#fff",
+        "opacity": 0.5,
+        "paddingLeft": 15,
+        "paddingRight": 15,
+      }
+    }
+    viewBox="0 0 24 24"
+    width="24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <line
+      x1="5"
+      x2="19"
+      y1="12"
+      y2="12"
+    />
+  </svg>
+  <a
+    className="Footer__LinkStyl-s19zc472-1 kUMFoz"
     href="mailto:xcapetir+rng@gmail.com"
     rel="noopener noreferrer"
     target="_blank"

@@ -23,7 +23,7 @@ export const MailchimpInput = styled.input`
   display: block;
   width: 100%;
   height: 36px;
-  padding: 6px 12px;
+  padding: 6px 0 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;

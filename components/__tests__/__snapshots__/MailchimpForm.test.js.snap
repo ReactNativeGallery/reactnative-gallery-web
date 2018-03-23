@@ -14,7 +14,7 @@ exports[`<MailchimpForm /> toMatchSnapshot 1`] = `
     target="_blank"
   >
     <input
-      className="MailchimpForm__MailchimpInput-s1jd0qpd-1 dSSfzX"
+      className="MailchimpForm__MailchimpInput-s1jd0qpd-1 gCennv"
       name="EMAIL"
       placeholder="Enter your email address if you want to be informed"
       required="required"
