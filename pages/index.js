@@ -13,9 +13,7 @@ import Hideable from '../components/Hideable'
 import MailchimpForm from '../components/MailchimpForm'
 import { getGifsAsync } from '../utils/uploadFile'
 
-const Home = ({
-  gifs, type, action, email
-}) => (
+const Home = ({ gifs, type, action }) => (
   <Wrapper footer>
     <Grid
       style={{
@@ -33,7 +31,7 @@ const Home = ({
       </Cell>
 
       <Cell width={12} style={{ maxWidth: 800, width: '100%', margin: 'auto' }}>
-        <MailchimpForm action={action} type={type} email={email} />
+        <MailchimpForm action={action} type={type} />
         <Hideable xs>
           <div style={{ display: 'flex' }}>
             <Notice />
@@ -101,7 +99,7 @@ const Home = ({
           </div>
         </Hideable>
 
-        <MailchimpForm action={action} type={type} email={email} />
+        <MailchimpForm action={action} type={type} />
       </Cell>
     </Grid>
   </Wrapper>
@@ -110,8 +108,7 @@ const Home = ({
 Home.propTypes = {
   gifs: PropTypes.arrayOf(PropTypes.string).isRequired,
   type: PropTypes.string,
-  action: PropTypes.string,
-  email: PropTypes.string
+  action: PropTypes.string
 }
 
 const MAILCHIMP_ACTION =
@@ -120,8 +117,7 @@ const MAILCHIMP_ACTION =
 
 Home.defaultProps = {
   type: 'developer',
-  action: MAILCHIMP_ACTION,
-  email: ''
+  action: MAILCHIMP_ACTION
 }
 
 Home.getInitialProps = async ({ query, req }) => {

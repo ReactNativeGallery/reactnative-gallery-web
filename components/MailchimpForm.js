@@ -57,7 +57,7 @@ export const MailchimpButton = styled.button`
   line-height: 0.5em;
 `
 
-const Mailchimp = ({ action, type, email }) => (
+const Mailchimp = ({ action, type }) => (
   <div>
     <CleanHr />
     <MailchimpForm
@@ -70,7 +70,6 @@ const Mailchimp = ({ action, type, email }) => (
       <MailchimpInput
         type="email"
         name="EMAIL"
-        value={email}
         placeholder="Enter your email address if you want to be informed"
         ariaRequired="true"
         required="required"
@@ -87,14 +86,9 @@ const Mailchimp = ({ action, type, email }) => (
   </div>
 )
 
-Mailchimp.defaultProps = {
-  email: ''
-}
-
 Mailchimp.propTypes = {
   action: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  email: PropTypes.string
+  type: PropTypes.string.isRequired
 }
 
 export default Mailchimp
