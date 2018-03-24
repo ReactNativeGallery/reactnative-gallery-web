@@ -27,6 +27,10 @@ export default class MyDocument extends Document {
           <title>React Native Gallery</title>
           <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
           <meta
+            name="google-site-verification"
+            content="FmQz60VlE_8ww8hrwXooFKl9cbRGTEZ7CxSgFKBtzfA"
+          />
+          <meta
             name="description"
             content="Show and tell for React Native developers"
             property="description"
