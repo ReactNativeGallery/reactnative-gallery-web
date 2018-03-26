@@ -16,9 +16,11 @@ exports[`<MailchimpForm /> toMatchSnapshot 1`] = `
     <input
       className="MailchimpForm__MailchimpInput-s1jd0qpd-1 gCennv"
       name="EMAIL"
+      onChange={[Function]}
       placeholder="Enter your email address if you want to be informed"
       required="required"
       type="email"
+      value="test@email.com"
     />
     <button
       className="MailchimpForm__MailchimpButton-s1jd0qpd-2 dnChpm"
