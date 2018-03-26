@@ -142,13 +142,6 @@ class Home extends React.Component {
                 </Paragraph>
               </div>
             </Hideable>
-
-            <MailchimpForm
-              action={action}
-              type={type}
-              email={this.state.email}
-              onChange={mel => this.setState({ email: mel })}
-            />
           </Cell>
         </Grid>
       </Wrapper>
