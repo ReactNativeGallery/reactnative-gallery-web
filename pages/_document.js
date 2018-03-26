@@ -60,7 +60,16 @@ export default class MyDocument extends Document {
             content="/static/images/background_blur.jpeg"
             property="og:image"
           />
-          <link rel="icon" href="/static/images/favicon.ico" />
+          <link
+            rel="shortcut icon"
+            href="/static/images/favicon.ico"
+            type="image/x-icon"
+          />
+          <link
+            rel="icon"
+            href="/static/images/favicon.ico"
+            type="image/x-icon"
+          />
           <link
             href="https://fonts.googleapis.com/css?family=Open+Sans"
             rel="stylesheet"

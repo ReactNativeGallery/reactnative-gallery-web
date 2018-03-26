@@ -27,7 +27,7 @@ class Home extends React.Component {
 
   static defaultProps = {
     type: 'developer',
-    email: null,
+    email: '',
     action: MAILCHIMP_ACTION
   }
 

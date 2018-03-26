@@ -90,11 +90,15 @@ const Mailchimp = ({
   </div>
 )
 
+Mailchimp.defaultProps = {
+  email: ''
+}
+
 Mailchimp.propTypes = {
   action: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  email: PropTypes.string.isRequired
+  email: PropTypes.string
 }
 
 export default Mailchimp

@@ -12,6 +12,8 @@
     "it": false,
     "expect": false,
     "jest": false,
-    "fetch": false
+    "fetch": false,
+    "history": false,
+    "localStorage": false
   }
 }
