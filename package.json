@@ -2,7 +2,8 @@
   "name": "reactnative-gallery",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Xavier Carpentier <contact@xaviercarpentier.com> (http://xaviercarpentier.com/)",
+  "author":
+    "Xavier Carpentier <contact@xaviercarpentier.com> (http://xaviercarpentier.com/)",
   "license": "MIT",
   "website": "https://reactnative.gallery",
   "scripts": {
@@ -32,7 +33,7 @@
     "invariant": "2.2.4",
     "isomorphic-fetch": "2.2.1",
     "newrelic": "3.2.0",
-    "next": "5.0.0",
+    "next": "5.1.0",
     "prop-types": "15.6.1",
     "ramda": "0.25.0",
     "rc-progress": "2.2.5",
@@ -64,17 +65,12 @@
     "react-test-renderer": "16.2.0"
   },
   "lint-staged": {
-    "**/*.js": [
-      "yarn lint --fix",
-      "git add"
-    ]
+    "**/*.js": ["yarn lint --fix", "git add"]
   },
   "jest": {
     "transform": {
       "^.+\\.js$": "babel-jest"
     },
-    "setupFiles": [
-      "./testSetup.js"
-    ]
+    "setupFiles": ["./testSetup.js"]
   }
 }
