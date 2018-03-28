@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { Github, Mail, Minus, Slack } from 'react-feather'
+import { Github, Mail, Minus, Slack, Twitter } from 'react-feather'
 
 const Footer = styled.section`
   position: relative;
@@ -52,6 +52,10 @@ const Foot = () => (
     <HorizontalSeparator />
     <Link href="https://slack.reactnative.gallery/">
       <Slack />
+    </Link>
+    <HorizontalSeparator />
+    <Link href="https://twitter.com/rn_gallery">
+      <Twitter />
     </Link>
     <HorizontalSeparator />
     <Link href="mailto:xcapetir+rng@gmail.com">
