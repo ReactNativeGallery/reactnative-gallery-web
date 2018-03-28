@@ -1,19 +1,33 @@
 import React from 'react'
+// import qs from 'querystring'
 
 import Wrapper from '../components/Wrapper'
 
-const Login = query => (
-  <Wrapper>
-    <ul>
-      {Object.keys(query).map(k => (
-        <li key={k}>
-          <b>{k}</b>
-        </li>
-      ))}
-    </ul>
-  </Wrapper>
-)
+class Callback extends React.Component {
+  state = {}
 
-Login.getInitialProps = ({ query }) => query
+  componentWillMount() {
+    // const { isServer } = this.props
+    // if (!isServer) {
+    //   console.log('client side')
+    //   const [_, tokens] = window.document.location.href.split('#')
+    //   this.setState(state => ({ ...state, ...qs(tokens) }))
+    // }
+  }
 
-export default Login
+  render() {
+    // const { id_token } = this.state
+    return (
+      <Wrapper>
+        <div>{JSON.stringify(this.state)}</div>
+      </Wrapper>
+    )
+  }
+}
+
+Callback.getInitialProps = ({ req }) => {
+  const isServer = !!req
+  return { isServer }
+}
+
+export default Callback
