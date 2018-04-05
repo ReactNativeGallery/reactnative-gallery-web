@@ -3,6 +3,7 @@
 [![CircleCI](https://circleci.com/gh/ReactNativeGallery/reactnative-gallery-web/tree/master.svg?style=shield)](https://circleci.com/gh/ReactNativeGallery/reactnative-gallery-web/tree/master)
 [![codecov](https://codecov.io/gh/ReactNativeGallery/reactnative-gallery-web/branch/master/graph/badge.svg)](https://codecov.io/gh/ReactNativeGallery/reactnative-gallery-web)
 [![slack](https://slack.reactnative.gallery/badge.svg)](https://slack.reactnative.gallery)
+[![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/reactnative-gallery)
 
 ## 🗣 Pitch
 
