@@ -42,7 +42,7 @@ function Wrap({ children, footer }) {
 
 Wrap.defaultProps = {
   footer: false,
-  children: <p style={{ color: '#f50' }}>Nothing to render</p>
+  children: <p style={{ color: '#f55' }}>Nothing to render</p>
 }
 
 Wrap.propTypes = {

@@ -16,4 +16,9 @@ User-Agent: yandex
 User-Agent: YandexBot
 Disallow: /
 
+User-Agent: *
+Disallow: /auth/
+
+
+
 Sitemap: https://reactnative.gallery/sitemap.xml

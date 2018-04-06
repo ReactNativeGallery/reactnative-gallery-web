@@ -2,6 +2,7 @@
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import '../reset.css'
 import { isProd } from '../utils'
 
 const scripts = [
@@ -10,6 +11,8 @@ const scripts = [
   isProd() &&
     "(function(h,o,t,j,a,r){h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};h._hjSettings={hjid:728774,hjsv:6};a=o.getElementsByTagName('head')[0];r=o.createElement('script');r.async=1;r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;a.appendChild(r);})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');"
 ]
+
+const stylesheets = ['https://fonts.googleapis.com/css?family=Open+Sans']
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
@@ -70,18 +73,16 @@ export default class MyDocument extends Document {
             href="/static/images/favicon.ico"
             type="image/x-icon"
           />
-          <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans"
-            rel="stylesheet"
-          />
-          <link href="/static/styles/main.css" rel="stylesheet" />
+          {stylesheets.map(css => (
+            <link key={css} href={css} rel="stylesheet" />
+          ))}
           {this.props.styleTags}
         </Head>
         <body>
           <Main />
           <NextScript />
           {scripts.map(script => (
-            <script dangerouslySetInnerHTML={{ __html: script }} />
+            <script key={script} dangerouslySetInnerHTML={{ __html: script }} />
           ))}
         </body>
       </html>

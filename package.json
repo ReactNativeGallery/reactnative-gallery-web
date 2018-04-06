@@ -2,8 +2,7 @@
   "name": "reactnative-gallery",
   "version": "1.0.0",
   "main": "index.js",
-  "author":
-    "Xavier Carpentier <contact@xaviercarpentier.com> (http://xaviercarpentier.com/)",
+  "author": "Xavier Carpentier <contact@xaviercarpentier.com> (http://xaviercarpentier.com/)",
   "license": "MIT",
   "website": "https://reactnative.gallery",
   "scripts": {
@@ -19,30 +18,36 @@
     "heroku-postbuild": "next build"
   },
   "dependencies": {
-    "auth0-js": "9.4.1",
+    "auth0-lock": "11.5.1",
     "axios": "0.18.0",
     "babel-plugin-styled-components": "1.5.1",
     "babel-plugin-transform-define": "1.3.0",
     "body-parser": "1.18.2",
     "chalk": "2.3.2",
     "dotenv": "5.0.1",
-    "elasticsearch": "14.2.1",
+    "elasticsearch": "14.2.2",
     "express": "4.16.3",
     "helmet": "3.12.0",
     "history": "4.7.2",
+    "hoist-non-react-statics": "2.5.0",
     "invariant": "2.2.4",
     "isomorphic-fetch": "2.2.1",
+    "js-cookie": "2.2.0",
+    "jwt-decode": "2.2.0",
     "newrelic": "3.3.0",
     "next": "5.1.0",
+    "normalize.css": "8.0.0",
     "prop-types": "15.6.1",
     "ramda": "0.25.0",
+    "raw-loader": "0.5.1",
     "rc-progress": "2.2.5",
-    "react": "16.2.0",
+    "react": "16.3.1",
     "react-animations": "1.0.0",
     "react-dom": "16.2.0",
-    "react-feather": "1.0.8",
-    "styled-components": "3.2.3",
-    "styled-css-grid": "0.8.2"
+    "react-feather": "1.1.0",
+    "styled-components": "3.2.5",
+    "styled-css-grid": "0.8.2",
+    "uuid": "3.2.1"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
@@ -65,12 +70,17 @@
     "react-test-renderer": "16.2.0"
   },
   "lint-staged": {
-    "**/*.js": ["yarn lint --fix", "git add"]
+    "**/*.js": [
+      "yarn lint --fix",
+      "git add"
+    ]
   },
   "jest": {
     "transform": {
       "^.+\\.js$": "babel-jest"
     },
-    "setupFiles": ["./testSetup.js"]
+    "setupFiles": [
+      "./testSetup.js"
+    ]
   }
 }

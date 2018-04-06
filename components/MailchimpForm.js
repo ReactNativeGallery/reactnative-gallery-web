@@ -8,7 +8,7 @@ import CleanHr from './CleanHr'
 const MailchimpForm = styled.form`
   margin: 0 auto;
   width: 100%;
-  max-width: 600px;
+  max-width: 300px;
   display: flex;
   flex-direction: row;
   padding-top: 30px;
@@ -72,7 +72,7 @@ const Mailchimp = ({
       <MailchimpInput
         type="email"
         name="EMAIL"
-        placeholder="Enter your email address if you want to be informed"
+        placeholder="Your e-mail"
         ariaRequired="true"
         required="required"
         value={email}
@@ -80,7 +80,7 @@ const Mailchimp = ({
       />
 
       <MailchimpButton type="submit">
-        <Hideable xs>SUBMIT</Hideable>
+        <Hideable xs>JOIN</Hideable>
         <Hideable md>
           <Check />
         </Hideable>

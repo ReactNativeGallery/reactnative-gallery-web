@@ -1,69 +1,109 @@
 /* eslint
-  no-restricted-globals: 0, class-methods-use-this: 0, no-mixed-operators: 0
+  camelcase: 0
 */
-import auth0 from 'auth0-js'
-import pkg from '../package.json'
-import history from './history'
+import jwtDecode from 'jwt-decode'
+import uuid from 'uuid'
+import Cookie from 'js-cookie'
 
-const redirectUri = (env = process.env.NODE_ENV) =>
-  (env === 'production'
-    ? `${pkg.website}/callback`
-    : 'http://localhost:3000/callback')
+const getLock = (options) => {
+  // eslint-disable-next-line
+  const Auth0Lock = require('auth0-lock').default
+  return new Auth0Lock(process.env.AUTH_ID, process.env.AUTH_DOMAIN, options)
+}
 
-class Auth {
-  auth0 = new auth0.WebAuth({
-    domain: 'reactnative-gallery.auth0.com',
-    clientID: process.env.AUTH_ID,
-    redirectUri: redirectUri(),
-    audience: 'https://reactnative-gallery.auth0.com/userinfo',
-    responseType: 'token id_token',
-    scope: 'openid'
-  })
+const getBaseUrl = () => `${window.location.protocol}//${window.location.host}`
 
-  constructor() {
-    this.login = this.login.bind(this)
-    this.logout = this.logout.bind(this)
-    this.handleAuthentication = this.handleAuthentication.bind(this)
-    this.isAuthenticated = this.isAuthenticated.bind(this)
-  }
+export const setSecret = secret => Cookie.set('secret', secret)
 
-  login() {
-    this.auth0.authorize()
-  }
-
-  handleAuthentication() {
-    this.auth0.parseHash((err, authResult) => {
-      if (authResult && authResult.accessToken && authResult.idToken) {
-        this.setSession(authResult)
-        history.replace('/')
-      } else if (err) {
-        history.replace('/')
-        // eslint-disable-next-line
-        console.error(err)
+const getOptions = (container) => {
+  const secret = uuid.v4()
+  setSecret(secret)
+  return {
+    container,
+    closable: false,
+    theme: {
+      logo: `${getBaseUrl()}/static/images/logo.png`
+    },
+    languageDictionary: {
+      title: 'Log in'
+    },
+    auth: {
+      responseType: 'token id_token',
+      redirectUrl: `${getBaseUrl()}/auth/signed-in`,
+      params: {
+        scope: 'openid profile email',
+        state: secret
       }
-    })
-  }
-
-  setSession(authResult) {
-    const expire = authResult.expiresIn * 1000 + new Date().getTime()
-    const expiresAt = JSON.stringify(expire)
-    localStorage.setItem('access_token', authResult.accessToken)
-    localStorage.setItem('id_token', authResult.idToken)
-    localStorage.setItem('expires_at', expiresAt)
-    history.replace('/')
-  }
-
-  logout() {
-    localStorage.removeItem('access_token')
-    localStorage.removeItem('id_token')
-    localStorage.removeItem('expires_at')
-    history.replace('/')
-  }
-
-  isAuthenticated() {
-    const expiresAt = JSON.parse(localStorage.getItem('expires_at'))
-    return new Date().getTime() < expiresAt
+    }
   }
 }
 
-export default Auth
+const getQueryParams = () => {
+  const params = {}
+  window.location.href.replace(
+    /([^(?|#)=&]+)(=([^&]*))?/g,
+    ($0, $1, $2, $3) => {
+      params[$1] = $3
+    }
+  )
+  return params
+}
+
+export const extractInfoFromHash = () => {
+  if (!process.browser) {
+    return undefined
+  }
+  const { id_token, state, access_token } = getQueryParams()
+  return {
+    token: id_token,
+    secret: state,
+    access_token
+  }
+}
+
+export const getUserFromServerCookie = (req) => {
+  if (!req.headers.cookie) {
+    return undefined
+  }
+  const jwtCookie = req.headers.cookie
+    .split(';')
+    .find(c => c.trim().startsWith('jwt='))
+  if (!jwtCookie) {
+    return undefined
+  }
+  const jwt = jwtCookie.split('=')[1]
+  return jwtDecode(jwt)
+}
+
+export const getUserFromLocalCookie = () => Cookie.getJSON('user')
+
+export const show = container => getLock(getOptions(container)).show()
+
+export const logout = () => getLock().logout({ returnTo: getBaseUrl() })
+
+export const setToken = (token) => {
+  if (!process.browser) {
+    return
+  }
+  Cookie.set('user', jwtDecode(token))
+  Cookie.set('jwt', token)
+}
+
+export const unsetToken = () => {
+  if (!process.browser) {
+    return
+  }
+  Cookie.remove('jwt')
+  Cookie.remove('user')
+  Cookie.remove('secret')
+
+  // to support logging out from all windows
+  window.localStorage.setItem('logout', Date.now())
+}
+
+export const isAuthenticated = () => {
+  const expiresAt = JSON.parse(Cookie.get('expires_at'))
+  return new Date().getTime() < expiresAt
+}
+
+export const checkSecret = secret => Cookie.get('secret') === secret

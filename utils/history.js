@@ -1,5 +1,7 @@
+import Router from 'next/router'
+
 export default {
   replace() {
-    window.location.href = '/'
+    Router.push('/')
   }
 }

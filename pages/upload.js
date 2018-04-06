@@ -6,12 +6,13 @@ import { Circle } from 'rc-progress'
 import { renderIcon, Next } from '../components/Icon'
 
 import { isFocus } from '../utils'
-import Wrapper from '../components/Wrapper'
+import VerticalyCentered from '../components/VerticalyCentered'
 import { NumberItem, NumberList } from '../components/NumberList'
 import Subtitle from '../components/Subtitle'
 import { Sizer } from '../components/Gif'
 import Smartphone from '../components/Gif/Smartphone'
 import GifContainer from '../components/Gif/GifContainer'
+import defaultPage from '../hocs/defaultPage'
 import {
   requestGifKeyAsync,
   uploadAsync,
@@ -143,7 +144,7 @@ class Upload extends Component {
       status
     } = this.state
     return (
-      <Wrapper footer>
+      <VerticalyCentered>
         <Subtitle>Upload Video & Gif</Subtitle>
         <Grid
           style={{
@@ -267,7 +268,7 @@ class Upload extends Component {
             </NumberList>
           </Cell>
         </Grid>
-      </Wrapper>
+      </VerticalyCentered>
     )
   }
 }
@@ -276,4 +277,4 @@ Upload.defaultProps = {}
 
 Upload.getInitialProps = () => ({})
 
-export default Upload
+export default defaultPage(Upload)
