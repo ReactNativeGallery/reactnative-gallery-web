@@ -5,56 +5,6 @@
     },
     "email": {
       "type": "text"
-    },
-    "shortDescription": {
-      "type": "text"
-    },
-    "longDescription": {
-      "type": "text"
-    },
-    "category": {
-      "type": "keyword"
-    },
-    "like": {
-      "type": "integer"
-    },
-    "numberOfView": {
-      "type": "integer"
-    },
-    "comment": {
-      "type": "nested"
-    },
-    "owner": {
-      "type": "object",
-      "properties": {
-        "namespace": { "type": "keyword" },
-        "id": { "type": "keyword" },
-        "avatar": { "type": "keyword" }
-      }
-    },
-    "githubLink": {
-      "type": "keyword"
-    },
-    "expoLink": {
-      "type": "keyword"
-    },
-    "appleStoreLink": {
-      "type": "keyword"
-    },
-    "playStoreLink": {
-      "type": "keyword"
-    },
-    "published": {
-      "type": "boolean"
-    },
-    "uploadedAt": {
-      "type": "date"
-    },
-    "createdAt": {
-      "type": "date"
-    },
-    "updatedAt": {
-      "type": "date"
     }
   }
 }
