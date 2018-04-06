@@ -458,9 +458,9 @@ atob@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.0.3.tgz#19c7a760473774468f20b2d2d03372ad7d4cbf5d"
 
-auth0-js@^9.4.1:
-  version "9.4.1"
-  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.4.1.tgz#a999c30c5566e4c5c7b3e53ed3bc82f4e4344541"
+auth0-js@^9.4.2:
+  version "9.4.2"
+  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.4.2.tgz#44363933266781fb9447ce09503c6f783b86a474"
   dependencies:
     base64-js "^1.2.0"
     idtoken-verifier "^1.2.0"
@@ -469,11 +469,11 @@ auth0-js@^9.4.1:
     url-join "^1.1.0"
     winchan "^0.2.0"
 
-auth0-lock@11.5.1:
-  version "11.5.1"
-  resolved "https://registry.yarnpkg.com/auth0-lock/-/auth0-lock-11.5.1.tgz#a64a876bee1571d9c075de8b71ab9f63be5e1894"
+auth0-lock@11.5.2:
+  version "11.5.2"
+  resolved "https://registry.yarnpkg.com/auth0-lock/-/auth0-lock-11.5.2.tgz#4d39f3e1d53f199f80c9f74e16c694ef76f17ea4"
   dependencies:
-    auth0-js "^9.4.1"
+    auth0-js "^9.4.2"
     blueimp-md5 "2.3.1"
     fbjs "^0.3.1"
     immutable "^3.7.3"
@@ -6228,9 +6228,9 @@ react-animations@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-animations/-/react-animations-1.0.0.tgz#d96222920dfeabec8984d9b2ef2c5a5aadb40f06"
 
-react-dom@16.2.0:
-  version "16.2.0"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.2.0.tgz#69003178601c0ca19b709b33a83369fe6124c044"
+react-dom@16.3.1:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.1.tgz#6a3c90a4fb62f915bdbcf6204422d93a7d4ca573"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
