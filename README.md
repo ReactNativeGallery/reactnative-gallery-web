@@ -4,6 +4,7 @@
 [![codecov](https://codecov.io/gh/ReactNativeGallery/reactnative-gallery-web/branch/master/graph/badge.svg)](https://codecov.io/gh/ReactNativeGallery/reactnative-gallery-web)
 [![slack](https://slack.reactnative.gallery/badge.svg)](https://slack.reactnative.gallery)
 [![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/reactnative-gallery)
+[![reactnative.gallery](https://img.shields.io/badge/reactnative.gallery-%E2%99%A5-red.svg)](https://reactnative.gallery)
 
 ## 🗣 Pitch
 
