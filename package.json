@@ -35,7 +35,7 @@
     "isomorphic-fetch": "2.2.1",
     "js-cookie": "2.2.0",
     "jwt-decode": "2.2.0",
-    "newrelic": "3.3.0",
+    "newrelic": "3.3.1",
     "next": "5.1.0",
     "normalize.css": "8.0.0",
     "prop-types": "15.6.1",
