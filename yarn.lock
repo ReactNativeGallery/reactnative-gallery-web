@@ -5271,9 +5271,9 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-newrelic@3.3.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-3.3.0.tgz#a9c52a82d0ed609eb9379ce1dabca67cff5851a9"
+newrelic@3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-3.3.1.tgz#52fddd74d10af7dbfe4bb4a750a72306602e55ce"
   dependencies:
     "@newrelic/koa" "^1.0.0"
     async "^2.1.4"
