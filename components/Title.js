@@ -8,6 +8,7 @@ const Title = styled.h1`
   }
   @media (min-width: 769px) {
     font-size: 45px;
+    display: ${props => (props.hidexs ? 'none' : 'block')};
   }
 `
 
