@@ -52,9 +52,9 @@ class Home extends React.Component {
         }}
       >
         <Cell width={12}>
-          <Title>Show and tell for React Native developers</Title>
+          <Title hidexs>Show and tell for React Native developers</Title>
           <Subtitle hidexs>What are you working on?</Subtitle>
-          <Subtitle hidexs>
+          <Subtitle>
             React Native Gallery is where developers get visibility{' '}
             {type !== 'developer' && 'and hired'}
           </Subtitle>
