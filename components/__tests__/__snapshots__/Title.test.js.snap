@@ -2,6 +2,6 @@
 
 exports[`<Title /> toMatchSnapshot 1`] = `
 <h1
-  className="Title-s9pqsj-0 qDhbh"
+  className="Title-s9pqsj-0 fFCGq"
 />
 `;
