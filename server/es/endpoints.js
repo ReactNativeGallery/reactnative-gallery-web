@@ -2,8 +2,8 @@ const {
   readAllGifAsync,
   createGifAsync,
   getGifByIdAsync,
-  updateGifByIdAsync,
-  deleteGifByIdAsync
+  updateGifByIdAsync
+  // deleteGifByIdAsync
 } = require('./gif')
 
 const setEsEndpoints = (server) => {
@@ -15,11 +15,12 @@ const setEsEndpoints = (server) => {
     await updateGifByIdAsync({ id, ...req.body })
     res.sendStatus(200)
   })
-  server.delete('/gifs/:id', async (req, res) => {
-    const { id } = req.params
-    await deleteGifByIdAsync(id)
-    res.sendStatus(204)
-  })
+  // TODO: secure this endpoint
+  // server.delete('/gifs/:id', async (req, res) => {
+  //   const { id } = req.params
+  //   await deleteGifByIdAsync(id)
+  //   res.sendStatus(204)
+  // })
   server.post('/gifs/', async (req, res) => {
     const { id } = req.params
     await createGifAsync({ id, ...req.body })
