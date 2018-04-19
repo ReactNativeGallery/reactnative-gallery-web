@@ -2,7 +2,7 @@
 
 exports[`<Gif /> toMatchSnapshot 1`] = `
 <div
-  className="Smartphone-s165niw0-0 beVsoo"
+  className="Smartphone-s165niw0-0 bMKjgM"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
@@ -16,7 +16,7 @@ exports[`<Gif /> toMatchSnapshot 1`] = `
     className="GifContainer-s1wbubqp-0 fvwRPH"
   >
     <div
-      className="Play-s10ikt1c-0 cmvcXj"
+      className="Play-s10ikt1c-0 gLlmwW"
     />
     <div
       className="Gif__Sizer-s1j91rz1-0 gpJmvZ"
@@ -55,7 +55,11 @@ exports[`<Gif /> toMatchSnapshot 1`] = `
     className="Button__ButtonContainer-s1yo1pni-0 kZcYqm"
   >
     <div
-      className="Button-s1yo1pni-1 bJdzWb"
+      className="Button-s1yo1pni-1 ewehdc"
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
     />
   </div>
 </div>

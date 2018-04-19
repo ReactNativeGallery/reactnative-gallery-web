@@ -1,0 +1,28 @@
+{
+  "properties": {
+    "id": {
+      "type": "keyword"
+    },
+    "email": {
+      "type": "keyword"
+    },
+    "emailVerified": {
+      "type": "boolean"
+    },
+    "published": {
+      "type": "boolean"
+    },
+    "picture": {
+      "type": "keyword"
+    },
+    "name": {
+      "type": "text"
+    },
+    "createdAt": {
+      "type": "date"
+    },
+    "updatedAt": {
+      "type": "date"
+    }
+  }
+}

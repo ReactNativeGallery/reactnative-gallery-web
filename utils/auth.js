@@ -4,6 +4,7 @@
 import jwtDecode from 'jwt-decode'
 import uuid from 'uuid'
 import Cookie from 'js-cookie'
+import axios from 'axios'
 
 const getLock = (options) => {
   // eslint-disable-next-line
@@ -81,13 +82,16 @@ export const show = container => getLock(getOptions(container)).show()
 
 export const logout = () => getLock().logout({ returnTo: getBaseUrl() })
 
-export const setToken = (token) => {
-  if (!process.browser) {
-    return
-  }
-  Cookie.set('user', jwtDecode(token))
-  Cookie.set('jwt', token)
-}
+export const setTokenAsync = token =>
+  new Promise((resolve) => {
+    if (!process.browser) {
+      return resolve()
+    }
+    const user = jwtDecode(token)
+    Cookie.set('user', user)
+    Cookie.set('jwt', token)
+    return resolve(user)
+  })
 
 export const unsetToken = () => {
   if (!process.browser) {
@@ -107,3 +111,6 @@ export const isAuthenticated = () => {
 }
 
 export const checkSecret = secret => Cookie.get('secret') === secret
+
+export const saveUserAsync = user =>
+  axios.put(`${getBaseUrl()}/users/${user.nickname}`, user)

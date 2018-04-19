@@ -1,6 +1,5 @@
 /* eslint camelcase: 0 */
 import React from 'react'
-import { propOr } from 'ramda'
 import { Grid, Cell } from 'styled-css-grid'
 import PropTypes from 'prop-types'
 import Title from '../components/Title'
@@ -10,12 +9,12 @@ import Gif from '../components/Gif'
 import Notice from '../components/Notice'
 import Hideable from '../components/Hideable'
 import MailchimpForm from '../components/MailchimpForm'
-import { getGifsAsync } from '../utils/uploadFile'
+import { getGifsAsync } from '../utils/api'
 import defaultPage from '../hocs/defaultPage'
 
 class Home extends React.Component {
   static propTypes = {
-    gifs: PropTypes.arrayOf(PropTypes.string).isRequired,
+    gifs: PropTypes.arrayOf(PropTypes.object).isRequired,
     type: PropTypes.string,
     email: PropTypes.string,
     action: PropTypes.string
@@ -32,7 +31,7 @@ class Home extends React.Component {
     const gifs = await getGifsAsync(req)
     return {
       type: utm_campaign || 'developer',
-      gifs: gifs.map(propOr('FlatThickArkshell', 'id')),
+      gifs,
       email
     }
   }
@@ -78,8 +77,12 @@ class Home extends React.Component {
           <Grid columns="repeat(auto-fit,minmax(200px,1fr))" gap="20px">
             {gifs &&
               gifs.map(gif => (
-                <Cell key={gif}>
-                  <Gif gifId={gif} />
+                <Cell key={gif.id}>
+                  <Gif
+                    gifId={gif.id}
+                    slug={gif.slug || 'no-slug'}
+                    username={gif.owner ? gif.owner.id : 'no-user'}
+                  />
                 </Cell>
               ))}
           </Grid>

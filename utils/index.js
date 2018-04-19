@@ -10,8 +10,8 @@ const invariantsUndef = objToCheck =>
   Object.keys(objToCheck).forEach(k =>
     invariant(objToCheck[k], `"${k}" is undefined`))
 
-const logError = err =>
-  console.error(chalk.red(`[ERROR] ${(err && err.message) || err}`))
+const logError = e =>
+  console.error(chalk.red(`[ERROR] ${e && e.message}${e && e.stack}`))
 
 const logInfo = info => console.log(chalk.blue(`[INFO] ${info}`))
 

@@ -6,6 +6,15 @@
     "name": {
       "type": "text"
     },
+    "slug": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
     "shortDescription": {
       "type": "text"
     },

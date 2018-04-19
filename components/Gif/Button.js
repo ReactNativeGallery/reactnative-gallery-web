@@ -10,8 +10,10 @@ export const ButtonContainer = styled.div`
 
 export const Button = styled.div`
   margin: 0px auto;
-  border: solid 3px #707070;
+  border: ${props => (props.hover ? 'solid 3px #eee' : 'solid 3px #707070')};
   width: 45px;
   height: 45px;
   border-radius: 90px;
+  cursor: pointer;
+  background: ${props => (props.cliked ? '#eee' : 'transparent')};
 `

@@ -29,15 +29,13 @@ it('<MailchimpForm /> toMatchSnapshot', () => {
 })
 
 it('<MailchimpForm /> simulate input change ', () => {
-  // TODO: find a way to pass intno onChange
+  // TODO: find a way to pass into onChange
   const email = 'cool@gmel.fr'
   const form = shallow(<MailchimpForm
     action="test"
     type="test"
     email={email}
-    onChange={(e) => {
-        console.log(e)
-      }}
+    onChange={() => {}}
   />)
 
   form.simulate('change', { target: { value: 'cool@gmel.fr' } })

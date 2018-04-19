@@ -116,6 +116,13 @@ const getByIdAsync = curry((index, type, id) =>
     id
   }))
 
+const getByKeywordAsync = curry((index, type, keywordName, keywordValue) =>
+  client.search({
+    index,
+    type,
+    q: `${keywordName}:${keywordValue}`
+  }))
+
 module.exports = {
   pingAsync,
   mappingPath,
@@ -134,5 +141,6 @@ module.exports = {
   bulkIndex,
   bulkUpdate,
   bulkDelete,
-  idify
+  idify,
+  getByKeywordAsync
 }

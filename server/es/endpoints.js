@@ -2,9 +2,13 @@ const {
   readAllGifAsync,
   createGifAsync,
   getGifByIdAsync,
-  updateGifByIdAsync
+  updateGifByIdAsync,
+  getGifBySlugAsync
   // deleteGifByIdAsync
 } = require('./gif')
+
+const { indexUserAsync } = require('./user')
+const { now } = require('../../utils')
 
 const setEsEndpoints = (server) => {
   server.get('/gifs', async (_, res) => res.send(await readAllGifAsync()))
@@ -15,6 +19,8 @@ const setEsEndpoints = (server) => {
     await updateGifByIdAsync({ id, ...req.body })
     res.sendStatus(200)
   })
+  server.get('/gifs/slug/:slug', async ({ params: { slug } }, res) =>
+    res.send(await getGifBySlugAsync(slug)))
   // TODO: secure this endpoint
   // server.delete('/gifs/:id', async (req, res) => {
   //   const { id } = req.params
@@ -25,6 +31,30 @@ const setEsEndpoints = (server) => {
     const { id } = req.params
     await createGifAsync({ id, ...req.body })
     res.sendStatus(201)
+  })
+  server.put('/users/:username', async (req, res) => {
+    const { nickname } = JSON.parse(req.cookies.user)
+    const user = req.body
+    const { username } = req.params
+    if (!user || username !== nickname || user.nickname !== nickname) {
+      res.sendStatus(400)
+    } else {
+      const {
+        email, email_verified, picture, name
+      } = user
+      const timestamp = now()
+      await indexUserAsync({
+        id: username,
+        emailVerified: email_verified,
+        email,
+        published: true,
+        picture,
+        name,
+        createdAt: timestamp,
+        updatedAt: timestamp
+      })
+      res.sendStatus(204)
+    }
   })
 }
 

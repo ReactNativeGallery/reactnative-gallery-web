@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import Router from 'next/router'
 import Smartphone from './Smartphone'
 import GifContainer from './GifContainer'
 import Play from './Play'
@@ -24,25 +25,45 @@ Source.propTypes = {
 
 class Gif extends Component {
   static propTypes = {
-    gifId: PropTypes.string.isRequired
+    gifId: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+    minWidth: PropTypes.number,
+    autoplay: PropTypes.bool
+  }
+
+  static defaultProps = {
+    minWidth: undefined,
+    autoplay: false
   }
 
   state = {
-    play: false,
-    mouseover: false
+    play: this.props.autoplay,
+    mouseover: false,
+    buttonHover: false,
+    buttonClicked: false
   }
 
   onMouseEnterHandler = () => {
+    if (this.props.autoplay) {
+      return
+    }
     this.play()
     this.setState({ play: true, mouseover: true })
   }
 
   onMouseLeaveHandler = () => {
+    if (this.props.autoplay) {
+      return
+    }
     this.pause()
     this.setState({ play: false, mouseover: false })
   }
 
   onClick = () => {
+    if (this.props.autoplay) {
+      return
+    }
     if (this.state.play && !this.state.mouseover) {
       this.pause()
       this.setState({ play: false })
@@ -61,12 +82,16 @@ class Gif extends Component {
   }
 
   render() {
-    const { gifId } = this.props
+    const {
+      gifId, username, slug, minWidth, autoplay
+    } = this.props
     return (
       <Smartphone
         onMouseEnter={this.onMouseEnterHandler}
         onMouseLeave={this.onMouseLeaveHandler}
         onClick={this.onClick}
+        minWidth={minWidth}
+        cursorPointer={autoplay}
         style={{
           background: this.state.play && '#141414'
         }}
@@ -79,7 +104,7 @@ class Gif extends Component {
               this.video = ref
               return undefined
             }}
-            autoPlay={false}
+            autoPlay={autoplay}
             loop
             playsInline
             preload="none"
@@ -99,7 +124,19 @@ class Gif extends Component {
           </video>
         </GifContainer>
         <ButtonContainer>
-          <Button />
+          <Button
+            onFocus={() => this.setState({ buttonHover: true })}
+            onMouseOver={() => this.setState({ buttonHover: true })}
+            onMouseLeave={() =>
+              this.setState({ buttonHover: false, buttonClicked: false })
+            }
+            onClick={() => {
+              this.setState({ buttonClicked: true })
+              Router.push(`/${username}/${slug}`)
+            }}
+            hover={this.state.buttonHover}
+            cliked={this.state.buttonClicked}
+          />
         </ButtonContainer>
       </Smartphone>
     )

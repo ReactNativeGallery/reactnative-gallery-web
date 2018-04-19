@@ -5,8 +5,11 @@ const express = require('express')
 const axios = require('axios')
 const next = require('next')
 const fs = require('fs')
+const { parse } = require('url')
+const pathMatch = require('path-match')
 const helmet = require('helmet')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const { join } = require('path')
 const { setEsEndpoints } = require('./es/endpoints')
 
@@ -14,6 +17,9 @@ const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
+
+const route = pathMatch()
+const matchDetail = route('/:username/:slug')
 
 const getAccessTokenAsync = async (clientId, clientSecret) => {
   const result = await axios.post('https://api.gfycat.com/v1/oauth/token', {
@@ -32,6 +38,7 @@ app.prepare().then(() => {
 
   server.use(helmet())
   server.use(bodyParser.json())
+  server.use(cookieParser())
   server.disable('x-powered-by')
   server.enable('trust proxy')
 
@@ -59,7 +66,15 @@ app.prepare().then(() => {
     res.send(fs.readFileSync(path, { encoding: 'utf8' }))
   })
 
-  server.get('*', (req, res) => handle(req, res))
+  server.get('*', (req, res) => {
+    const { pathname, query } = parse(req.url, true)
+    const params = matchDetail(pathname)
+    if (params === false) {
+      handle(req, res)
+      return
+    }
+    app.render(req, res, '/appdetail', Object.assign(params, query))
+  })
 
   server.listen(port, (err) => {
     if (err) throw err

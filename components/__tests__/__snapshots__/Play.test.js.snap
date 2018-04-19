@@ -2,12 +2,12 @@
 
 exports[`<Play /> toMatchSnapshot 1`] = `
 <div
-  className="Play-s10ikt1c-0 eAxzIJ"
+  className="Play-s10ikt1c-0 dcOaWh"
 />
 `;
 
 exports[`<Play /> toMatchSnapshot 2 1`] = `
 <div
-  className="Play-s10ikt1c-0 cmvcXj"
+  className="Play-s10ikt1c-0 gLlmwW"
 />
 `;

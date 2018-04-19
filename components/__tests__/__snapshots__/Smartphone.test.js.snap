@@ -2,12 +2,12 @@
 
 exports[`<Smartphone /> toMatchSnapshot 1`] = `
 <div
-  className="Smartphone-s165niw0-0 beVsoo"
+  className="Smartphone-s165niw0-0 bMKjgM"
 />
 `;
 
 exports[`<Smartphone /> toMatchSnapshot 2 1`] = `
 <div
-  className="Smartphone-s165niw0-0 hcpkGT"
+  className="Smartphone-s165niw0-0 iSpmvv"
 />
 `;

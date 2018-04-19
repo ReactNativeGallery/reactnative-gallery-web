@@ -7,6 +7,7 @@ const {
   bulkAsync,
   getAllAsync,
   getByIdAsync,
+  getByKeywordAsync,
   bulkIndex,
   bulkDelete,
   bulkUpdate
@@ -28,6 +29,21 @@ const updateGifByIdAsync = compose(bulkAsync, updateGifBulkBase)
 
 const createGifAsync = compose(bulkAsync, indexGifBulkBase)
 
+// const getGifBySlugAsync = getByKeywordAsync(
+//   GALLERY_INDEX,
+//   GALLERY_TYPE,
+//   'slug.keyword'
+// )
+
+const getGifBySlugAsync = slug =>
+  compose(
+    catchP(log),
+    then(propOr({}, '_source')),
+    then(head),
+    then(pathOr([], ['hits', 'hits'])),
+    getByKeywordAsync
+  )(GALLERY_INDEX, GALLERY_TYPE, 'slug.keyword', slug)
+
 const readAllGifAsync = () =>
   compose(
     catchP(log),
@@ -43,5 +59,6 @@ module.exports = {
   getGifByIdAsync,
   createGifAsync,
   deleteGifByIdAsync,
-  updateGifByIdAsync
+  updateGifByIdAsync,
+  getGifBySlugAsync
 }

@@ -60,19 +60,24 @@ const uploadAsync = (id, file, onUploadProgress) =>
     onUploadProgress
   })
 
-const createGifAsync = (id, base) =>
+const createGifAsync = (id, base, timestamp = now()) =>
   axios.post(`${base || ''}/gifs/`, {
     id,
-    uploadedAt: now(),
+    uploadedAt: timestamp,
     like: 0,
     numberOfView: 0,
     published: true,
-    createdAt: now(),
-    updatedAt: now()
+    createdAt: timestamp,
+    updatedAt: timestamp
   })
 
 const getGifsAsync = async (req) => {
   const result = await fetch(`${baseApi(req)}/gifs`)
+  return result.json()
+}
+
+const getGifBySlugAsync = async (req, slug) => {
+  const result = await fetch(`${baseApi(req)}/gifs/slug/${slug}`)
   return result.json()
 }
 
@@ -82,5 +87,6 @@ module.exports = {
   requestGifKeyAsync,
   uploadAsync,
   createGifAsync,
-  getGifsAsync
+  getGifsAsync,
+  getGifBySlugAsync
 }

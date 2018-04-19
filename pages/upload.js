@@ -18,7 +18,7 @@ import {
   uploadAsync,
   getStatusAsync,
   createGifAsync
-} from '../utils/uploadFile'
+} from '../utils/api'
 
 const Label = styled.label`
   cursor: pointer;
