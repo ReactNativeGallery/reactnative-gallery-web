@@ -7,17 +7,25 @@ import Gif from '../Gif'
 Enzyme.configure({ adapter: new Adapter() })
 
 it('Gif can be created', () => {
-  const comp = renderer.create(<Gif gifId="test" />)
+  const comp = renderer.create(<Gif
+    gifId="test"
+    username="xcarpentier"
+    slug="slug"
+  />)
   expect(comp).toBeDefined()
 })
 
 it('<Gif /> toMatchSnapshot', () => {
-  const tree = renderer.create(<Gif gifId="test" />).toJSON()
+  const tree = renderer.create(<Gif
+    gifId="test"
+    username="xcarpentier"
+    slug="slug"
+  />).toJSON()
   expect(tree).toMatchSnapshot()
 })
 
 it('<Gif /> toMatchSnapshot click', () => {
-  const gif = shallow(<Gif gifId="test" />)
+  const gif = shallow(<Gif gifId="test" username="xcarpentier" slug="slug" />)
 
   const inst = gif.instance()
   inst.video = {
