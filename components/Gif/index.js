@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import Router from 'next/router'
+// import Router from 'next/router'
 import Smartphone from './Smartphone'
 import GifContainer from './GifContainer'
 import Play from './Play'
@@ -132,7 +132,8 @@ class Gif extends Component {
             }
             onClick={() => {
               this.setState({ buttonClicked: true })
-              Router.push(`/${username}/${slug}`)
+              window.location.href = `/${username}/${slug}`
+              // Router.push(`/${username}/${slug}`)
             }}
             hover={this.state.buttonHover}
             cliked={this.state.buttonClicked}
