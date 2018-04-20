@@ -2,6 +2,7 @@ require('isomorphic-fetch')
 const { now, baseApi } = require('.')
 
 const axios = require('axios')
+const { memoize } = require('ramda')
 
 const axiosInstance = axios.create({
   baseURL: 'https://api.gfycat.com/v1/',
@@ -19,6 +20,18 @@ const getToken = async () => {
   return tokenData.token
 }
 
+const getAccessTokenAsync = async (clientId, clientSecret) => {
+  const result = await axios.post('https://api.gfycat.com/v1/oauth/token', {
+    grant_type: 'client_credentials',
+    client_id: clientId,
+    client_secret: clientSecret
+  })
+  if (result.status === 200 && result.data) {
+    return result.data.access_token
+  }
+  return null
+}
+
 const getStatusAsync = async (id) => {
   const result = await axiosInstance.get(
     `gfycats/fetch/status/${id}`,
@@ -34,6 +47,20 @@ const getStatusAsync = async (id) => {
   }
   return null
 }
+
+const getGifInfo = memoize(async (id) => {
+  const { GFYCAT_CLIENT_ID, GFYCAT_CLIENT_SECRET } = process.env
+  const token = await getAccessTokenAsync(
+    GFYCAT_CLIENT_ID,
+    GFYCAT_CLIENT_SECRET
+  )
+  const result = await axiosInstance.get(`gfycats/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  return result.data.gfyItem
+})
 
 const requestGifKeyAsync = async () => {
   const token = await getToken()
@@ -88,5 +115,7 @@ module.exports = {
   uploadAsync,
   createGifAsync,
   getGifsAsync,
-  getGifBySlugAsync
+  getGifBySlugAsync,
+  getGifInfo,
+  getAccessTokenAsync
 }

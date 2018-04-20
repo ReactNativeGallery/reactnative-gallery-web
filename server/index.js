@@ -2,7 +2,7 @@ require('newrelic')
 require('dotenv').config()
 
 const express = require('express')
-const axios = require('axios')
+const { getAccessTokenAsync } = require('../utils/api')
 const next = require('next')
 const fs = require('fs')
 const { parse } = require('url')
@@ -20,18 +20,6 @@ const handle = app.getRequestHandler()
 
 const route = pathMatch()
 const matchDetail = route('/:username/:slug')
-
-const getAccessTokenAsync = async (clientId, clientSecret) => {
-  const result = await axios.post('https://api.gfycat.com/v1/oauth/token', {
-    grant_type: 'client_credentials',
-    client_id: clientId,
-    client_secret: clientSecret
-  })
-  if (result.status === 200 && result.data) {
-    return result.data.access_token
-  }
-  return null
-}
 
 app.prepare().then(() => {
   const server = express()

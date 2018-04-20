@@ -9,7 +9,7 @@ import Subtitle from '../components/Subtitle'
 import Love from '../components/Love'
 import Octicon from '../components/Octicon'
 import defaultPage from '../hocs/defaultPage'
-import { getGifBySlugAsync } from '../utils/api'
+import { getGifBySlugAsync, getGifInfo } from '../utils/api'
 import Gif from '../components/Gif'
 import pkg from '../package.json'
 
@@ -42,7 +42,9 @@ const AppDetail = ({
   category,
   username,
   originalUrl,
-  githubLink
+  githubLink,
+  width,
+  height
 }) => (
   <div>
     <Head>
@@ -55,27 +57,17 @@ const AppDetail = ({
       <meta name="keywords" content={category.join(', ')} property="keywords" />
       <meta name="twitter:card" content="app" />
       <meta name="twitter:site" content="@rn_gallery" />
+      <meta property="og:type" content="video.other" />
+      <meta property="og:title" content={getTitle(name, username)} />
+      <meta property="og:url" content={`${pkg.website}${originalUrl}`} />
+      <meta property="og:description" content={shortDescription} />
       <meta
-        name="og:title"
-        content={getTitle(name, username)}
-        property="og:title"
-      />
-      <meta
-        name="og:url"
-        content={`${pkg.website}${originalUrl}`}
-        property="og:url"
-      />
-      <meta
-        name="og:description"
-        content={shortDescription}
-        property="og:description"
-      />
-      <meta
-        name="og:image"
-        content={`https://thumbs.gfycat.com/${id}-size_restricted.gif`}
         property="og:image"
+        content={`https://thumbs.gfycat.com/${id}-max-14mb.gif`}
       />
-      <meta name="og:image:type" content="image/gif" property="og:image:type" />
+      <meta property="og:image:type" content="image/gif" />
+      <meta property="og:image:width" content={`${width}`} />
+      <meta property="og:image:height" content={`${height}`} />
     </Head>
     <VerticalyCentered>
       <Subtitle>{name}</Subtitle>
@@ -100,6 +92,8 @@ AppDetail.propTypes = {
   shortDescription: PropTypes.string,
   numberOfView: PropTypes.number,
   like: PropTypes.number,
+  width: PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
   githubLink: PropTypes.string,
   owner: PropTypes.shape({ id: PropTypes.string }).isRequired,
   comment: PropTypes.arrayOf(PropTypes.object),
@@ -118,10 +112,13 @@ AppDetail.defaultProps = {
 AppDetail.getInitialProps = async ({ req, query }) => {
   const { slug, username } = query
   const gif = await getGifBySlugAsync(req, slug)
+  const { width, height } = await getGifInfo(gif.id)
   return {
     ...gif,
     username,
-    originalUrl: req.originalUrl
+    originalUrl: req.originalUrl,
+    width,
+    height
   }
 }
 
