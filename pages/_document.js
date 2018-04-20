@@ -61,7 +61,7 @@ export default class MyDocument extends Document {
           />
           <meta
             name="og:image"
-            content="/static/images/background_blur.jpeg"
+            content="https://reactnative.gallery/static/images/background_blur.jpeg"
             property="og:image"
           />
           <link
