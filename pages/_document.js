@@ -4,6 +4,7 @@ import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import '../reset.css'
 import { isProd } from '../utils'
+import pkg from '../package.json'
 
 const scripts = [
   isProd() &&
@@ -25,7 +26,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html lang="en">
+      <html lang="en" prefix="og: http://ogp.me/ns#">
         <Head>
           <title>React Native Gallery</title>
           <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -35,12 +36,12 @@ export default class MyDocument extends Document {
           />
           <meta
             name="description"
-            content="Show and tell for React Native developers"
+            content={pkg.description}
             property="description"
           />
           <meta
             name="keywords"
-            content="react-native, react native example, gallery"
+            content={pkg.keywords.join(', ')}
             property="keywords"
           />
           <meta

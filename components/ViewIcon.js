@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { MessageCircle } from 'react-feather'
+import { Eye } from 'react-feather'
 import { Icon, renderSmallIcon } from './Icon'
 
 const Comment = ({ number }) => (
   <Icon>
-    {renderSmallIcon(MessageCircle)}
+    {renderSmallIcon(Eye)}
     <Icon.Label>{number}</Icon.Label>
   </Icon>
 )

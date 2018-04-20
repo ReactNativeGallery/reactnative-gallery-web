@@ -17,4 +17,7 @@ injectGlobal`
     background: -webkit-linear-gradient(to right, #7bc6cc, #be93c5);
     background: linear-gradient(to right, #7bc6cc, #be93c5);
     -webkit-overflow-scrolling: touch;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Open Sans', sans-serif;
 }`

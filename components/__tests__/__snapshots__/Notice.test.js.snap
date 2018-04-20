@@ -36,7 +36,7 @@ exports[`<Notice /> toMatchSnapshot 1`] = `
   <small
     className="Notice__NoticeText-s1hmz53f-1 gBfhZM"
   >
-    Hover to play app video
+    Hover to play app video, tap button to detail
   </small>
 </div>
 `;

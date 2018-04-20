@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Love /> toMatchSnapshot 1`] = `
+exports[`<ViewIcon /> toMatchSnapshot 1`] = `
 <div
-  className="Icon-s7tm2sn-0 jglmtW"
+  className="Icon-s7tm2sn-0 cXvtWu"
 >
   <svg
     fill="none"
@@ -16,7 +16,12 @@ exports[`<Love /> toMatchSnapshot 1`] = `
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+      d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+    />
+    <circle
+      cx="12"
+      cy="12"
+      r="3"
     />
   </svg>
   <span

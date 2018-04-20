@@ -55,6 +55,7 @@ exports[`<Gif /> toMatchSnapshot 1`] = `
     className="Button__ButtonContainer-s1yo1pni-0 kZcYqm"
   >
     <div
+      alt="Show detail"
       className="Button-s1yo1pni-1 ewehdc"
       onClick={[Function]}
       onFocus={[Function]}

@@ -9,7 +9,6 @@ const Wrapper = styled.section`
   align-items: center;
   flex-direction: column;
   padding: 1em 3em;
-  font-family: 'Open Sans', sans-serif;
   min-height: 100%;
   font-size: 20px;
   margin: 0;
@@ -19,8 +18,6 @@ const Wrapper = styled.section`
   word-wrap: normal;
   color: #333;
   z-index: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   @media (min-width: 481px) {
     font-size: 16px;
     padding: 1em 3em;

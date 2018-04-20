@@ -125,6 +125,7 @@ class Gif extends Component {
         </GifContainer>
         <ButtonContainer>
           <Button
+            alt="Show detail"
             onFocus={() => this.setState({ buttonHover: true })}
             onMouseOver={() => this.setState({ buttonHover: true })}
             onMouseLeave={() =>
