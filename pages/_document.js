@@ -48,6 +48,9 @@ export default class MyDocument extends Document {
             href="/static/images/favicon.ico"
             type="image/x-icon"
           />
+          <meta name="robots" content="index" />
+          <meta property="og:site_name" content="React Native Gallery" />
+          <meta property="og:locale" content="en_US" />
           {stylesheets.map(css => (
             <link key={css} href={css} rel="stylesheet" />
           ))}

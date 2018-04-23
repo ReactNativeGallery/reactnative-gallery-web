@@ -29,6 +29,7 @@ const Author = styled.h5`
   margin-bottom: 1em;
 `
 const getTitle = (name, username) => `${name} by @${username}`
+const getImageMeta = id => `https://thumbs.gfycat.com/${id}-size_restricted.gif`
 
 const AppDetail = ({
   id,
@@ -55,19 +56,26 @@ const AppDetail = ({
         property="description"
       />
       <meta name="keywords" content={category.join(', ')} property="keywords" />
-      <meta name="twitter:card" content="app" />
-      <meta name="twitter:site" content="@rn_gallery" />
+      <meta name="author" content={username} />
+      <meta property="twitter:card" content="player" />
+      <meta property="twitter:site" content="@rn_gallery" />
+      <meta property="twitter:url" content={`${pkg.website}${originalUrl}`} />
+      <meta name="twitter:player" content={`https://gfycat.com/ifr/${id}`} />
+      <meta name="twitter:player:width" content="930" />
+      <meta name="twitter:player:height" content="1656" />
+      <meta property="twitter:title" content={getTitle(name, username)} />
+      <meta property="twitter:description" content={shortDescription} />
+      <meta property="twitter:image" content={getImageMeta(id)} />
+      <meta property="og:type" content="video" />
       <meta property="og:type" content="video.other" />
       <meta property="og:title" content={getTitle(name, username)} />
-      <meta property="og:url" content={`${pkg.website}${originalUrl}`} />
+      <meta property="og:url" content={getImageMeta(id)} />
       <meta property="og:description" content={shortDescription} />
-      <meta
-        property="og:image"
-        content={`https://thumbs.gfycat.com/${id}-max-14mb.gif`}
-      />
+      <meta property="og:image" content={getImageMeta(id)} />
       <meta property="og:image:type" content="image/gif" />
       <meta property="og:image:width" content={`${width}`} />
       <meta property="og:image:height" content={`${height}`} />
+      <meta property="og:image:secure_url" content={getImageMeta(id)} />
     </Head>
     <VerticalyCentered>
       <Subtitle>{name}</Subtitle>
