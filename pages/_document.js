@@ -4,7 +4,6 @@ import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import '../reset.css'
 import { isProd } from '../utils'
-import pkg from '../package.json'
 
 const scripts = [
   isProd() &&
@@ -35,34 +34,9 @@ export default class MyDocument extends Document {
             content="FmQz60VlE_8ww8hrwXooFKl9cbRGTEZ7CxSgFKBtzfA"
           />
           <meta
-            name="description"
-            content={pkg.description}
-            property="description"
-          />
-          <meta
-            name="keywords"
-            content={pkg.keywords.join(', ')}
-            property="keywords"
-          />
-          <meta
             name="viewport"
             content="width=device-width, initial-scale=1"
             property="viewport"
-          />
-          <meta
-            name="og:title"
-            content="React Native Gallery"
-            property="og:title"
-          />
-          <meta
-            name="og:description"
-            content="Show and tell for React Native developers"
-            property="og:description"
-          />
-          <meta
-            name="og:image"
-            content="https://reactnative.gallery/static/images/background_blur.jpeg"
-            property="og:image"
           />
           <link
             rel="shortcut icon"
