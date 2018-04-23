@@ -30,6 +30,7 @@ const Author = styled.h5`
 `
 const getTitle = (name, username) => `${name} by @${username}`
 const getImageMeta = id => `https://thumbs.gfycat.com/${id}-size_restricted.gif`
+const getVideoMeta = id => `https://thumbs.gfycat.com/${id}-mobile.mp4`
 
 const AppDetail = ({
   id,
@@ -76,6 +77,9 @@ const AppDetail = ({
       <meta property="og:image:width" content={`${width}`} />
       <meta property="og:image:height" content={`${height}`} />
       <meta property="og:image:secure_url" content={getImageMeta(id)} />
+      <meta property="og:video" content={getVideoMeta(id)} />
+      <meta property="og:video:secure_url" content={getVideoMeta(id)} />
+      <meta property="og:video:type" content="video/mp4" />
     </Head>
     <VerticalyCentered>
       <Subtitle>{name}</Subtitle>
