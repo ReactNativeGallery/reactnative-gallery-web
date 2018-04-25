@@ -1,7 +1,7 @@
 import React from 'react'
-import VerticalyCentered from '../../components/VerticalyCentered'
+import VerticalyCentered from '../components/VerticalyCentered'
 
-import { show } from '../../utils/auth'
+import { show } from '../utils/auth'
 
 const CONTAINER_ID = 'put-lock-here'
 

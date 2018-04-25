@@ -5,7 +5,7 @@ import {
   checkSecret,
   extractInfoFromHash,
   saveUserAsync
-} from '../../utils/auth'
+} from '../utils/auth'
 
 class SignedIn extends React.Component {
   async componentDidMount() {

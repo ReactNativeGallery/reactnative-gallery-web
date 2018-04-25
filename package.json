@@ -1,14 +1,11 @@
 {
   "name": "reactnative-gallery",
   "description": "Show and tell for React Native developers",
-  "keywords": [
-    "react-native",
-    "react native example",
-    "gallery"
-  ],
+  "keywords": ["react-native", "react native example", "gallery"],
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Xavier Carpentier <contact@xaviercarpentier.com> (http://xaviercarpentier.com/)",
+  "author":
+    "Xavier Carpentier <contact@xaviercarpentier.com> (http://xaviercarpentier.com/)",
   "license": "MIT",
   "website": "https://reactnative.gallery",
   "scripts": {
@@ -24,7 +21,7 @@
     "heroku-postbuild": "next build"
   },
   "dependencies": {
-    "auth0-lock": "11.5.2",
+    "auth0-lock": "11.6.0",
     "axios": "0.18.0",
     "babel-plugin-styled-components": "1.5.1",
     "babel-plugin-transform-define": "1.3.0",
@@ -79,17 +76,12 @@
     "react-test-renderer": "16.2.0"
   },
   "lint-staged": {
-    "**/*.js": [
-      "yarn lint --fix",
-      "git add"
-    ]
+    "**/*.js": ["yarn lint --fix", "git add"]
   },
   "jest": {
     "transform": {
       "^.+\\.js$": "babel-jest"
     },
-    "setupFiles": [
-      "./testSetup.js"
-    ]
+    "setupFiles": ["./testSetup.js"]
   }
 }
