@@ -9,7 +9,11 @@ import Subtitle from '../components/Subtitle'
 import Love from '../components/Love'
 import Octicon from '../components/Octicon'
 import defaultPage from '../hocs/defaultPage'
-import { getGifBySlugAsync, getGifInfo } from '../utils/api'
+import {
+  getGifBySlugAsync,
+  getGifInfo,
+  putIncrementNumberOfViewAsync
+} from '../utils/api'
 import Gif from '../components/Gif'
 import pkg from '../package.json'
 
@@ -30,7 +34,10 @@ const Author = styled.h5`
 `
 const getTitle = (name, username) => `${name} by @${username}`
 const getImageMeta = id => `https://thumbs.gfycat.com/${id}-size_restricted.gif`
+const getUnsecureImageMeta = id =>
+  `http://thumbs.gfycat.com/${id}-size_restricted.gif`
 const getVideoMeta = id => `https://thumbs.gfycat.com/${id}-mobile.mp4`
+const getUnsecureVideoMeta = id => `http://thumbs.gfycat.com/${id}-mobile.mp4`
 
 const AppDetail = ({
   id,
@@ -72,12 +79,12 @@ const AppDetail = ({
       <meta property="og:title" content={getTitle(name, username)} />
       <meta property="og:url" content={getImageMeta(id)} />
       <meta property="og:description" content={shortDescription} />
-      <meta property="og:image" content={getImageMeta(id)} />
+      <meta property="og:image" content={getUnsecureImageMeta(id)} />
       <meta property="og:image:type" content="image/gif" />
       <meta property="og:image:width" content={`${width}`} />
       <meta property="og:image:height" content={`${height}`} />
       <meta property="og:image:secure_url" content={getImageMeta(id)} />
-      <meta property="og:video" content={getVideoMeta(id)} />
+      <meta property="og:video" content={getUnsecureVideoMeta(id)} />
       <meta property="og:video:secure_url" content={getVideoMeta(id)} />
       <meta property="og:video:type" content="video/mp4" />
     </Head>
@@ -125,6 +132,7 @@ AppDetail.getInitialProps = async ({ req, query }) => {
   const { slug, username } = query
   const gif = await getGifBySlugAsync(req, slug)
   const { width, height } = await getGifInfo(gif.id)
+  await putIncrementNumberOfViewAsync(req, gif.id)
   return {
     ...gif,
     username,

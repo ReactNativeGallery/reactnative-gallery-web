@@ -123,6 +123,16 @@ const getByKeywordAsync = curry((index, type, keywordName, keywordValue) =>
     q: `${keywordName}:${keywordValue}`
   }))
 
+const incrementAsync = curry((index, type, counterName, id) =>
+  client.update({
+    index,
+    type,
+    id,
+    body: {
+      script: `ctx._source.${counterName} += 1`
+    }
+  }))
+
 module.exports = {
   pingAsync,
   mappingPath,
@@ -142,5 +152,6 @@ module.exports = {
   bulkUpdate,
   bulkDelete,
   idify,
-  getByKeywordAsync
+  getByKeywordAsync,
+  incrementAsync
 }

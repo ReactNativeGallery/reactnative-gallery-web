@@ -10,7 +10,8 @@ const {
   getByKeywordAsync,
   bulkIndex,
   bulkDelete,
-  bulkUpdate
+  bulkUpdate,
+  incrementAsync
 } = require('./')
 
 const { GALLERY_INDEX, GALLERY_TYPE } = process.env
@@ -28,12 +29,6 @@ const deleteGifByIdAsync = compose(bulkAsync, deleteGifBulkBase)
 const updateGifByIdAsync = compose(bulkAsync, updateGifBulkBase)
 
 const createGifAsync = compose(bulkAsync, indexGifBulkBase)
-
-// const getGifBySlugAsync = getByKeywordAsync(
-//   GALLERY_INDEX,
-//   GALLERY_TYPE,
-//   'slug.keyword'
-// )
 
 const getGifBySlugAsync = slug =>
   compose(
@@ -54,11 +49,20 @@ const readAllGifAsync = () =>
     curry(getAllAsync)
   )(GALLERY_INDEX, GALLERY_TYPE)
 
+const incrementNumberOfViewAsync = id =>
+  compose(catchP(log), incrementAsync)(
+    GALLERY_INDEX,
+    GALLERY_TYPE,
+    'numberOfView',
+    id
+  )
+
 module.exports = {
   readAllGifAsync,
   getGifByIdAsync,
   createGifAsync,
   deleteGifByIdAsync,
   updateGifByIdAsync,
-  getGifBySlugAsync
+  getGifBySlugAsync,
+  incrementNumberOfViewAsync
 }

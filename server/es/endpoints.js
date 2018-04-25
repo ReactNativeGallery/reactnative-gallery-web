@@ -3,8 +3,9 @@ const {
   createGifAsync,
   getGifByIdAsync,
   updateGifByIdAsync,
-  getGifBySlugAsync
+  getGifBySlugAsync,
   // deleteGifByIdAsync
+  incrementNumberOfViewAsync
 } = require('./gif')
 
 const { indexUserAsync } = require('./user')
@@ -55,6 +56,11 @@ const setEsEndpoints = (server) => {
       })
       res.sendStatus(204)
     }
+  })
+  server.put('/gifs/increment-number-of-view/:id', async (req, res) => {
+    const { id } = req.params
+    await incrementNumberOfViewAsync(id)
+    res.sendStatus(204)
   })
 }
 
