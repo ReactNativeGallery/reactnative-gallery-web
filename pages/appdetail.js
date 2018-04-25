@@ -68,7 +68,7 @@ const AppDetail = ({
       <meta property="twitter:card" content="player" />
       <meta property="twitter:site" content="@rn_gallery" />
       <meta property="twitter:url" content={`${pkg.website}${originalUrl}`} />
-      <meta name="twitter:player" content={`https://gfycat.com/ifr/${id}`} />
+      <meta name="twitter:player" content={`${pkg.website}${originalUrl}`} />
       <meta name="twitter:player:width" content="930" />
       <meta name="twitter:player:height" content="1656" />
       <meta property="twitter:title" content={getTitle(name, username)} />
