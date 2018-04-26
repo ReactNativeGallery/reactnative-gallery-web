@@ -1,7 +1,8 @@
+/* eslint react/forbid-prop-types: 0 */
+
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-// import Router from 'next/router'
 import Smartphone from './Smartphone'
 import GifContainer from './GifContainer'
 import Play from './Play'
@@ -26,15 +27,19 @@ Source.propTypes = {
 class Gif extends Component {
   static propTypes = {
     gifId: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    slug: PropTypes.string.isRequired,
+    username: PropTypes.string,
+    slug: PropTypes.string,
     minWidth: PropTypes.number,
-    autoplay: PropTypes.bool
+    autoplay: PropTypes.bool,
+    styles: PropTypes.object
   }
 
   static defaultProps = {
     minWidth: undefined,
-    autoplay: false
+    autoplay: false,
+    styles: {},
+    username: undefined,
+    slug: undefined
   }
 
   state = {
@@ -83,7 +88,7 @@ class Gif extends Component {
 
   render() {
     const {
-      gifId, username, slug, minWidth, autoplay
+      gifId, username, slug, minWidth, autoplay, styles
     } = this.props
     return (
       <Smartphone
@@ -93,7 +98,8 @@ class Gif extends Component {
         minWidth={minWidth}
         cursorPointer={autoplay}
         style={{
-          background: this.state.play && '#141414'
+          background: this.state.play && '#141414',
+          ...styles
         }}
       >
         <GifContainer>
@@ -132,9 +138,8 @@ class Gif extends Component {
               this.setState({ buttonHover: false, buttonClicked: false })
             }
             onClick={() => {
-              this.setState({ buttonClicked: true })
               window.location.href = `/${username}/${slug}`
-              // Router.push(`/${username}/${slug}`)
+              this.setState({ buttonClicked: true })
             }}
             hover={this.state.buttonHover}
             cliked={this.state.buttonClicked}
