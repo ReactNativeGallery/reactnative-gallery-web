@@ -68,10 +68,7 @@ const AppDetail = ({
       <meta property="twitter:card" content="player" />
       <meta property="twitter:site" content="@rn_gallery" />
       <meta property="twitter:url" content={`${pkg.website}${originalUrl}`} />
-      <meta
-        name="twitter:player"
-        content={`${pkg.website}${originalUrl}?id=${id}`}
-      />
+      <meta name="twitter:player" content={`${pkg.website}/player?id=${id}`} />
       <meta name="twitter:player:width" content="450" />
       <meta name="twitter:player:height" content="275" />
       <meta property="twitter:title" content={getTitle(name, username)} />
