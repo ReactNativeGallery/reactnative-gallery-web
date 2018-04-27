@@ -58,6 +58,7 @@ app.prepare().then(() => {
     const { pathname, query } = parse(req.url, true)
     const params = matchDetail(pathname)
     if (params === false) {
+      res.header('x-frame-options', 'ALLOWALL')
       handle(req, res)
       return
     }
