@@ -69,8 +69,8 @@ const AppDetail = ({
       <meta property="twitter:site" content="@rn_gallery" />
       <meta property="twitter:url" content={`${pkg.website}${originalUrl}`} />
       <meta name="twitter:player" content={`${pkg.website}/player?id=${id}`} />
-      <meta name="twitter:player:width" content="600" />
-      <meta name="twitter:player:height" content="300" />
+      <meta name="twitter:player:width" content="300" />
+      <meta name="twitter:player:height" content="600" />
       <meta property="twitter:title" content={getTitle(name, username)} />
       <meta property="twitter:description" content={shortDescription} />
       <meta property="twitter:image" content={getImageMeta(id)} />
