@@ -22,7 +22,12 @@ const deleteGifBulkBase = bulkDelete(GALLERY_INDEX, GALLERY_TYPE)
 
 const updateGifBulkBase = bulkUpdate(GALLERY_INDEX, GALLERY_TYPE)
 
-const getGifByIdAsync = getByIdAsync(GALLERY_INDEX, GALLERY_TYPE)
+const getGifByIdAsync = id =>
+  compose(catchP(log), then(propOr({}, '_source')), getByIdAsync)(
+    GALLERY_INDEX,
+    GALLERY_TYPE,
+    id
+  )
 
 const deleteGifByIdAsync = compose(bulkAsync, deleteGifBulkBase)
 

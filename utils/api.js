@@ -108,6 +108,11 @@ const getGifBySlugAsync = async (req, slug) => {
   return result.json()
 }
 
+const getGifByIdAsync = async (req, id) => {
+  const result = await fetch(`${baseApi(req)}/gifs/${id}`)
+  return result.json()
+}
+
 const putIncrementNumberOfViewAsync = async (req, id) => {
   const result = await fetch(
     `${baseApi(req)}/gifs/increment-number-of-view/${id}`,
@@ -128,5 +133,6 @@ module.exports = {
   getGifBySlugAsync,
   getGifInfo,
   getAccessTokenAsync,
+  getGifByIdAsync,
   putIncrementNumberOfViewAsync
 }
