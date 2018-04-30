@@ -5,6 +5,6 @@
       "styled-components",
       { "ssr": true, "displayName": true, "preprocess": false }
     ],
-    ["transform-define", "./env-config.js"]
+    ["transform-define-file", { "file": "./env-config.js" }]
   ]
 }

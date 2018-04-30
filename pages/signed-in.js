@@ -21,7 +21,7 @@ class SignedIn extends React.Component {
     Router.push('/')
   }
   render() {
-    return null
+    return <div />
   }
 }
 
