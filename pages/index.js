@@ -10,6 +10,7 @@ import Gif from '../components/Gif'
 import Notice from '../components/Notice'
 import Hideable from '../components/Hideable'
 import MailchimpForm from '../components/MailchimpForm'
+import GithubRibbon from '../components/GithubRibbon'
 import { getGifsAsync } from '../utils/api'
 import defaultPage from '../hocs/defaultPage'
 import pkg from '../package.json'
@@ -172,6 +173,7 @@ class Home extends React.Component {
             </Hideable>
           </Cell>
         </Grid>
+        <GithubRibbon />
       </div>
     )
   }

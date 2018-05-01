@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Heart } from 'react-feather'
+import Heart from 'react-feather/dist/icons/heart'
 import { Icon, renderSmallIcon } from './Icon'
 
 const Love = ({ number }) => (

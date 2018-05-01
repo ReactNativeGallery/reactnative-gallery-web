@@ -1,7 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { Github, Mail, Minus, Slack, Twitter } from 'react-feather'
+import Github from 'react-feather/dist/icons/github'
+import Mail from 'react-feather/dist/icons/mail'
+import Minus from 'react-feather/dist/icons/minus'
+import Slack from 'react-feather/dist/icons/slack'
+import Twitter from 'react-feather/dist/icons/twitter'
 import { getSlackDataAsync } from '../utils/slack'
 
 const Footer = styled.section`

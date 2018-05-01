@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GithubRibbon /> toMatchSnapshot 1`] = `
+<a
+  href="http://github.com/ReactNativeGallery/reactnative-gallery-web"
+>
+  <img
+    alt="Fork me on GitHub"
+    className="GithubRibbon__Ribbon-s1o3krv1-0 hvkhtl"
+    src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"
+  />
+</a>
+`;

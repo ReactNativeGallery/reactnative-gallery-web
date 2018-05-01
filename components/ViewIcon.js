@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Eye } from 'react-feather'
+import Eye from 'react-feather/dist/icons/eye'
 import { Icon, renderSmallIcon } from './Icon'
 
 const Comment = ({ number }) => (

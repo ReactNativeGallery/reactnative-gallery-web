@@ -1,5 +1,5 @@
 import React from 'react'
-import { Info } from 'react-feather'
+import Info from 'react-feather/dist/icons/info'
 import styled from 'styled-components'
 
 const NoticeContainer = styled.div`

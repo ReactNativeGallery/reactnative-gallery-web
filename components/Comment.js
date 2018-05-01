@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { MessageCircle } from 'react-feather'
+import MessageCircle from 'react-feather/dist/icons/message-circle'
 import { Icon, renderSmallIcon } from './Icon'
 
 const Comment = ({ number }) => (

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Github } from 'react-feather'
+import Github from 'react-feather/dist/icons/github'
 import { Icon, renderSmallIcon } from './Icon'
 
 const Octicon = ({ number, link }) => (

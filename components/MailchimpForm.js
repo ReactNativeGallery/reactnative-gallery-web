@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { Check } from 'react-feather'
+import Check from 'react-feather/dist/icons/check'
 import Hideable from './Hideable'
 import CleanHr from './CleanHr'
 

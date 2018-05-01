@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Grid, Cell } from 'styled-css-grid'
-import { Upload as UploadIcon, Film, FolderPlus } from 'react-feather'
+import UploadIcon from 'react-feather/dist/icons/upload'
+import Film from 'react-feather/dist/icons/film'
+import FolderPlus from 'react-feather/dist/icons/folder-plus'
 import { Circle } from 'rc-progress'
 import { renderIcon, Next } from '../components/Icon'
 

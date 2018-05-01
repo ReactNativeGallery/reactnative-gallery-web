@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChevronRight } from 'react-feather'
+import ChevronRight from 'react-feather/dist/icons/chevron-right'
 import styled from 'styled-components'
 
 export const Icon = styled.div`
