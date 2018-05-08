@@ -1,6 +1,5 @@
 import React from 'react'
 import Router from 'next/router'
-import hoistNonReactStatic from 'hoist-non-react-statics'
 
 import { getUserFromServerCookie, getUserFromLocalCookie } from '../utils/auth'
 import Wrapper from '../components/Wrapper'
@@ -11,7 +10,8 @@ const defaultPage = (Page) => {
       const user = process.browser
         ? getUserFromLocalCookie()
         : getUserFromServerCookie(ctx.req)
-      const pageProps = Page.getInitialProps && Page.getInitialProps(ctx)
+      const pageProps =
+        Page.getInitialProps && (await Page.getInitialProps(ctx))
       return {
         ...pageProps,
         user,
@@ -41,7 +41,6 @@ const defaultPage = (Page) => {
       )
     }
   }
-  hoistNonReactStatic(DefaultPage, Page)
   return DefaultPage
 }
 

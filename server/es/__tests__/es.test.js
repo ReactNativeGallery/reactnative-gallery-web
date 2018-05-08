@@ -135,7 +135,7 @@ it('es.getAllAsync success', async () => {
   expect(await es.getAllAsync('testIndex', 'testType')).toEqual({
     body: [
       { index: 'testIndex', type: 'testType' },
-      { query: { match_all: {} } }
+      { size: 10, query: { match_all: {} } }
     ]
   })
 })

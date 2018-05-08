@@ -39,6 +39,12 @@ const getUnsecureImageMeta = id =>
 const getVideoMeta = id => `https://thumbs.gfycat.com/${id}-mobile.mp4`
 const getUnsecureVideoMeta = id => `http://thumbs.gfycat.com/${id}-mobile.mp4`
 
+const updateLoveAsync = (user, id) => {
+  // TODO: implem
+  // eslint-disable-next-line
+  console.log(user, id)
+}
+
 const AppDetail = ({
   id,
   slug,
@@ -53,7 +59,9 @@ const AppDetail = ({
   originalUrl,
   githubLink,
   width,
-  height
+  height,
+  stars,
+  user
 }) => (
   <div>
     <Head>
@@ -95,8 +103,8 @@ const AppDetail = ({
       <SocialBar>
         <CommentIcon number={comment.length} />
         <ViewIcon number={numberOfView} />
-        <Love number={like} />
-        {githubLink && <Octicon number={like} link={githubLink} />}
+        <Love number={like} onClick={() => updateLoveAsync(user, id)} />
+        {githubLink && <Octicon number={stars} link={githubLink} />}
       </SocialBar>
     </VerticalyCentered>
   </div>
@@ -116,7 +124,9 @@ AppDetail.propTypes = {
   githubLink: PropTypes.string,
   owner: PropTypes.shape({ id: PropTypes.string }).isRequired,
   comment: PropTypes.arrayOf(PropTypes.object),
-  category: PropTypes.arrayOf(PropTypes.string)
+  category: PropTypes.arrayOf(PropTypes.string),
+  stars: PropTypes.number,
+  user: PropTypes.shape({ nickname: PropTypes.string }).isRequired
 }
 
 AppDetail.defaultProps = {
@@ -125,7 +135,8 @@ AppDetail.defaultProps = {
   numberOfView: 0,
   like: 0,
   shortDescription: pkg.description,
-  githubLink: undefined
+  githubLink: undefined,
+  stars: 0
 }
 
 AppDetail.getInitialProps = async ({ req, query }) => {

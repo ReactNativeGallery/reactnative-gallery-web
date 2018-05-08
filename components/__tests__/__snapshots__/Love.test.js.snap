@@ -3,6 +3,7 @@
 exports[`<Love /> toMatchSnapshot 1`] = `
 <div
   className="Icon-s7tm2sn-0 jglmtW"
+  onClick={undefined}
 >
   <svg
     fill="none"

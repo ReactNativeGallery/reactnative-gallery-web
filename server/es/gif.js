@@ -1,7 +1,12 @@
 require('dotenv').config()
-const {
-  compose, pathOr, propOr, head, curry, map
-} = require('ramda')
+const compose = require('ramda/src/compose')
+const pathOr = require('ramda/src/pathOr')
+const propOr = require('ramda/src/propOr')
+const head = require('ramda/src/head')
+const curry = require('ramda/src/curry')
+const map = require('ramda/src/map')
+const filter = require('ramda/src/filter')
+const propEq = require('ramda/src/propEq')
 const { then, catchP, log } = require('../../utils/pointFreePromise')
 const {
   bulkAsync,
@@ -47,12 +52,13 @@ const getGifBySlugAsync = slug =>
 const readAllGifAsync = () =>
   compose(
     catchP(log),
+    then(filter(propEq('published', true))),
     then(map(propOr({}, '_source'))),
     then(pathOr([], ['hits', 'hits'])),
     then(head),
     then(propOr([], ['responses'])),
     curry(getAllAsync)
-  )(GALLERY_INDEX, GALLERY_TYPE)
+  )(GALLERY_INDEX, GALLERY_TYPE, 30)
 
 const incrementNumberOfViewAsync = id =>
   compose(catchP(log), incrementAsync)(

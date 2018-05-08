@@ -102,11 +102,11 @@ const bulkAsync = bulkables =>
   invariant(bulkables.length, 'bulkables should not be empty') ||
   client.bulk({ body: bulkables })
 
-const getAllAsync = (index, type) =>
+const getAllAsync = (index, type, size = 10) =>
   invariant(index, 'index should be defined') ||
   invariant(type, 'type should be defined') ||
   client.msearch({
-    body: [{ index, type }, { query: { match_all: {} } }]
+    body: [{ index, type }, { size, query: { match_all: {} } }]
   })
 
 const getByIdAsync = curry((index, type, id) =>
