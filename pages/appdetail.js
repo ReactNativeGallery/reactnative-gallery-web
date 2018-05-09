@@ -33,11 +33,18 @@ const Author = styled.h5`
   margin-bottom: 1em;
 `
 const getTitle = (name, username) => `${name} by @${username}`
-const getImageMeta = id => `https://thumbs.gfycat.com/${id}-size_restricted.gif`
+
+const getImageMeta = id =>
+  `${process.env.BASE_SOURCE_GIF_THUMBS}${id}-size_restricted.gif`
+
 const getUnsecureImageMeta = id =>
-  `http://thumbs.gfycat.com/${id}-size_restricted.gif`
-const getVideoMeta = id => `https://thumbs.gfycat.com/${id}-mobile.mp4`
-const getUnsecureVideoMeta = id => `http://thumbs.gfycat.com/${id}-mobile.mp4`
+  `${process.env.BASE_SOURCE_GIF_THUMBS}${id}-size_restricted.gif`
+
+const getVideoMeta = id =>
+  `${process.env.BASE_SOURCE_GIF_THUMBS}${id}-mobile.mp4`
+
+const getUnsecureVideoMeta = id =>
+  `${process.env.BASE_SOURCE_GIF_THUMBS}${id}-mobile.mp4`
 
 const updateLoveAsync = (user, id) => {
   // TODO: implem

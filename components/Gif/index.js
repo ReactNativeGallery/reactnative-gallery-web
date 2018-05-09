@@ -13,15 +13,16 @@ export const Sizer = styled.div`
   padding-bottom: 180%;
 `
 
-const Source = ({ mediatype, id }) => (
+const Source = ({ mediatype, id, baseSourceGifGiant }) => (
   <source
-    src={`https://giant.gfycat.com/${id}.${mediatype}`}
+    src={`${baseSourceGifGiant}${id}.${mediatype}`}
     type={`video/${mediatype}`}
   />
 )
 Source.propTypes = {
   mediatype: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  baseSourceGifGiant: PropTypes.string.isRequired
 }
 
 class Gif extends Component {
@@ -115,7 +116,7 @@ class Gif extends Component {
             playsInline
             preload="none"
             muted
-            poster={`https://thumbs.gfycat.com/${gifId}-poster.jpg`}
+            poster={`${process.env.BASE_SOURCE_GIF_THUMBS}${gifId}-poster.jpg`}
             style={{
               width: '100%',
               height: '100%',
@@ -125,8 +126,16 @@ class Gif extends Component {
             }}
           >
             <track kind="captions" />
-            <Source id={gifId} mediatype="webm" />
-            <Source id={gifId} mediatype="mp4" />
+            <Source
+              id={gifId}
+              mediatype="webm"
+              baseSourceGifGiant={process.env.BASE_SOURCE_GIF_GIANT}
+            />
+            <Source
+              id={gifId}
+              mediatype="mp4"
+              baseSourceGifGiant={process.env.BASE_SOURCE_GIF_GIANT}
+            />
           </video>
         </GifContainer>
         <ButtonContainer>

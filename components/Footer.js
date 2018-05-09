@@ -6,9 +6,11 @@ import Mail from 'react-feather/dist/icons/mail'
 import Minus from 'react-feather/dist/icons/minus'
 import Slack from 'react-feather/dist/icons/slack'
 import Twitter from 'react-feather/dist/icons/twitter'
+import Info from 'react-feather/dist/icons/info'
 import { getSlackDataAsync } from '../utils/slack'
 import { getStargazersCountAsync, getFullNameFormUrl } from '../utils/github'
 import pkg from '../package.json'
+import CleanHr from './CleanHr'
 
 const Footer = styled.section`
   width: 100%;
@@ -42,17 +44,25 @@ const Stats = styled.div`
   font-size: 10px;
 `
 
-const Link = ({ href, children }) => (
-  <LinkStyl href={href} target="_blank" rel="noopener noreferrer">
+const Link = ({ href, children, target }) => (
+  <LinkStyl
+    href={href}
+    target={target}
+    rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+  >
     {children}
   </LinkStyl>
 )
 Link.propTypes = {
   href: PropTypes.string.isRequired,
+  target: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element
   ]).isRequired
+}
+Link.defaultProps = {
+  target: '_blank'
 }
 
 const HorizontalSeparator = () => (
@@ -64,7 +74,7 @@ const HorizontalSeparator = () => (
   />
 )
 
-const GITHUB = 'https://github.com/ReactNativeGallery/reactnative-gallery-web'
+const wait = 'wait...'
 
 class Foot extends React.Component {
   state = { slackActive: 0, slackTotal: 0, stargazersCount: 0 }
@@ -90,35 +100,47 @@ class Foot extends React.Component {
   render() {
     const { slackActive, slackTotal, stargazersCount } = this.state
     return (
-      <Footer>
-        <Link href={GITHUB}>
-          <Github />
-          <Stats>{stargazersCount}</Stats>
-        </Link>
-        <HorizontalSeparator />
-        <Link href="https://twitter.com/rn_gallery">
-          <Twitter />
-        </Link>
-        <HorizontalSeparator />
-        <Link href={process.env.SLACK_IN}>
-          <Slack />
-          <Stats>
-            {slackActive}/{slackTotal}
-          </Stats>
-        </Link>
-        <HorizontalSeparator />
-        <Link href="https://spectrum.chat/reactnative-gallery">
-          <img
-            style={{ maxWidth: 18 }}
-            src="/static/images/spectrum.svg"
-            alt="Join the community on Spectrum"
-          />
-        </Link>
-        <HorizontalSeparator />
-        <Link href="mailto:xcapetir+rng@gmail.com">
-          <Mail />
-        </Link>
-      </Footer>
+      <React.Fragment>
+        <CleanHr />
+        <Footer>
+          <Link href={pkg.repository.url}>
+            <Github />
+            <Stats>{stargazersCount || wait}</Stats>
+          </Link>
+          <HorizontalSeparator />
+          <Link href="https://twitter.com/rn_gallery">
+            <Twitter />
+          </Link>
+          <HorizontalSeparator />
+          <Link href={process.env.SLACK_IN}>
+            <Slack />
+            <Stats>
+              {!!slackActive && (
+                <span>
+                  {slackActive}/{slackTotal}
+                </span>
+              )}
+              {!slackActive && wait}
+            </Stats>
+          </Link>
+          <HorizontalSeparator />
+          <Link href="https://spectrum.chat/reactnative-gallery">
+            <img
+              style={{ maxWidth: 18 }}
+              src="/static/images/spectrum.svg"
+              alt="Join the community on Spectrum"
+            />
+          </Link>
+          <HorizontalSeparator />
+          <Link href="/about" target="_self">
+            <Info />
+          </Link>
+          <HorizontalSeparator />
+          <Link href="mailto:xcapetir+rng@gmail.com">
+            <Mail />
+          </Link>
+        </Footer>
+      </React.Fragment>
     )
   }
 }

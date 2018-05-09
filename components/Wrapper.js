@@ -18,13 +18,9 @@ const Wrapper = styled.section`
   word-wrap: normal;
   color: #333;
   z-index: 1;
-  @media (min-width: 481px) {
+  @media (max-width: 481px) {
     font-size: 16px;
-    padding: 1em 3em;
-  }
-  @media (min-width: 769px) {
-    font-size: 16px;
-    padding: 1em 3em;
+    padding: 0;
   }
 `
 

@@ -5,7 +5,7 @@ const axios = require('axios')
 const { memoize } = require('ramda')
 
 const axiosInstance = axios.create({
-  baseURL: 'https://api.gfycat.com/v1/',
+  baseURL: process.env.BASE_GIF_API,
   timeout: 30000,
   headers: { 'Content-Type': 'application/json' }
 })
@@ -21,7 +21,7 @@ const getToken = async () => {
 }
 
 const getAccessTokenAsync = async (clientId, clientSecret) => {
-  const result = await axios.post('https://api.gfycat.com/v1/oauth/token', {
+  const result = await axios.post(`${process.env.BASE_GIF_API}oauth/token`, {
     grant_type: 'client_credentials',
     client_id: clientId,
     client_secret: clientSecret
@@ -49,10 +49,9 @@ const getStatusAsync = async (id) => {
 }
 
 const getGifInfo = memoize(async (id) => {
-  const { GFYCAT_CLIENT_ID, GFYCAT_CLIENT_SECRET } = process.env
   const token = await getAccessTokenAsync(
-    GFYCAT_CLIENT_ID,
-    GFYCAT_CLIENT_SECRET
+    process.env.GFYCAT_CLIENT_ID,
+    process.env.GFYCAT_CLIENT_SECRET
   )
   const result = await axiosInstance.get(`gfycats/${id}`, {
     headers: {
@@ -82,7 +81,7 @@ const requestGifKeyAsync = async () => {
 }
 
 const uploadAsync = (id, file, onUploadProgress) =>
-  axios.put(`https://filedrop.gfycat.com/${id}`, file, {
+  axios.put(`${process.env.BASE_GIF_UPLOAD}${id}`, file, {
     headers: { 'Content-Type': file.type },
     onUploadProgress
   })
@@ -114,6 +113,9 @@ const getGifByIdAsync = async (req, id) => {
 }
 
 const putIncrementNumberOfViewAsync = async (req, id) => {
+  if (process.env.NODE_ENV !== 'production') {
+    return Promise.resolve()
+  }
   const result = await fetch(
     `${baseApi(req)}/gifs/increment-number-of-view/${id}`,
     {

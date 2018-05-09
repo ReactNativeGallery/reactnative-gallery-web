@@ -1,4 +1,3 @@
-/* eslint camelcase: 0 */
 import React from 'react'
 import { Grid, Cell } from 'styled-css-grid'
 import Head from 'next/head'
@@ -119,7 +118,9 @@ class Home extends React.Component {
             </Grid>
           </Cell>
         </Grid>
-        <GithubRibbon />
+        <Hideable xs>
+          <GithubRibbon />
+        </Hideable>
       </div>
     )
   }

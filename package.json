@@ -78,7 +78,7 @@
     "jest": "22.4.2",
     "lint-staged": "7.0.0",
     "plop": "2.0.0",
-    "prettier": "1.11.1",
+    "prettier": "1.12.1",
     "react-test-renderer": "16.2.0",
     "regenerator-runtime": "0.11.1"
   },

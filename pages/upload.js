@@ -221,7 +221,6 @@ class Upload extends Component {
                           {status.task === 'NotFoundo'
                             ? 'preparing encoding'
                             : status.task}
-                          <br />
                           {percentCompleted}%
                         </Status>
                       )}
