@@ -98,7 +98,7 @@ class Foot extends React.Component {
     await this.getStargazersCount()
   }
   render() {
-    const { slackActive, slackTotal, stargazersCount } = this.state
+    const { stargazersCount, slackActive, slackTotal } = this.state
     return (
       <React.Fragment>
         <CleanHr />
