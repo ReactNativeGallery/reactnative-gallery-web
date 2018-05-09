@@ -2,7 +2,7 @@
 
 exports[`<Gif /> toMatchSnapshot 1`] = `
 <div
-  className="Smartphone-s165niw0-0 bMKjgM"
+  className="Smartphone-s165niw0-0 dRCHgZ"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}

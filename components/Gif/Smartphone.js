@@ -10,6 +10,7 @@ const Smartphone = styled.div`
   max-width: 275px;
   min-width: ${({ minWidth }) => (minWidth && `${minWidth}px`) || '194px'};
   min-height: 250px;
+  margin: auto;
   cursor: ${({ cursorPointer }) =>
     (cursorPointer ? 'pointer' : 'url(/static/images/play-circle.svg), auto;')};
 `
