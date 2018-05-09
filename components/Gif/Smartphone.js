@@ -13,6 +13,7 @@ const Smartphone = styled.div`
   margin: auto;
   cursor: ${({ cursorPointer }) =>
     (cursorPointer ? 'pointer' : 'url(/static/images/play-circle.svg), auto;')};
+  // TODO: transform: rotate(-0.25turn);
 `
 
 export default Smartphone

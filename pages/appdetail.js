@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Head from 'next/head'
-import VerticalyCentered from '../components/VerticalyCentered'
 import CommentIcon from '../components/Comment'
 import ViewIcon from '../components/ViewIcon'
 import Subtitle from '../components/Subtitle'
@@ -24,6 +23,7 @@ const SocialBar = styled.div`
   justify-content: space-around;
   align-items: center;
   margin-top: 17px;
+  min-width: 250px;
 `
 
 const Author = styled.h5`
@@ -71,7 +71,7 @@ const AppDetail = ({
   stars,
   user
 }) => (
-  <div>
+  <React.Fragment>
     <Head>
       <title>{getTitle(name, username)}</title>
       <meta
@@ -104,18 +104,16 @@ const AppDetail = ({
       <meta property="og:video:secure_url" content={getVideoMeta(id)} />
       <meta property="og:video:type" content="video/mp4" />
     </Head>
-    <VerticalyCentered>
-      <Subtitle>{name}</Subtitle>
-      <Author>by @{username}</Author>
-      <Gif gifId={id} slug={slug} username={owner.id} minWidth={250} autoplay />
-      <SocialBar>
-        <CommentIcon number={comment.length} />
-        <ViewIcon number={numberOfView} />
-        <Love number={like} onClick={() => updateLoveAsync(user, id)} />
-        {githubLink && <Octicon number={stars} link={githubLink} />}
-      </SocialBar>
-    </VerticalyCentered>
-  </div>
+    <Subtitle>{name}</Subtitle>
+    <Author>by @{username}</Author>
+    <Gif gifId={id} slug={slug} username={owner.id} minWidth={250} autoplay />
+    <SocialBar>
+      <CommentIcon number={comment.length} />
+      <ViewIcon number={numberOfView} />
+      <Love number={like} onClick={() => updateLoveAsync(user, id)} />
+      {githubLink && <Octicon number={stars} link={githubLink} />}
+    </SocialBar>
+  </React.Fragment>
 )
 
 AppDetail.propTypes = {
