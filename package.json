@@ -4,6 +4,10 @@
   "keywords": ["react-native", "react native example", "gallery"],
   "version": "1.0.0",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ReactNativeGallery/reactnative-gallery-web"
+  },
   "author":
     "Xavier Carpentier <contact@xaviercarpentier.com> (http://xaviercarpentier.com/)",
   "license": "MIT",

@@ -7,6 +7,8 @@ import Minus from 'react-feather/dist/icons/minus'
 import Slack from 'react-feather/dist/icons/slack'
 import Twitter from 'react-feather/dist/icons/twitter'
 import { getSlackDataAsync } from '../utils/slack'
+import { getStargazersCountAsync, getFullNameFormUrl } from '../utils/github'
+import pkg from '../package.json'
 
 const Footer = styled.section`
   width: 100%;
@@ -65,20 +67,33 @@ const HorizontalSeparator = () => (
 const GITHUB = 'https://github.com/ReactNativeGallery/reactnative-gallery-web'
 
 class Foot extends React.Component {
-  state = { slackActive: 0, slackTotal: 0 }
+  state = { slackActive: 0, slackTotal: 0, stargazersCount: 0 }
   componentDidMount() {
-    this.getSlackInfo()
+    this.init()
   }
   getSlackInfo = async () => {
     const { total: slackTotal, active: slackActive } = await getSlackDataAsync()
     this.setState({ slackTotal, slackActive })
   }
+  getStargazersCount = async () => {
+    const fullName =
+      pkg.repository &&
+      pkg.repository.url &&
+      getFullNameFormUrl(pkg.repository.url)
+    const stargazersCount = await getStargazersCountAsync(fullName)
+    this.setState({ stargazersCount })
+  }
+  init = async () => {
+    await this.getSlackInfo()
+    await this.getStargazersCount()
+  }
   render() {
-    const { slackActive, slackTotal } = this.state
+    const { slackActive, slackTotal, stargazersCount } = this.state
     return (
       <Footer>
         <Link href={GITHUB}>
           <Github />
+          <Stats>{stargazersCount}</Stats>
         </Link>
         <HorizontalSeparator />
         <Link href="https://twitter.com/rn_gallery">
