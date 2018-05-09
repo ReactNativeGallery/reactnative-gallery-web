@@ -14,6 +14,7 @@ import {
   getGifInfo,
   putIncrementNumberOfViewAsync
 } from '../utils/api'
+import { getStargazersCountAsync, getFullNameFormUrl } from '../utils/github'
 import Gif from '../components/Gif'
 import pkg from '../package.json'
 
@@ -133,7 +134,7 @@ AppDetail.propTypes = {
   comment: PropTypes.arrayOf(PropTypes.object),
   category: PropTypes.arrayOf(PropTypes.string),
   stars: PropTypes.number,
-  user: PropTypes.shape({ nickname: PropTypes.string }).isRequired
+  user: PropTypes.shape({ nickname: PropTypes.string })
 }
 
 AppDetail.defaultProps = {
@@ -143,7 +144,8 @@ AppDetail.defaultProps = {
   like: 0,
   shortDescription: pkg.description,
   githubLink: undefined,
-  stars: 0
+  stars: 0,
+  user: undefined
 }
 
 AppDetail.getInitialProps = async ({ req, query }) => {
@@ -151,12 +153,16 @@ AppDetail.getInitialProps = async ({ req, query }) => {
   const gif = await getGifBySlugAsync(req, slug)
   const { width, height } = await getGifInfo(gif.id)
   await putIncrementNumberOfViewAsync(req, gif.id)
+  const stars = gif.githubLink
+    ? await getStargazersCountAsync(getFullNameFormUrl(gif.githubLink))
+    : 0
   return {
     ...gif,
     username,
     originalUrl: req.originalUrl,
     width,
-    height
+    height,
+    stars
   }
 }
 

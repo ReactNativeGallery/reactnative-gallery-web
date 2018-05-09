@@ -10,7 +10,6 @@ import Info from 'react-feather/dist/icons/info'
 import { getSlackDataAsync } from '../utils/slack'
 import { getStargazersCountAsync, getFullNameFormUrl } from '../utils/github'
 import pkg from '../package.json'
-import CleanHr from './CleanHr'
 
 const Footer = styled.section`
   width: 100%;
@@ -100,47 +99,44 @@ class Foot extends React.Component {
   render() {
     const { stargazersCount, slackActive, slackTotal } = this.state
     return (
-      <React.Fragment>
-        <CleanHr />
-        <Footer>
-          <Link href={pkg.repository.url}>
-            <Github />
-            <Stats>{stargazersCount || wait}</Stats>
-          </Link>
-          <HorizontalSeparator />
-          <Link href="https://twitter.com/rn_gallery">
-            <Twitter />
-          </Link>
-          <HorizontalSeparator />
-          <Link href={process.env.SLACK_IN}>
-            <Slack />
-            <Stats>
-              {!!slackActive && (
-                <span>
-                  {slackActive}/{slackTotal}
-                </span>
-              )}
-              {!slackActive && wait}
-            </Stats>
-          </Link>
-          <HorizontalSeparator />
-          <Link href="https://spectrum.chat/reactnative-gallery">
-            <img
-              style={{ maxWidth: 18 }}
-              src="/static/images/spectrum.svg"
-              alt="Join the community on Spectrum"
-            />
-          </Link>
-          <HorizontalSeparator />
-          <Link href="/about" target="_self">
-            <Info />
-          </Link>
-          <HorizontalSeparator />
-          <Link href="mailto:xcapetir+rng@gmail.com">
-            <Mail />
-          </Link>
-        </Footer>
-      </React.Fragment>
+      <Footer>
+        <Link href={pkg.repository.url}>
+          <Github />
+          <Stats>{stargazersCount || wait}</Stats>
+        </Link>
+        <HorizontalSeparator />
+        <Link href="https://twitter.com/rn_gallery">
+          <Twitter />
+        </Link>
+        <HorizontalSeparator />
+        <Link href={process.env.SLACK_IN}>
+          <Slack />
+          <Stats>
+            {!!slackActive && (
+              <span>
+                {slackActive}/{slackTotal}
+              </span>
+            )}
+            {!slackActive && wait}
+          </Stats>
+        </Link>
+        <HorizontalSeparator />
+        <Link href="https://spectrum.chat/reactnative-gallery">
+          <img
+            style={{ maxWidth: 18 }}
+            src="/static/images/spectrum.svg"
+            alt="Join the community on Spectrum"
+          />
+        </Link>
+        <HorizontalSeparator />
+        <Link href="/about" target="_self">
+          <Info />
+        </Link>
+        <HorizontalSeparator />
+        <Link href="mailto:xcapetir+rng@gmail.com">
+          <Mail />
+        </Link>
+      </Footer>
     )
   }
 }
