@@ -9,7 +9,7 @@ import {
 
 class SignedIn extends React.Component {
   async componentDidMount() {
-    const { token, secret } = extractInfoFromHash()
+    const { token, secret, next } = extractInfoFromHash()
     if (!checkSecret(secret) || !token) {
       // eslint-disable-next-line
       console.error('Something happened with the Sign In request')
@@ -18,7 +18,7 @@ class SignedIn extends React.Component {
     if (user) {
       await saveUserAsync(user)
     }
-    Router.push('/')
+    Router.push(decodeURIComponent(next) || '/')
   }
   render() {
     return <div />

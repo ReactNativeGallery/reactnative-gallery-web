@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Router from 'next/router'
 import styled from 'styled-components'
 import Head from 'next/head'
 import CommentIcon from '../components/Comment'
@@ -52,10 +53,18 @@ const getUnsecureVideoMeta = id =>
   `${process.env.BASE_SOURCE_GIF_THUMBS_UNSECURE}${id}-mobile.mp4`
 
 const updateLoveAsync = async (user, gifId, alreadyLiked) => {
-  if (!alreadyLiked) {
-    await putLikeAsync(undefined, user.nickname, gifId)
+  if (user) {
+    if (!alreadyLiked) {
+      await putLikeAsync(undefined, user.nickname, gifId)
+    } else {
+      await putUnlikeAsync(undefined, user.nickname, gifId)
+    }
   } else {
-    await putUnlikeAsync(undefined, user.nickname, gifId)
+    const next = window.location.pathname
+    Router.push({
+      pathname: '/sign-in',
+      query: { next }
+    })
   }
 }
 
@@ -170,7 +179,7 @@ AppDetail.getInitialProps = async ({ req, query }) => {
   const user = process.browser
     ? getUserFromLocalCookie()
     : getUserFromServerCookie(req)
-  const likes = await getUserLikesAsync(req, user.nickname)
+  const likes = user ? await getUserLikesAsync(req, user && user.nickname) : []
   return {
     ...gif,
     username,
@@ -178,7 +187,7 @@ AppDetail.getInitialProps = async ({ req, query }) => {
     width,
     height,
     stars,
-    checked: likes.includes(gif.id)
+    checked: (likes && likes.includes(gif.id)) || false
   }
 }
 

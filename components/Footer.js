@@ -101,7 +101,7 @@ class Foot extends React.Component {
     const { stargazersCount, slackActive, slackTotal } = this.state
     return (
       <Footer>
-        <Link href={pkg.website}>
+        <Link href={pkg.website} target="_self">
           <Home />
         </Link>
         <HorizontalSeparator />

@@ -89,7 +89,6 @@ module.exports = {
       async ({ params: { gifId, username } }, res) => {
         await decrementLikeAsync(gifId)
         await removeFromUserLikesAsync(username, gifId)
-
         res.sendStatus(204)
       }
     )

@@ -5,6 +5,7 @@ import jwtDecode from 'jwt-decode'
 import uuid from 'uuid'
 import Cookie from 'js-cookie'
 import axios from 'axios'
+import qs from 'querystring'
 
 const getLock = (options) => {
   // eslint-disable-next-line
@@ -16,7 +17,7 @@ const getBaseUrl = () => `${window.location.protocol}//${window.location.host}`
 
 export const setSecret = secret => Cookie.set('secret', secret, { expires: 90 })
 
-const getOptions = (container) => {
+const getOptions = (container, params) => {
   const secret = uuid.v4()
   setSecret(secret)
   return {
@@ -30,7 +31,7 @@ const getOptions = (container) => {
     },
     auth: {
       responseType: 'token id_token',
-      redirectUrl: `${getBaseUrl()}/signed-in`,
+      redirectUrl: `${getBaseUrl()}/signed-in?${qs.stringify(params)}`,
       params: {
         scope: 'openid profile email',
         state: secret
@@ -54,11 +55,14 @@ export const extractInfoFromHash = () => {
   if (!process.browser) {
     return undefined
   }
-  const { id_token, state, access_token } = getQueryParams()
+  const {
+    id_token, state, access_token, ...rest
+  } = getQueryParams()
   return {
     token: id_token,
     secret: state,
-    access_token
+    access_token,
+    ...rest
   }
 }
 
@@ -78,7 +82,8 @@ export const getUserFromServerCookie = (req) => {
 
 export const getUserFromLocalCookie = () => Cookie.getJSON('user')
 
-export const show = container => getLock(getOptions(container)).show()
+export const show = (container, params) =>
+  getLock(getOptions(container, params)).show()
 
 export const logout = () => getLock().logout({ returnTo: getBaseUrl() })
 

@@ -27,15 +27,13 @@ const getUserLikesAsync = compose(
 )
 
 // addToUserLikesAsync :: username -> gifId -> promise
-const addToUserLikesAsync = compose(
-  catchP(log),
-  addToPropAsync(USER_INDEX, USER_TYPE, 'likes')
-)
+const addToUserLikesAsync = addToPropAsync(USER_INDEX, USER_TYPE, 'likes')
 
 // removeFromUserLikesAsync :: username -> gifId -> promise
-const removeFromUserLikesAsync = compose(
-  catchP(log),
-  removeFromPropAsync(USER_INDEX, USER_TYPE, 'likes')
+const removeFromUserLikesAsync = removeFromPropAsync(
+  USER_INDEX,
+  USER_TYPE,
+  'likes'
 )
 
 module.exports = {

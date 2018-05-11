@@ -153,16 +153,16 @@ const decrementPropAsync = curry((index, type, counterName, id) =>
     }
   }))
 
-const addToPropAsync = curry((index, type, keywordName, id, keywordValue) =>
+const addToPropAsync = curry((index, type, key, id, keywordValue) =>
   client.update({
     index,
     type,
     id,
     body: {
       script: {
-        source: `ctx._source.${keywordName}.add(params.${keywordName})`,
+        inline: `(ctx._source.${key} = ctx._source.${key} ?: []).add(params.v)`,
         params: {
-          [`${keywordName}`]: keywordValue
+          v: keywordValue
         }
       }
     }
