@@ -145,9 +145,9 @@ const incrementPropAsync = curry((index, type, counterName, id) =>
 
 const decrementPropAsync = curry((index, type, counterName, id) =>
   client.update({
-    index,
-    type,
     id,
+    type,
+    index,
     body: {
       script: `ctx._source.${counterName} -= 1`
     }

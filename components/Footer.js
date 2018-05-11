@@ -117,7 +117,7 @@ class Foot extends React.Component {
         <Link href={process.env.SLACK_IN}>
           <Slack />
           <Stats>
-            {!!slackActive && (
+            {!!slackTotal && (
               <span>
                 {slackActive}/{slackTotal}
               </span>
