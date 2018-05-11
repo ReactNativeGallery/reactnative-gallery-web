@@ -16,7 +16,9 @@ const {
   bulkIndex,
   bulkDelete,
   bulkUpdate,
-  incrementAsync
+  incrementPropAsync,
+  decrementPropAsync,
+  getSourceAsync
 } = require('./')
 
 const { GALLERY_INDEX, GALLERY_TYPE } = process.env
@@ -28,7 +30,7 @@ const deleteGifBulkBase = bulkDelete(GALLERY_INDEX, GALLERY_TYPE)
 const updateGifBulkBase = bulkUpdate(GALLERY_INDEX, GALLERY_TYPE)
 
 const getGifByIdAsync = id =>
-  compose(catchP(log), then(propOr({}, '_source')), getByIdAsync)(
+  compose(catchP(log), getSourceAsync, getByIdAsync)(
     GALLERY_INDEX,
     GALLERY_TYPE,
     id
@@ -61,10 +63,26 @@ const readAllGifAsync = () =>
   )(GALLERY_INDEX, GALLERY_TYPE, 30)
 
 const incrementNumberOfViewAsync = id =>
-  compose(catchP(log), incrementAsync)(
+  compose(catchP(log), incrementPropAsync)(
     GALLERY_INDEX,
     GALLERY_TYPE,
     'numberOfView',
+    id
+  )
+
+const incrementLikeAsync = id =>
+  compose(catchP(log), incrementPropAsync)(
+    GALLERY_INDEX,
+    GALLERY_TYPE,
+    'like',
+    id
+  )
+
+const decrementLikeAsync = id =>
+  compose(catchP(log), decrementPropAsync)(
+    GALLERY_INDEX,
+    GALLERY_TYPE,
+    'like',
     id
   )
 
@@ -75,5 +93,7 @@ module.exports = {
   deleteGifByIdAsync,
   updateGifByIdAsync,
   getGifBySlugAsync,
-  incrementNumberOfViewAsync
+  incrementNumberOfViewAsync,
+  incrementLikeAsync,
+  decrementLikeAsync
 }

@@ -7,6 +7,8 @@ const elasticsearch = require('elasticsearch')
 const invariant = require('invariant')
 const fs = require('fs')
 const { tmatches } = require('../../utils')
+const { then } = require('../../utils/pointFreePromise')
+const propOr = require('ramda/src/propOr')
 
 const { ES_URL } = process.env
 
@@ -116,6 +118,14 @@ const getByIdAsync = curry((index, type, id) =>
     id
   }))
 
+const getByIdFilterSourceAsync = curry((index, type, source, id) =>
+  client.get({
+    index,
+    type,
+    id,
+    _source: source
+  }))
+
 const getByKeywordAsync = curry((index, type, keywordName, keywordValue) =>
   client.search({
     index,
@@ -123,7 +133,7 @@ const getByKeywordAsync = curry((index, type, keywordName, keywordValue) =>
     q: `${keywordName}:${keywordValue}`
   }))
 
-const incrementAsync = curry((index, type, counterName, id) =>
+const incrementPropAsync = curry((index, type, counterName, id) =>
   client.update({
     index,
     type,
@@ -132,6 +142,48 @@ const incrementAsync = curry((index, type, counterName, id) =>
       script: `ctx._source.${counterName} += 1`
     }
   }))
+
+const decrementPropAsync = curry((index, type, counterName, id) =>
+  client.update({
+    index,
+    type,
+    id,
+    body: {
+      script: `ctx._source.${counterName} -= 1`
+    }
+  }))
+
+const addToPropAsync = curry((index, type, keywordName, id, keywordValue) =>
+  client.update({
+    index,
+    type,
+    id,
+    body: {
+      script: {
+        source: `ctx._source.${keywordName}.add(params.${keywordName})`,
+        params: {
+          [`${keywordName}`]: keywordValue
+        }
+      }
+    }
+  }))
+
+const removeFromPropAsync = curry((index, type, key, id, keyValue) =>
+  client.update({
+    index,
+    type,
+    id,
+    body: {
+      script: {
+        source: `ctx._source.${key}.removeAll(Collections.singleton(params.v))`,
+        params: {
+          v: keyValue
+        }
+      }
+    }
+  }))
+
+const getSourceAsync = compose(then(propOr({}, '_source')))
 
 module.exports = {
   pingAsync,
@@ -153,5 +205,10 @@ module.exports = {
   bulkDelete,
   idify,
   getByKeywordAsync,
-  incrementAsync
+  incrementPropAsync,
+  decrementPropAsync,
+  addToPropAsync,
+  getByIdFilterSourceAsync,
+  getSourceAsync,
+  removeFromPropAsync
 }

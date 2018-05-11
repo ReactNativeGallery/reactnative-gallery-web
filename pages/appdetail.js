@@ -11,11 +11,15 @@ import defaultPage from '../hocs/defaultPage'
 import {
   getGifBySlugAsync,
   getGifInfo,
-  putIncrementNumberOfViewAsync
+  putIncrementNumberOfViewAsync,
+  getUserLikesAsync,
+  putLikeAsync,
+  putUnlikeAsync
 } from '../utils/api'
 import { getStargazersCountAsync, getFullNameFormUrl } from '../utils/github'
 import Gif from '../components/Gif'
 import pkg from '../package.json'
+import { getUserFromLocalCookie, getUserFromServerCookie } from '../utils/auth'
 
 const SocialBar = styled.div`
   display: flex;
@@ -39,18 +43,20 @@ const getImageMeta = id =>
   `${process.env.BASE_SOURCE_GIF_THUMBS}${id}-size_restricted.gif`
 
 const getUnsecureImageMeta = id =>
-  `${process.env.BASE_SOURCE_GIF_THUMBS}${id}-size_restricted.gif`
+  `${process.env.BASE_SOURCE_GIF_THUMBS_UNSECURE}${id}-size_restricted.gif`
 
 const getVideoMeta = id =>
   `${process.env.BASE_SOURCE_GIF_THUMBS}${id}-mobile.mp4`
 
 const getUnsecureVideoMeta = id =>
-  `${process.env.BASE_SOURCE_GIF_THUMBS}${id}-mobile.mp4`
+  `${process.env.BASE_SOURCE_GIF_THUMBS_UNSECURE}${id}-mobile.mp4`
 
-const updateLoveAsync = (user, id) => {
-  // TODO: implem
-  // eslint-disable-next-line
-  console.log(user, id)
+const updateLoveAsync = async (user, gifId, alreadyLiked) => {
+  if (!alreadyLiked) {
+    await putLikeAsync(undefined, user.nickname, gifId)
+  } else {
+    await putUnlikeAsync(undefined, user.nickname, gifId)
+  }
 }
 
 const AppDetail = ({
@@ -69,7 +75,8 @@ const AppDetail = ({
   width,
   height,
   stars,
-  user
+  user,
+  checked
 }) => (
   <React.Fragment>
     <Head>
@@ -110,7 +117,11 @@ const AppDetail = ({
     <SocialBar>
       <CommentIcon number={comment.length} />
       <ViewIcon number={numberOfView} />
-      <Love number={like} onClick={() => updateLoveAsync(user, id)} />
+      <Love
+        number={like}
+        onClick={() => updateLoveAsync(user, id, checked)}
+        checked={checked}
+      />
       {githubLink && <Octicon number={stars} link={githubLink} />}
     </SocialBar>
   </React.Fragment>
@@ -132,7 +143,8 @@ AppDetail.propTypes = {
   comment: PropTypes.arrayOf(PropTypes.object),
   category: PropTypes.arrayOf(PropTypes.string),
   stars: PropTypes.number,
-  user: PropTypes.shape({ nickname: PropTypes.string })
+  user: PropTypes.shape({ nickname: PropTypes.string }),
+  checked: PropTypes.bool
 }
 
 AppDetail.defaultProps = {
@@ -143,7 +155,8 @@ AppDetail.defaultProps = {
   shortDescription: pkg.description,
   githubLink: undefined,
   stars: 0,
-  user: undefined
+  user: undefined,
+  checked: false
 }
 
 AppDetail.getInitialProps = async ({ req, query }) => {
@@ -154,13 +167,18 @@ AppDetail.getInitialProps = async ({ req, query }) => {
   const stars = gif.githubLink
     ? await getStargazersCountAsync(getFullNameFormUrl(gif.githubLink))
     : 0
+  const user = process.browser
+    ? getUserFromLocalCookie()
+    : getUserFromServerCookie(req)
+  const likes = await getUserLikesAsync(req, user.nickname)
   return {
     ...gif,
     username,
     originalUrl: req.originalUrl,
     width,
     height,
-    stars
+    stars,
+    checked: likes.includes(gif.id)
   }
 }
 

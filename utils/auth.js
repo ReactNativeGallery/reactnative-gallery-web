@@ -14,7 +14,7 @@ const getLock = (options) => {
 
 const getBaseUrl = () => `${window.location.protocol}//${window.location.host}`
 
-export const setSecret = secret => Cookie.set('secret', secret)
+export const setSecret = secret => Cookie.set('secret', secret, { expires: 90 })
 
 const getOptions = (container) => {
   const secret = uuid.v4()
@@ -88,8 +88,8 @@ export const setTokenAsync = token =>
       return resolve()
     }
     const user = jwtDecode(token)
-    Cookie.set('user', user)
-    Cookie.set('jwt', token)
+    Cookie.set('user', user, { expires: 90 })
+    Cookie.set('jwt', token, { expires: 90 })
     return resolve(user)
   })
 

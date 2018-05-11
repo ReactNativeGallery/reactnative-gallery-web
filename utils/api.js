@@ -7,7 +7,8 @@ const { memoize } = require('ramda')
 const axiosInstance = axios.create({
   baseURL: process.env.BASE_GIF_API,
   timeout: 30000,
-  headers: { 'Content-Type': 'application/json' }
+  headers: { 'Content-Type': 'application/json' },
+  validateStatus: () => true
 })
 
 const tokenData = {
@@ -112,6 +113,31 @@ const getGifByIdAsync = async (req, id) => {
   return result.json()
 }
 
+const getUserLikesAsync = async (req, id) => {
+  const result = await fetch(`${baseApi(req)}/users/${id}/likes`)
+  return result.json()
+}
+
+const putLikeAsync = async (req, username, gifId) => {
+  const result = await fetch(
+    `${baseApi(req)}/gif/${gifId}/user/${username}/like`,
+    {
+      method: 'put'
+    }
+  )
+  return result
+}
+
+const putUnlikeAsync = async (req, username, gifId) => {
+  const result = await fetch(
+    `${baseApi(req)}/gif/${gifId}/user/${username}/unlike`,
+    {
+      method: 'put'
+    }
+  )
+  return result
+}
+
 const putIncrementNumberOfViewAsync = async (req, id) => {
   if (process.env.NODE_ENV !== 'production') {
     return Promise.resolve()
@@ -136,5 +162,8 @@ module.exports = {
   getGifInfo,
   getAccessTokenAsync,
   getGifByIdAsync,
-  putIncrementNumberOfViewAsync
+  putIncrementNumberOfViewAsync,
+  getUserLikesAsync,
+  putLikeAsync,
+  putUnlikeAsync
 }

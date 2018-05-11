@@ -21,7 +21,9 @@ export const renderIcon = Comp => (
   <Comp style={{ marginBottom: -2, marginRight: 3.5 }} size="22" />
 )
 
-export const renderSmallIcon = Comp => <Comp color="#fff" size={22} />
+export const renderSmallIcon = (Comp, props) => (
+  <Comp color="#fff" size={22} {...props} />
+)
 
 export const Next = () => (
   <ChevronRight size="50" color="#777" style={{ marginBottom: -20 }} />

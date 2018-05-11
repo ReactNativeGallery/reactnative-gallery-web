@@ -79,8 +79,8 @@ class Gif extends Component {
     }
   }
 
-  pause = async () => {
-    if (this.playPromise !== undefined) {
+  pause = () => {
+    if (this.playPromise !== undefined && this.playPromise.then) {
       this.playPromise.then(() => this.video.pause())
     }
   }

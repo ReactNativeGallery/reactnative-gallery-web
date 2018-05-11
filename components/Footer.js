@@ -7,6 +7,7 @@ import Minus from 'react-feather/dist/icons/minus'
 import Slack from 'react-feather/dist/icons/slack'
 import Twitter from 'react-feather/dist/icons/twitter'
 import Info from 'react-feather/dist/icons/info'
+import Home from 'react-feather/dist/icons/home'
 import { getSlackDataAsync } from '../utils/slack'
 import { getStargazersCountAsync, getFullNameFormUrl } from '../utils/github'
 import pkg from '../package.json'
@@ -100,6 +101,10 @@ class Foot extends React.Component {
     const { stargazersCount, slackActive, slackTotal } = this.state
     return (
       <Footer>
+        <Link href={pkg.website}>
+          <Home />
+        </Link>
+        <HorizontalSeparator />
         <Link href={pkg.repository.url}>
           <Github />
           <Stats>{stargazersCount || wait}</Stats>
