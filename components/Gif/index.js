@@ -79,12 +79,15 @@ class Gif extends Component {
     }
   }
 
-  pause = () => {
-    this.video.pause()
+  pause = async () => {
+    if (this.playPromise !== undefined) {
+      this.playPromise.then(() => this.video.pause())
+    }
   }
 
+  playPromise = undefined
   play = () => {
-    this.video.play()
+    this.playPromise = this.video.play()
   }
 
   render() {
