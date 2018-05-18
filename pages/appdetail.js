@@ -69,77 +69,107 @@ const updateLoveAsync = async (user, gifId, alreadyLiked) => {
   }
 }
 
-const AppDetail = ({
-  id,
-  slug,
-  owner,
-  comment,
-  numberOfView,
-  like,
-  name,
-  shortDescription,
-  category,
-  username,
-  originalUrl,
-  githubLink,
-  width,
-  height,
-  stars,
-  user,
-  checked
-}) => (
-  <React.Fragment>
-    <Head>
-      <title>{getTitle(name, username)}</title>
-      <meta
-        name="description"
-        content={shortDescription}
-        property="description"
-      />
-      <meta name="keywords" content={category.join(', ')} property="keywords" />
-      <meta name="author" content={username} />
-      <meta property="twitter:card" content="player" />
-      <meta property="twitter:site" content="@rn_gallery" />
-      <meta property="twitter:url" content={`${pkg.website}${originalUrl}`} />
-      <meta name="twitter:player" content={`${pkg.website}/player?id=${id}`} />
-      <meta name="twitter:player:width" content="300" />
-      <meta name="twitter:player:height" content="450" />
-      <meta property="twitter:title" content={getTitle(name, username)} />
-      <meta property="twitter:description" content={shortDescription} />
-      <meta property="twitter:image" content={getImageMeta(id)} />
-      <meta property="og:type" content="video" />
-      <meta property="og:type" content="video.other" />
-      <meta property="og:title" content={getTitle(name, username)} />
-      <meta property="og:url" content={getImageMeta(id)} />
-      <meta property="og:description" content={shortDescription} />
-      <meta property="og:image" content={getUnsecureImageMeta(id)} />
-      <meta property="og:image:type" content="image/gif" />
-      <meta property="og:image:width" content={`${width}`} />
-      <meta property="og:image:height" content={`${height}`} />
-      <meta property="og:image:secure_url" content={getImageMeta(id)} />
-      <meta property="og:video" content={getUnsecureVideoMeta(id)} />
-      <meta property="og:video:secure_url" content={getVideoMeta(id)} />
-      <meta property="og:video:type" content="video/mp4" />
-    </Head>
-    <Subtitle>{name}</Subtitle>
-    <Author>by @{username}</Author>
-    <Gif gifId={id} slug={slug} username={owner.id} minWidth={250} autoplay />
-    <CountBar>
-      <CommentIcon number={comment.length} />
-      <ViewIcon number={numberOfView} />
-      <Love
-        number={like}
-        onClick={() => updateLoveAsync(user, id, checked)}
-        checked={checked}
-      />
-      {githubLink && <Octicon number={stars} link={githubLink} />}
-    </CountBar>
-    <SocialBar
-      title={getTitle(name, username)}
-      href={`${pkg.website}${originalUrl}`}
-    />
-  </React.Fragment>
-)
+class AppDetail extends React.Component {
+  state = {
+    checked: this.props.checked,
+    like: this.props.like
+  }
+  render() {
+    const {
+      id,
+      slug,
+      owner,
+      comment,
+      numberOfView,
+      name,
+      shortDescription,
+      category,
+      username,
+      originalUrl,
+      githubLink,
+      width,
+      height,
+      stars,
+      user
+    } = this.props
+    const { checked, like } = this.state
+    return (
+      <React.Fragment>
+        <Head>
+          <title>{getTitle(name, username)}</title>
+          <meta
+            name="description"
+            content={shortDescription}
+            property="description"
+          />
+          <meta
+            name="keywords"
+            content={category.join(', ')}
+            property="keywords"
+          />
+          <meta name="author" content={username} />
+          <meta property="twitter:card" content="player" />
+          <meta property="twitter:site" content="@rn_gallery" />
+          <meta
+            property="twitter:url"
+            content={`${pkg.website}${originalUrl}`}
+          />
+          <meta
+            name="twitter:player"
+            content={`${pkg.website}/player?id=${id}`}
+          />
+          <meta name="twitter:player:width" content="300" />
+          <meta name="twitter:player:height" content="450" />
+          <meta property="twitter:title" content={getTitle(name, username)} />
+          <meta property="twitter:description" content={shortDescription} />
+          <meta property="twitter:image" content={getImageMeta(id)} />
+          <meta property="og:type" content="video" />
+          <meta property="og:type" content="video.other" />
+          <meta property="og:title" content={getTitle(name, username)} />
+          <meta property="og:url" content={getImageMeta(id)} />
+          <meta property="og:description" content={shortDescription} />
+          <meta property="og:image" content={getUnsecureImageMeta(id)} />
+          <meta property="og:image:type" content="image/gif" />
+          <meta property="og:image:width" content={`${width}`} />
+          <meta property="og:image:height" content={`${height}`} />
+          <meta property="og:image:secure_url" content={getImageMeta(id)} />
+          <meta property="og:video" content={getUnsecureVideoMeta(id)} />
+          <meta property="og:video:secure_url" content={getVideoMeta(id)} />
+          <meta property="og:video:type" content="video/mp4" />
+        </Head>
+        <Subtitle>{name}</Subtitle>
+        <Author>by @{username}</Author>
+        <Gif
+          gifId={id}
+          slug={slug}
+          username={owner.id}
+          minWidth={250}
+          autoplay
+        />
+        <CountBar>
+          <CommentIcon number={comment.length} />
+          <ViewIcon number={numberOfView} />
+          <Love
+            number={like}
+            onClick={() => {
+              updateLoveAsync(user, id, checked)
+              this.setState({
+                checked: !checked,
+                like: checked ? like - 1 : like + 1
+              })
+            }}
+            checked={checked}
+          />
+          {githubLink && <Octicon number={stars} link={githubLink} />}
+        </CountBar>
+        <SocialBar
+          title={getTitle(name, username)}
+          href={`${pkg.website}${originalUrl}`}
+        />
+      </React.Fragment>
+    )
+  }
+}
 
 AppDetail.propTypes = {
   id: PropTypes.string.isRequired,
