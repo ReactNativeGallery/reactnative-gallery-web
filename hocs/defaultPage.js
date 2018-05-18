@@ -1,5 +1,9 @@
+/* eslint no-undef: 0, react/prop-types: 0 */
+
 import React from 'react'
 import Router from 'next/router'
+// import SocialBar from '../components/SocialBar'
+// import pkg from '../package.json'
 
 import { getUserFromServerCookie, getUserFromLocalCookie } from '../utils/auth'
 import Wrapper from '../components/Wrapper'
@@ -19,6 +23,13 @@ const defaultPage = (Page) => {
       }
     }
 
+    // state = {
+    //   href: process.browser
+    //     ? document.location.href
+    //     : `${pkg.website}${this.props.url.pathname}`,
+    //   title: process.browser ? document.title : pkg.description
+    // }
+
     componentDidMount() {
       window.addEventListener('storage', this.logout, false)
     }
@@ -34,9 +45,11 @@ const defaultPage = (Page) => {
     }
 
     render() {
+      // const { href, title } = this.state
       return (
         <Wrapper footer>
           <Page {...this.props} />
+          {/* <SocialBar href={href} title={title} /> */}
         </Wrapper>
       )
     }

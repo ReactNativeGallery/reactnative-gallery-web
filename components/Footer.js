@@ -23,6 +23,7 @@ const Footer = styled.section`
   min-height: 100px;
   z-index: 1000;
   text-align: center;
+  flex-shrink: 0;
 `
 
 const LinkStyl = styled.a`

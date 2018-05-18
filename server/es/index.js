@@ -183,7 +183,7 @@ const removeFromPropAsync = curry((index, type, key, id, keyValue) =>
     }
   }))
 
-const getSourceAsync = compose(then(propOr({}, '_source')))
+const getSourceAsync = then(propOr({}, '_source'))
 
 module.exports = {
   pingAsync,

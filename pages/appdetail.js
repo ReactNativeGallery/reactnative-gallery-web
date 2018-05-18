@@ -9,6 +9,7 @@ import Subtitle from '../components/Subtitle'
 import Love from '../components/Love'
 import Octicon from '../components/Octicon'
 import defaultPage from '../hocs/defaultPage'
+import SocialBar from '../components/SocialBar'
 import {
   getGifBySlugAsync,
   getGifInfo,
@@ -22,7 +23,7 @@ import Gif from '../components/Gif'
 import pkg from '../package.json'
 import { getUserFromLocalCookie, getUserFromServerCookie } from '../utils/auth'
 
-const SocialBar = styled.div`
+const CountBar = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -123,7 +124,7 @@ const AppDetail = ({
     <Subtitle>{name}</Subtitle>
     <Author>by @{username}</Author>
     <Gif gifId={id} slug={slug} username={owner.id} minWidth={250} autoplay />
-    <SocialBar>
+    <CountBar>
       <CommentIcon number={comment.length} />
       <ViewIcon number={numberOfView} />
       <Love
@@ -132,7 +133,11 @@ const AppDetail = ({
         checked={checked}
       />
       {githubLink && <Octicon number={stars} link={githubLink} />}
-    </SocialBar>
+    </CountBar>
+    <SocialBar
+      title={getTitle(name, username)}
+      href={`${pkg.website}${originalUrl}`}
+    />
   </React.Fragment>
 )
 

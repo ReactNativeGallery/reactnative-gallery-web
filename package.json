@@ -1,6 +1,6 @@
 {
   "name": "reactnative-gallery",
-  "description": "Show and tell for React Native developers",
+  "description": "Visualize React Native apps at a glance",
   "keywords": ["react-native", "react native example", "gallery"],
   "version": "1.0.0",
   "main": "index.js",
@@ -44,7 +44,7 @@
     "js-cookie": "2.2.0",
     "jwt-decode": "2.2.0",
     "newrelic": "4.1.0",
-    "next": "6.0.1",
+    "next": "6.0.3",
     "normalize.css": "8.0.0",
     "path-match": "1.2.4",
     "prop-types": "15.6.1",

@@ -21,6 +21,7 @@ const Wrapper = styled.section`
   @media (max-width: 481px) {
     font-size: 16px;
     padding: 0;
+    line-height: 1.21;
   }
 `
 

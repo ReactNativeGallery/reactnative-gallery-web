@@ -12,6 +12,7 @@ import GithubRibbon from '../components/GithubRibbon'
 import { getGifsAsync } from '../utils/api'
 import defaultPage from '../hocs/defaultPage'
 import pkg from '../package.json'
+import SocialBar from '../components/SocialBar'
 
 class Home extends React.Component {
   static propTypes = {
@@ -121,6 +122,7 @@ class Home extends React.Component {
         <Hideable xs>
           <GithubRibbon />
         </Hideable>
+        <SocialBar title={pkg.description} href={pkg.website} />
       </div>
     )
   }

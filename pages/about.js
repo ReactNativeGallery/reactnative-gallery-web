@@ -7,7 +7,7 @@ import defaultPage from '../hocs/defaultPage'
 const Speech = styled.div`
   margin: 30px;
   background-color: rgba(255, 255, 255, 0.72);
-  padding: 30px;
+  padding: 65px 80px;
   border-radius: 15px;
   border-width: 1;
   border-color: #BBB8A9,
@@ -15,6 +15,20 @@ const Speech = styled.div`
   color: #444;
   box-shadow: 1px 1px 3px grey;
   text-shadow: 0.2px 0.2px lightgrey;
+  @media (max-width: 769px) {
+    padding: 15px;
+    margin: 15px;
+  }
+`
+
+const Logo = styled.img`
+  border-radius: 100px;
+  float: right;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  @media (max-width: 769px) {
+    display: none;
+  }
 `
 
 const Container = styled.div`
@@ -24,12 +38,14 @@ const Container = styled.div`
   flex-direction: column;
   padding: 15px;
   color: #fff;
+  max-width: 860px;
 `
 
 const About = () => (
   <Container>
     <Info size={48} />
     <Speech>
+      <Logo src="/static/images/logo.png" />
       <Paragraph>
         <strong>Reactnative.gallery</strong> is a website where you can
         visualize apps and open source components as videos.<br />
