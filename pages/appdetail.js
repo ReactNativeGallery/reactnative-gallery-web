@@ -123,7 +123,7 @@ class AppDetail extends React.Component {
           <meta property="twitter:title" content={getTitle(name, username)} />
           <meta property="twitter:description" content={shortDescription} />
           <meta property="twitter:image" content={getImageMeta(id)} />
-          <meta property="fb:app_id" content="541853472878889 " />
+          <meta property="fb:app_id" content="541853472878889" />
           <meta property="og:site_name" content="reactnative.gallery" />
           <meta property="og:type" content="video" />
           <meta property="og:type" content="video.other" />
