@@ -123,6 +123,8 @@ class AppDetail extends React.Component {
           <meta property="twitter:title" content={getTitle(name, username)} />
           <meta property="twitter:description" content={shortDescription} />
           <meta property="twitter:image" content={getImageMeta(id)} />
+          <meta property="fb:app_id" content="541853472878889 " />
+          <meta property="og:site_name" content="reactnative.gallery" />
           <meta property="og:type" content="video" />
           <meta property="og:type" content="video.other" />
           <meta property="og:title" content={getTitle(name, username)} />
@@ -136,6 +138,10 @@ class AppDetail extends React.Component {
           <meta property="og:video" content={getUnsecureVideoMeta(id)} />
           <meta property="og:video:secure_url" content={getVideoMeta(id)} />
           <meta property="og:video:type" content="video/mp4" />
+          <meta
+            property="og:video:iframe"
+            content={`${pkg.website}/player?id=${id}`}
+          />
         </Head>
         <Subtitle>{name}</Subtitle>
         <Author>by @{username}</Author>
