@@ -91,12 +91,13 @@ const Mailchimp = ({
 )
 
 Mailchimp.defaultProps = {
-  email: ''
+  email: '',
+  memberCount: process.env.MAILCHIMP_MEMBER_COUNT_DEFAULT
 }
 
 Mailchimp.propTypes = {
   action: PropTypes.string.isRequired,
-  memberCount: PropTypes.string.isRequired,
+  memberCount: PropTypes.string,
   type: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   email: PropTypes.string
