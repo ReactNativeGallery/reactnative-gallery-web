@@ -80,7 +80,7 @@ const HorizontalSeparator = () => (
 const wait = 'wait...'
 
 class Foot extends React.Component {
-  state = { slackActive: 0, slackTotal: 0, stargazersCount: 0 }
+  state = { slackActive: undefined, slackTotal: 0, stargazersCount: 0 }
   componentDidMount() {
     this.init()
   }
@@ -133,7 +133,7 @@ class Foot extends React.Component {
                 {slackActive}/{slackTotal}
               </span>
             )}
-            {!slackActive && wait}
+            {slackActive === undefined && wait}
           </Stats>
         </Link>
         <HorizontalSeparator />

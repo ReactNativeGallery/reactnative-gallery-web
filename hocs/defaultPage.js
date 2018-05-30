@@ -2,8 +2,6 @@
 
 import React from 'react'
 import Router from 'next/router'
-// import SocialBar from '../components/SocialBar'
-// import pkg from '../package.json'
 
 import { getUserFromServerCookie, getUserFromLocalCookie } from '../utils/auth'
 import Wrapper from '../components/Wrapper'
