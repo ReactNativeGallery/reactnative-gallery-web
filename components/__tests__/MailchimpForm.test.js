@@ -9,6 +9,7 @@ Enzyme.configure({ adapter: new Adapter() })
 it('MailchimpForm can be created', () => {
   const comp = renderer.create(<MailchimpForm
     action="test"
+    memberCount="1"
     type="test"
     email="test@email.com"
     onChange={() => {}}
@@ -20,6 +21,7 @@ it('<MailchimpForm /> toMatchSnapshot', () => {
   const tree = renderer
     .create(<MailchimpForm
       action="test"
+      memberCount="1"
       type="test"
       email="test@email.com"
       onChange={() => {}}
@@ -33,6 +35,7 @@ it('<MailchimpForm /> simulate input change ', () => {
   const email = 'cool@gmel.fr'
   const form = shallow(<MailchimpForm
     action="test"
+    memberCount="1"
     type="test"
     email={email}
     onChange={() => {}}
