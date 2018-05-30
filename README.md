@@ -1,5 +1,11 @@
 # 🎨 [reactnative.gallery](https://reactnative.gallery) website
 
+<p align="center">
+  <a href="https://reactnative.gallery">
+    <img alt="reactnative.gallery" src="https://raw.githubusercontent.com/ReactNativeGallery/reactnative-gallery-web/master/static/images/background.jpeg"/>
+  </a>
+</p>
+
 [![CircleCI](https://circleci.com/gh/ReactNativeGallery/reactnative-gallery-web/tree/master.svg?style=shield)](https://circleci.com/gh/ReactNativeGallery/reactnative-gallery-web/tree/master)
 [![codecov](https://codecov.io/gh/ReactNativeGallery/reactnative-gallery-web/branch/master/graph/badge.svg)](https://codecov.io/gh/ReactNativeGallery/reactnative-gallery-web)
 [![slack](https://slack.reactnative.gallery/badge.svg)](https://slack.reactnative.gallery)
@@ -23,8 +29,6 @@ For those who are searching for a particular component, you can search by catego
 
 ## 🏗 ToDo list
 
-* [ ] Load, create & update gifs
-* [ ] User management
-* [ ] Like a gif
-* [ ] Comment a gif
-* [ ] Number of view
+* [ ] Update gifs info
+* [x] Like a gif
+* [x] Number of view
