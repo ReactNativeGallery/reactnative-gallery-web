@@ -9,32 +9,36 @@ import Notice from '../components/Notice'
 import Hideable from '../components/Hideable'
 import MailchimpForm from '../components/MailchimpForm'
 import GithubRibbon from '../components/GithubRibbon'
-import { getGifsAsync } from '../utils/api'
+import { getGifsAsync, memberCountAsync } from '../utils/api'
 import defaultPage from '../hocs/defaultPage'
 import pkg from '../package.json'
 import SocialBar from '../components/SocialBar'
 
-class Home extends React.Component {
+class Home extends React.PureComponent {
   static propTypes = {
     gifs: PropTypes.arrayOf(PropTypes.object).isRequired,
     type: PropTypes.string,
     email: PropTypes.string,
-    action: PropTypes.string
+    action: PropTypes.string,
+    memberCount: PropTypes.string
   }
 
   static defaultProps = {
     type: 'developer',
     email: '',
-    action: process.env.MAILCHIMP_ACTION
+    action: process.env.MAILCHIMP_ACTION,
+    memberCount: process.env.MAILCHIMP_MEMBER_COUNT_DEFAULT
   }
 
   static getInitialProps = async ({ query, req }) => {
     const { utm_campaign, email } = query
     const gifs = await getGifsAsync(req)
+    const memberCount = await memberCountAsync(req)
     return {
       type: utm_campaign || 'developer',
       gifs,
-      email
+      email,
+      memberCount
     }
   }
 
@@ -44,7 +48,9 @@ class Home extends React.Component {
   }
 
   render() {
-    const { gifs, type, action } = this.props
+    const {
+      gifs, type, action, memberCount
+    } = this.props
     return (
       <div>
         <Head>
@@ -95,6 +101,7 @@ class Home extends React.Component {
             style={{ maxWidth: 800, width: '100%', margin: 'auto' }}
           >
             <MailchimpForm
+              memberCount={memberCount}
               action={action}
               type={type}
               email={this.state.email}

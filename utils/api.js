@@ -151,6 +151,11 @@ const putIncrementNumberOfViewAsync = async (req, id) => {
   return result
 }
 
+const memberCountAsync = async (req) => {
+  const result = await fetch(`${baseApi(req)}/stats/member_count`)
+  return result.text()
+}
+
 module.exports = {
   getToken,
   getStatusAsync,
@@ -165,5 +170,6 @@ module.exports = {
   putIncrementNumberOfViewAsync,
   getUserLikesAsync,
   putLikeAsync,
-  putUnlikeAsync
+  putUnlikeAsync,
+  memberCountAsync
 }

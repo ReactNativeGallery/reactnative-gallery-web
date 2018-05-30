@@ -5,7 +5,9 @@ import Github from 'react-feather/dist/icons/github'
 import Mail from 'react-feather/dist/icons/mail'
 import Minus from 'react-feather/dist/icons/minus'
 import Slack from 'react-feather/dist/icons/slack'
-import Twitter from 'react-feather/dist/icons/twitter'
+// import Twitter from 'react-feather/dist/icons/twitter'
+import LinkedIn from 'react-feather/dist/icons/linkedin'
+import Facebook from 'react-feather/dist/icons/facebook'
 import Info from 'react-feather/dist/icons/info'
 import Home from 'react-feather/dist/icons/home'
 import { getSlackDataAsync } from '../utils/slack'
@@ -110,9 +112,17 @@ class Foot extends React.Component {
           <Github />
           <Stats>{stargazersCount || wait}</Stats>
         </Link>
-        <HorizontalSeparator />
+        {/* <HorizontalSeparator />
         <Link href="https://twitter.com/rn_gallery">
           <Twitter />
+        </Link> */}
+        <HorizontalSeparator />
+        <Link href="https://www.linkedin.com/groups/13590886">
+          <LinkedIn />
+        </Link>
+        <HorizontalSeparator />
+        <Link href="https://www.facebook.com/reactnative.gallery">
+          <Facebook />
         </Link>
         <HorizontalSeparator />
         <Link href={process.env.SLACK_IN}>

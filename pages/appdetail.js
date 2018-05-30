@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 import styled from 'styled-components'
 import Head from 'next/head'
-import CommentIcon from '../components/Comment'
 import ViewIcon from '../components/ViewIcon'
 import Subtitle from '../components/Subtitle'
 import Love from '../components/Love'
@@ -79,7 +78,6 @@ class AppDetail extends React.Component {
       id,
       slug,
       owner,
-      comment,
       numberOfView,
       name,
       shortDescription,
@@ -153,7 +151,6 @@ class AppDetail extends React.Component {
           autoplay
         />
         <CountBar>
-          <CommentIcon number={comment.length} />
           <ViewIcon number={numberOfView} />
           <Love
             number={like}
@@ -190,7 +187,6 @@ AppDetail.propTypes = {
   height: PropTypes.number.isRequired,
   githubLink: PropTypes.string,
   owner: PropTypes.shape({ id: PropTypes.string }).isRequired,
-  comment: PropTypes.arrayOf(PropTypes.object),
   category: PropTypes.arrayOf(PropTypes.string),
   stars: PropTypes.number,
   user: PropTypes.shape({ nickname: PropTypes.string }),
@@ -198,7 +194,6 @@ AppDetail.propTypes = {
 }
 
 AppDetail.defaultProps = {
-  comment: [],
   category: pkg.keywords,
   numberOfView: 0,
   like: 0,

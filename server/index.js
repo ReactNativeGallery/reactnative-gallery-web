@@ -12,6 +12,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const { join } = require('path')
 const { setEsEndpoints } = require('./es/endpoints')
+const getMailchimpMemberCount = require('../utils/mailchimp')
 
 const port = parseInt(process.env.PORT, 10) || 3000
 const dev = process.env.NODE_ENV !== 'production'
@@ -46,6 +47,12 @@ app.prepare().then(() => {
     const path = join(__dirname, 'robots.txt')
     res.type('text/plain')
     res.send(fs.readFileSync(path, { encoding: 'utf8' }))
+  })
+
+  server.get('/stats/member_count', async (req, res) => {
+    res.type('text/plain')
+    const membersCount = await getMailchimpMemberCount()
+    res.send(`${membersCount}`)
   })
 
   server.get('/sitemap.xml', (req, res) => {

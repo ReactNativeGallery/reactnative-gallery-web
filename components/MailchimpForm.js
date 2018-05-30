@@ -58,7 +58,7 @@ export const MailchimpButton = styled.button`
 `
 
 const Mailchimp = ({
-  action, type, onChange, email
+  action, type, onChange, email, memberCount
 }) => (
   <div>
     <CleanHr />
@@ -72,7 +72,7 @@ const Mailchimp = ({
       <MailchimpInput
         type="email"
         name="EMAIL"
-        placeholder="Your e-mail"
+        placeholder={`Join yet ${memberCount} members`}
         ariaRequired="true"
         required="required"
         value={email}
@@ -96,6 +96,7 @@ Mailchimp.defaultProps = {
 
 Mailchimp.propTypes = {
   action: PropTypes.string.isRequired,
+  memberCount: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   email: PropTypes.string

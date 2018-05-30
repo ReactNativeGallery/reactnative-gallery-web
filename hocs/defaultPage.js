@@ -22,14 +22,6 @@ const defaultPage = (Page) => {
         isAuthenticated: !!user
       }
     }
-
-    // state = {
-    //   href: process.browser
-    //     ? document.location.href
-    //     : `${pkg.website}${this.props.url.pathname}`,
-    //   title: process.browser ? document.title : pkg.description
-    // }
-
     componentDidMount() {
       window.addEventListener('storage', this.logout, false)
     }
@@ -45,11 +37,9 @@ const defaultPage = (Page) => {
     }
 
     render() {
-      // const { href, title } = this.state
       return (
         <Wrapper footer>
           <Page {...this.props} />
-          {/* <SocialBar href={href} title={title} /> */}
         </Wrapper>
       )
     }
