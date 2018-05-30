@@ -1151,9 +1151,9 @@ atob@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.0.3.tgz#19c7a760473774468f20b2d2d03372ad7d4cbf5d"
 
-auth0-js@^9.5.1:
-  version "9.5.1"
-  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.5.1.tgz#34dea6b0f11b5e5ee139605611f49b1c0f15dbb1"
+auth0-js@^9.6.0:
+  version "9.6.0"
+  resolved "https://registry.yarnpkg.com/auth0-js/-/auth0-js-9.6.0.tgz#d9ae3014807366d3b479c2ad18a3537f3e0c9699"
   dependencies:
     base64-js "^1.2.0"
     idtoken-verifier "^1.2.0"
@@ -1163,11 +1163,11 @@ auth0-js@^9.5.1:
     url-join "^1.1.0"
     winchan "^0.2.0"
 
-auth0-lock@11.6.1:
-  version "11.6.1"
-  resolved "https://registry.yarnpkg.com/auth0-lock/-/auth0-lock-11.6.1.tgz#337c3268050fc36e3b00b2e0276bf5e620916409"
+auth0-lock@11.7.0:
+  version "11.7.0"
+  resolved "https://registry.yarnpkg.com/auth0-lock/-/auth0-lock-11.7.0.tgz#936eb9adb385eba9e31cb22d8952eb7159493e44"
   dependencies:
-    auth0-js "^9.5.1"
+    auth0-js "^9.6.0"
     blueimp-md5 "2.3.1"
     fbjs "^0.3.1"
     immutable "^3.7.3"
@@ -5999,9 +5999,9 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-newrelic@4.1.1:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-4.1.1.tgz#ac85dfa1c7b86bd76f757b1f6ff602b684a87199"
+newrelic@4.1.3:
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-4.1.3.tgz#bd9f3b767e2b84f2ff6042dc160578f52b4de118"
   dependencies:
     "@newrelic/koa" "^1.0.0"
     "@tyriar/fibonacci-heap" "^2.0.7"
@@ -6973,9 +6973,9 @@ react-animations@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-animations/-/react-animations-1.0.0.tgz#d96222920dfeabec8984d9b2ef2c5a5aadb40f06"
 
-react-dom@16.3.2:
-  version "16.3.2"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.2.tgz#cb90f107e09536d683d84ed5d4888e9640e0e4df"
+react-dom@16.4.0:
+  version "16.4.0"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.4.0.tgz#099f067dd5827ce36a29eaf9a6cdc7cbf6216b1e"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -7042,9 +7042,9 @@ react-transition-group@^2.2.1:
     prop-types "^15.5.8"
     warning "^3.0.0"
 
-react@16.3.2:
-  version "16.3.2"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.3.2.tgz#fdc8420398533a1e58872f59091b272ce2f91ea9"
+react@16.4.0:
+  version "16.4.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.4.0.tgz#402c2db83335336fba1962c08b98c6272617d585"
   dependencies:
     fbjs "^0.8.16"
     loose-envify "^1.1.0"
@@ -7933,9 +7933,9 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
-styled-components@3.2.6:
-  version "3.2.6"
-  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.2.6.tgz#99e6e75a746bdedd295a17e03dd1493055a1cc3b"
+styled-components@3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.3.0.tgz#335b1b2b673b416cd5ec012010e237ed1f877fe9"
   dependencies:
     buffer "^5.0.3"
     css-to-react-native "^2.0.3"
