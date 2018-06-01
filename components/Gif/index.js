@@ -32,7 +32,8 @@ class Gif extends Component {
     slug: PropTypes.string,
     minWidth: PropTypes.number,
     autoplay: PropTypes.bool,
-    styles: PropTypes.object
+    styles: PropTypes.object,
+    rotate: PropTypes.bool
   }
 
   static defaultProps = {
@@ -40,7 +41,8 @@ class Gif extends Component {
     autoplay: false,
     styles: {},
     username: undefined,
-    slug: undefined
+    slug: undefined,
+    rotate: false
   }
 
   state = {
@@ -92,7 +94,13 @@ class Gif extends Component {
 
   render() {
     const {
-      gifId, username, slug, minWidth, autoplay, styles
+      gifId,
+      username,
+      slug,
+      minWidth,
+      autoplay,
+      styles,
+      rotate
     } = this.props
     return (
       <Smartphone
@@ -100,6 +108,7 @@ class Gif extends Component {
         onMouseLeave={this.onMouseLeaveHandler}
         onClick={this.onClick}
         minWidth={minWidth}
+        rotate={rotate}
         cursorPointer={autoplay}
         style={{
           background: this.state.play && '#141414',
@@ -121,11 +130,12 @@ class Gif extends Component {
             muted
             poster={`${process.env.BASE_SOURCE_GIF_THUMBS}${gifId}-poster.jpg`}
             style={{
-              width: '100%',
-              height: '100%',
+              width: rotate ? 450 : '100%',
+              height: rotate ? 250 : '100%',
               position: 'absolute',
-              top: 0,
-              left: 0
+              top: rotate ? 100 : 0,
+              left: rotate ? -100 : 0,
+              transform: rotate ? 'rotate(0.25turn)' : 'none'
             }}
           >
             <track kind="captions" />

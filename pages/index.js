@@ -114,7 +114,7 @@ class Home extends React.PureComponent {
             </Hideable>
             <Grid columns="repeat(auto-fit,minmax(200px,1fr))" gap="20px">
               {gifs &&
-                gifs.map(gif => (
+                gifs.filter(g => !g.rotate).map(gif => (
                   <Cell key={gif.id}>
                     <Gif
                       gifId={gif.id}

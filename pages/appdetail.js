@@ -27,7 +27,7 @@ const CountBar = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin-top: 17px;
+  margin-top: ${({ rotate }) => (Boolean(rotate) ? '-100px' : '17px')};
   min-width: 250px;
 `
 
@@ -88,7 +88,8 @@ class AppDetail extends React.Component {
       width,
       height,
       stars,
-      user
+      user,
+      rotate
     } = this.props
     const { checked, like } = this.state
     return (
@@ -149,8 +150,9 @@ class AppDetail extends React.Component {
           username={owner.id}
           minWidth={250}
           autoplay
+          rotate={rotate}
         />
-        <CountBar>
+        <CountBar rotate={rotate}>
           <ViewIcon number={numberOfView} />
           <Love
             number={like}
@@ -190,7 +192,8 @@ AppDetail.propTypes = {
   category: PropTypes.arrayOf(PropTypes.string),
   stars: PropTypes.number,
   user: PropTypes.shape({ nickname: PropTypes.string }),
-  checked: PropTypes.bool
+  checked: PropTypes.bool,
+  rotate: PropTypes.bool
 }
 
 AppDetail.defaultProps = {
@@ -201,7 +204,8 @@ AppDetail.defaultProps = {
   githubLink: undefined,
   stars: 0,
   user: undefined,
-  checked: false
+  checked: false,
+  rotate: false
 }
 
 AppDetail.getInitialProps = async ({ req, query }) => {

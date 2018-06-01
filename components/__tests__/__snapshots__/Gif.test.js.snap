@@ -2,10 +2,11 @@
 
 exports[`<Gif /> toMatchSnapshot 1`] = `
 <div
-  className="Smartphone-s165niw0-0 dRCHgZ"
+  className="Smartphone-s165niw0-0 bQCxFY"
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  rotate={false}
   style={
     Object {
       "background": false,
@@ -34,6 +35,7 @@ exports[`<Gif /> toMatchSnapshot 1`] = `
           "left": 0,
           "position": "absolute",
           "top": 0,
+          "transform": "none",
           "width": "100%",
         }
       }

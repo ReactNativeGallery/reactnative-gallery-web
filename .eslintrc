@@ -6,7 +6,8 @@
     "semi": ["error", "never"],
     "react/jsx-filename-extension": 0,
     "max-len": ["error", { "code": 80 }],
-    "camelcase": 0
+    "camelcase": 0,
+    "no-extra-boolean-cast": 0
   },
   "globals": {
     "window": false,
