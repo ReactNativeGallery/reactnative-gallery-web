@@ -20,4 +20,6 @@ injectGlobal`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Open Sans', sans-serif;
+    margin-bottom: 100px;
+    height: auto;
 }`

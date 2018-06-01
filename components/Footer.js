@@ -15,6 +15,7 @@ import { getStargazersCountAsync, getFullNameFormUrl } from '../utils/github'
 import pkg from '../package.json'
 
 const Footer = styled.section`
+  position: absolute;
   width: 100%;
   display: flex;
   justify-content: center;

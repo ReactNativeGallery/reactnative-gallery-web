@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Footer from './Footer'
@@ -27,10 +27,10 @@ const Wrapper = styled.section`
 
 function Wrap({ children, footer }) {
   return (
-    <Wrapper>
-      {children}
+    <Fragment>
+      <Wrapper>{children}</Wrapper>
       {footer && <Footer />}
-    </Wrapper>
+    </Fragment>
   )
 }
 
