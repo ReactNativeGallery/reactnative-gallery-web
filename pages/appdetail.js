@@ -9,13 +9,15 @@ import Love from '../components/Love'
 import Octicon from '../components/Octicon'
 import defaultPage from '../hocs/defaultPage'
 import SocialBar from '../components/SocialBar'
+import MailchimpForm from '../components/MailchimpForm'
 import {
   getGifBySlugAsync,
   getGifInfo,
   putIncrementNumberOfViewAsync,
   getUserLikesAsync,
   putLikeAsync,
-  putUnlikeAsync
+  putUnlikeAsync,
+  memberCountAsync
 } from '../utils/api'
 import { getStargazersCountAsync, getFullNameFormUrl } from '../utils/github'
 import Gif from '../components/Gif'
@@ -71,7 +73,8 @@ const updateLoveAsync = async (user, gifId, alreadyLiked) => {
 class AppDetail extends React.Component {
   state = {
     checked: this.props.checked,
-    like: this.props.like
+    like: this.props.like,
+    email: undefined
   }
   render() {
     const {
@@ -89,9 +92,12 @@ class AppDetail extends React.Component {
       height,
       stars,
       user,
-      rotate
+      rotate,
+      type,
+      action,
+      memberCount
     } = this.props
-    const { checked, like } = this.state
+    const { checked, like, email } = this.state
     return (
       <React.Fragment>
         <Head>
@@ -171,6 +177,13 @@ class AppDetail extends React.Component {
           title={getTitle(name, username)}
           href={`${pkg.website}${originalUrl}`}
         />
+        <MailchimpForm
+          memberCount={memberCount}
+          action={action}
+          type={type}
+          email={email}
+          onChange={mel => this.setState({ email: mel })}
+        />
       </React.Fragment>
     )
   }
@@ -193,7 +206,10 @@ AppDetail.propTypes = {
   stars: PropTypes.number,
   user: PropTypes.shape({ nickname: PropTypes.string }),
   checked: PropTypes.bool,
-  rotate: PropTypes.bool
+  rotate: PropTypes.bool,
+  type: PropTypes.string,
+  action: PropTypes.string,
+  memberCount: PropTypes.string
 }
 
 AppDetail.defaultProps = {
@@ -205,7 +221,10 @@ AppDetail.defaultProps = {
   stars: 0,
   user: undefined,
   checked: false,
-  rotate: false
+  rotate: false,
+  type: 'developer',
+  action: process.env.MAILCHIMP_ACTION,
+  memberCount: process.env.MAILCHIMP_MEMBER_COUNT_DEFAULT
 }
 
 AppDetail.getInitialProps = async ({ req, query }) => {
@@ -220,6 +239,7 @@ AppDetail.getInitialProps = async ({ req, query }) => {
     ? getUserFromLocalCookie()
     : getUserFromServerCookie(req)
   const likes = user ? await getUserLikesAsync(req, user && user.nickname) : []
+  const memberCount = await memberCountAsync(req)
   return {
     ...gif,
     username,
@@ -227,6 +247,7 @@ AppDetail.getInitialProps = async ({ req, query }) => {
     width,
     height,
     stars,
+    memberCount,
     checked: (likes && likes.includes(gif.id)) || false
   }
 }
