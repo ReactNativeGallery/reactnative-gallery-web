@@ -5,7 +5,6 @@ import Github from 'react-feather/dist/icons/github'
 import Mail from 'react-feather/dist/icons/mail'
 import Minus from 'react-feather/dist/icons/minus'
 import Slack from 'react-feather/dist/icons/slack'
-// import Twitter from 'react-feather/dist/icons/twitter'
 import LinkedIn from 'react-feather/dist/icons/linkedin'
 import Facebook from 'react-feather/dist/icons/facebook'
 import Info from 'react-feather/dist/icons/info'
@@ -13,6 +12,7 @@ import Home from 'react-feather/dist/icons/home'
 import { getSlackDataAsync } from '../utils/slack'
 import { getStargazersCountAsync, getFullNameFormUrl } from '../utils/github'
 import pkg from '../package.json'
+import Hideable from './Hideable'
 
 const Footer = styled.section`
   position: absolute;
@@ -27,6 +27,10 @@ const Footer = styled.section`
   z-index: 1000;
   text-align: center;
   flex-shrink: 0;
+  @media (max-width: 481px) {
+    padding: 0;
+    margin: 35px auto;
+  }
 `
 
 const LinkStyl = styled.a`
@@ -40,12 +44,18 @@ const LinkStyl = styled.a`
   &:visited: {
     color: #fff;
   }
+  @media (max-width: 481px) {
+    min-width: 35px;
+  }
 `
 
 const Stats = styled.div`
   color: #fff,
   text-decoration-line: 'none';
   font-size: 10px;
+  @media (max-width: 481px) {
+    display: none;
+  }
 `
 
 const Link = ({ href, children, target }) => (
@@ -70,12 +80,14 @@ Link.defaultProps = {
 }
 
 const HorizontalSeparator = () => (
-  <Minus
-    style={{
-      color: '#fff',
-      opacity: 0.5
-    }}
-  />
+  <Hideable xs>
+    <Minus
+      style={{
+        color: '#fff',
+        opacity: 0.5
+      }}
+    />
+  </Hideable>
 )
 
 const wait = 'wait...'
@@ -113,10 +125,6 @@ class Foot extends React.Component {
           <Github />
           <Stats>{stargazersCount || wait}</Stats>
         </Link>
-        {/* <HorizontalSeparator />
-        <Link href="https://twitter.com/rn_gallery">
-          <Twitter />
-        </Link> */}
         <HorizontalSeparator />
         <Link href="https://www.linkedin.com/groups/13590886">
           <LinkedIn />

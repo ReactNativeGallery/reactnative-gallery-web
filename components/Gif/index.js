@@ -108,7 +108,7 @@ class Gif extends Component {
         onMouseLeave={this.onMouseLeaveHandler}
         onClick={this.onClick}
         minWidth={minWidth}
-        rotate={rotate}
+        rotate={rotate ? 'true' : undefined}
         cursorPointer={autoplay}
         style={{
           background: this.state.play && '#141414',

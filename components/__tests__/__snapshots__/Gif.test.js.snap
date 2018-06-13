@@ -6,7 +6,7 @@ exports[`<Gif /> toMatchSnapshot 1`] = `
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
-  rotate={false}
+  rotate={undefined}
   style={
     Object {
       "background": false,

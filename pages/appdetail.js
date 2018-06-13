@@ -150,9 +150,9 @@ class AppDetail extends React.Component {
           username={owner.id}
           minWidth={250}
           autoplay
-          rotate={rotate}
+          rotate={rotate ? 'true' : undefined}
         />
-        <CountBar rotate={rotate}>
+        <CountBar rotate={rotate ? 'true' : undefined}>
           <ViewIcon number={numberOfView} />
           <Love
             number={like}
