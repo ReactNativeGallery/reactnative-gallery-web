@@ -11,18 +11,26 @@ const {
 } = process.env
 
 const getMailchimpMemberCount = async () => {
-  const result = await axios({
-    url: `${MAILCHIMP_API}/lists/${MAILCHIMP_LIST_ID}`,
-    method: 'GET',
-    headers: {
-      Authorization: `apikey ${MAILCHIMP_API_KEY}`
-    }
-  })
-  return pathOr(
-    MAILCHIMP_MEMBER_COUNT_DEFAULT,
-    ['data', 'stats', 'member_count'],
-    result
-  )
+  try {
+    const result = await axios({
+      url: `${MAILCHIMP_API}/lists/${MAILCHIMP_LIST_ID}`,
+      method: 'GET',
+      headers: {
+        Authorization: `apikey ${MAILCHIMP_API_KEY}`
+      },
+      validateStatus: () => true,
+      timeout: 300
+    })
+    return pathOr(
+      MAILCHIMP_MEMBER_COUNT_DEFAULT,
+      ['data', 'stats', 'member_count'],
+      result
+    )
+  } catch (error) {
+    // eslint-disable-next-line
+    console.error(error)
+    return MAILCHIMP_MEMBER_COUNT_DEFAULT
+  }
 }
 
 module.exports = getMailchimpMemberCount
