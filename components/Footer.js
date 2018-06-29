@@ -2,25 +2,24 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Github from 'react-feather/dist/icons/github'
-import Mail from 'react-feather/dist/icons/mail'
 import Minus from 'react-feather/dist/icons/minus'
-import Slack from 'react-feather/dist/icons/slack'
 import LinkedIn from 'react-feather/dist/icons/linkedin'
 import Facebook from 'react-feather/dist/icons/facebook'
 import Info from 'react-feather/dist/icons/info'
 import Home from 'react-feather/dist/icons/home'
-import { getSlackDataAsync } from '../utils/slack'
+import Heart from 'react-feather/dist/icons/heart'
+import Briefcase from 'react-feather/dist/icons/briefcase'
 import { getStargazersCountAsync, getFullNameFormUrl } from '../utils/github'
 import pkg from '../package.json'
 import Hideable from './Hideable'
 
 const Footer = styled.section`
   position: absolute;
-  width: 100%;
+  width: 95%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 25px;
+  padding: 25px 0;
   margin-top: 100px;
   background-color: transparent;
   min-height: 100px;
@@ -90,16 +89,27 @@ const HorizontalSeparator = () => (
   </Hideable>
 )
 
+const LastLine = styled.small`
+  position: absolute;
+  bottom: 0;
+  padding: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 1000;
+  a {
+    color: white;
+  }
+`
+
 const wait = 'wait...'
 
 class Foot extends React.Component {
-  state = { slackActive: undefined, slackTotal: 0, stargazersCount: 0 }
+  state = { stargazersCount: 0 }
   componentDidMount() {
-    this.init()
-  }
-  getSlackInfo = async () => {
-    const { total: slackTotal, active: slackActive } = await getSlackDataAsync()
-    this.setState({ slackTotal, slackActive })
+    this.getStargazersCount()
   }
   getStargazersCount = async () => {
     const fullName =
@@ -109,59 +119,58 @@ class Foot extends React.Component {
     const stargazersCount = await getStargazersCountAsync(fullName)
     this.setState({ stargazersCount })
   }
-  init = async () => {
-    await this.getSlackInfo()
-    await this.getStargazersCount()
-  }
   render() {
-    const { stargazersCount, slackActive, slackTotal } = this.state
+    const { stargazersCount } = this.state
     return (
-      <Footer>
-        <Link href={pkg.website} target="_self">
-          <Home />
-        </Link>
-        <HorizontalSeparator />
-        <Link href={pkg.repository.url}>
-          <Github />
-          <Stats>{stargazersCount || wait}</Stats>
-        </Link>
-        <HorizontalSeparator />
-        <Link href="https://www.linkedin.com/groups/13590886">
-          <LinkedIn />
-        </Link>
-        <HorizontalSeparator />
-        <Link href="https://www.facebook.com/reactnative.gallery">
-          <Facebook />
-        </Link>
-        <HorizontalSeparator />
-        <Link href={process.env.SLACK_IN}>
-          <Slack />
-          <Stats>
-            {!!slackTotal && (
-              <span>
-                {slackActive}/{slackTotal}
-              </span>
-            )}
-            {slackActive === undefined && wait}
-          </Stats>
-        </Link>
-        <HorizontalSeparator />
-        <Link href="https://spectrum.chat/reactnative-gallery">
-          <img
-            style={{ maxWidth: 18 }}
-            src="/static/images/spectrum.svg"
-            alt="Join the community on Spectrum"
-          />
-        </Link>
-        <HorizontalSeparator />
-        <Link href="/about" target="_self">
-          <Info />
-        </Link>
-        <HorizontalSeparator />
-        <Link href="mailto:xcapetir+rng@gmail.com">
-          <Mail />
-        </Link>
-      </Footer>
+      <div>
+        <Footer>
+          <Link href={pkg.website} target="_self">
+            <Home />
+          </Link>
+          <HorizontalSeparator />
+          <Link href={pkg.repository.url}>
+            <Github />
+            <Stats>{stargazersCount || wait}</Stats>
+          </Link>
+          <HorizontalSeparator />
+          <Link href="https://www.linkedin.com/groups/13590886">
+            <LinkedIn />
+          </Link>
+          <HorizontalSeparator />
+          <Link href="https://www.facebook.com/reactnative.gallery">
+            <Facebook />
+          </Link>
+          <HorizontalSeparator />
+          <Link href="https://spectrum.chat/reactnative-gallery">
+            <img
+              style={{ maxWidth: 18 }}
+              src="/static/images/spectrum.svg"
+              alt="Join the community on Spectrum"
+            />
+          </Link>
+          <HorizontalSeparator />
+          <Link href="/about" target="_self">
+            <Info />
+          </Link>
+          <HorizontalSeparator />
+          <Link href="https://jobs.reactnative.gallery">
+            <Briefcase />
+            <Stats>
+              <span>jobs</span>
+            </Stats>
+          </Link>
+          <LastLine>
+            made with&nbsp;<Heart size={12} />&nbsp;by&nbsp;
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://xaviercarpentier.com"
+            >
+              Xavier Carpentier
+            </a>
+          </LastLine>
+        </Footer>
+      </div>
     )
   }
 }

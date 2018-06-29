@@ -8,7 +8,6 @@
 
 [![CircleCI](https://circleci.com/gh/ReactNativeGallery/reactnative-gallery-web/tree/master.svg?style=shield)](https://circleci.com/gh/ReactNativeGallery/reactnative-gallery-web/tree/master)
 [![codecov](https://codecov.io/gh/ReactNativeGallery/reactnative-gallery-web/branch/master/graph/badge.svg)](https://codecov.io/gh/ReactNativeGallery/reactnative-gallery-web)
-[![slack](https://slack.reactnative.gallery/badge.svg)](https://slack.reactnative.gallery)
 [![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/reactnative-gallery)
 [![reactnative.gallery](https://img.shields.io/badge/reactnative.gallery-%F0%9F%8E%AC-green.svg)](https://reactnative.gallery)
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
@@ -29,6 +28,4 @@ For those who are searching for a particular component, you can search by catego
 
 ## 🏗 ToDo list
 
-* [ ] Update gifs info
-* [x] Like a gif
-* [x] Number of view
+* [ ] Edit video
