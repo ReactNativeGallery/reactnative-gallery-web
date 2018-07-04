@@ -1,12 +1,19 @@
 require('isomorphic-fetch')
 const invariant = require('invariant')
+const { getAsync } = require('./getAsync')
 
 const BASE_API = 'https://api.github.com/'
 
+const defaultResult = {
+  stargazers_count: 0
+}
+
 export const getStargazersCountAsync = async (fullName) => {
-  const result = await fetch(`${BASE_API}repos/${fullName}`)
-  const data = await result.json()
-  return (data && data.stargazers_count) || 0
+  const { stargazers_count } = await getAsync(
+    { url: `${BASE_API}repos/${fullName}` },
+    defaultResult
+  )
+  return stargazers_count
 }
 
 export const getFullNameFormUrl = githubUrl =>

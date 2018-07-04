@@ -1,6 +1,6 @@
 require('dotenv').config()
 
-const axios = require('axios')
+const { getAsync } = require('./getAsync')
 const pathOr = require('ramda/src/pathOr')
 
 const {
@@ -10,27 +10,25 @@ const {
   MAILCHIMP_MEMBER_COUNT_DEFAULT
 } = process.env
 
+const defaultValue = {
+  stats: { member_count: MAILCHIMP_MEMBER_COUNT_DEFAULT }
+}
+
 const getMailchimpMemberCount = async () => {
-  try {
-    const result = await axios({
+  const result = await getAsync(
+    {
       url: `${MAILCHIMP_API}lists/${MAILCHIMP_LIST_ID}`,
-      method: 'GET',
       headers: {
         Authorization: `apikey ${MAILCHIMP_API_KEY}`
-      },
-      validateStatus: () => true,
-      timeout: 300
-    })
-    return pathOr(
-      MAILCHIMP_MEMBER_COUNT_DEFAULT,
-      ['data', 'stats', 'member_count'],
-      result
-    )
-  } catch (error) {
-    // eslint-disable-next-line
-    console.error(error)
-    return MAILCHIMP_MEMBER_COUNT_DEFAULT
-  }
+      }
+    },
+    defaultValue
+  )
+  return pathOr(
+    MAILCHIMP_MEMBER_COUNT_DEFAULT,
+    ['stats', 'member_count'],
+    result
+  )
 }
 
 module.exports = getMailchimpMemberCount

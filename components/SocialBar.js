@@ -32,12 +32,6 @@ const Container = styled.div`
   z-index: 100020;
   background: none;
   left: 0;
-  @media (max-width: 481px) {
-    top: unset !important;
-    left: unset !important;
-    width: unset !important;
-    bottom: 0 !important;
-  }
 `
 
 const ShareButton = styled.div`

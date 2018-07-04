@@ -3,7 +3,8 @@ const invariant = require('invariant')
 const LRU = require('lru-cache')
 const axios = require('axios')
 
-const cache = LRU(50)
+const cache = LRU({ max: 100, maxAge: 1000 * 60 * 60 })
+
 // type GetOptionsType = {
 //  url: string,
 //  headears?: Object,
@@ -20,13 +21,12 @@ async function getAsync(options, defaultValue) {
 
   try {
     if (cache.has(options.url)) {
-      console.log('from cache')
       return Promise.resolve(cache.get(options.url))
     }
     const { data } = await axios({
       method: 'GET',
       validateStatus: () => true,
-      timeout: 1000,
+      timeout: 1500,
       ...options
     })
     cache.set(options.url, data)
