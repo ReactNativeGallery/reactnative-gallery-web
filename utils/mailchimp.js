@@ -13,7 +13,7 @@ const {
 const getMailchimpMemberCount = async () => {
   try {
     const result = await axios({
-      url: `${MAILCHIMP_API}/lists/${MAILCHIMP_LIST_ID}`,
+      url: `${MAILCHIMP_API}lists/${MAILCHIMP_LIST_ID}`,
       method: 'GET',
       headers: {
         Authorization: `apikey ${MAILCHIMP_API_KEY}`

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Router from 'next/router'
 import styled from 'styled-components'
 import Head from 'next/head'
+import Briefcase from 'react-feather/dist/icons/briefcase'
 import ViewIcon from '../components/ViewIcon'
 import Subtitle from '../components/Subtitle'
 import Love from '../components/Love'
@@ -10,6 +11,7 @@ import Octicon from '../components/Octicon'
 import defaultPage from '../hocs/defaultPage'
 import SocialBar from '../components/SocialBar'
 import MailchimpForm from '../components/MailchimpForm'
+import CleanHr from '../components/CleanHr'
 import {
   getGifBySlugAsync,
   getGifInfo,
@@ -23,6 +25,7 @@ import { getStargazersCountAsync, getFullNameFormUrl } from '../utils/github'
 import Gif from '../components/Gif'
 import pkg from '../package.json'
 import { getUserFromLocalCookie, getUserFromServerCookie } from '../utils/auth'
+import { getJobsAsync } from '../utils/jobs'
 
 const CountBar = styled.div`
   display: flex;
@@ -40,6 +43,20 @@ const Author = styled.h5`
   margin-top: -1em;
   margin-bottom: 1em;
 `
+
+const Job = styled.div`
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  a {
+    color: white;
+  }
+`
+
 const getTitle = (name, username) => `${name} by @${username}`
 
 const getImageMeta = id =>
@@ -95,7 +112,8 @@ class AppDetail extends React.Component {
       rotate,
       type,
       action,
-      memberCount
+      memberCount,
+      job
     } = this.props
     const { checked, like, email } = this.state
     return (
@@ -184,6 +202,13 @@ class AppDetail extends React.Component {
           email={email}
           onChange={mel => this.setState({ email: mel })}
         />
+        <CleanHr />
+        <Job>
+          <Briefcase />
+          <a href={job.siteUrl} target="_blank" rel="noopener noreferrer">
+            {job.title}
+          </a>
+        </Job>
       </React.Fragment>
     )
   }
@@ -209,7 +234,9 @@ AppDetail.propTypes = {
   rotate: PropTypes.bool,
   type: PropTypes.string,
   action: PropTypes.string,
-  memberCount: PropTypes.string
+  memberCount: PropTypes.string,
+  job: PropTypes.shape({ title: PropTypes.string, siteUrl: PropTypes.string })
+    .isRequired
 }
 
 AppDetail.defaultProps = {
@@ -240,6 +267,7 @@ AppDetail.getInitialProps = async ({ req, query }) => {
     : getUserFromServerCookie(req)
   const likes = user ? await getUserLikesAsync(req, user && user.nickname) : []
   const memberCount = await memberCountAsync(req)
+  const jobs = await getJobsAsync()
   return {
     ...gif,
     username,
@@ -248,7 +276,8 @@ AppDetail.getInitialProps = async ({ req, query }) => {
     height,
     stars,
     memberCount,
-    checked: (likes && likes.includes(gif.id)) || false
+    checked: (likes && likes.includes(gif.id)) || false,
+    job: jobs[Math.round(Math.random() * (jobs.length - 1))]
   }
 }
 
