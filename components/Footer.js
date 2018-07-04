@@ -15,7 +15,7 @@ import Hideable from './Hideable'
 
 const Footer = styled.section`
   position: absolute;
-  width: 95%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,7 +93,6 @@ const LastLine = styled.small`
   position: absolute;
   bottom: 0;
   padding: 15px;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

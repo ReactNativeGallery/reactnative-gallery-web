@@ -3,23 +3,8 @@ import styled from 'styled-components'
 import Info from 'react-feather/dist/icons/info'
 import Paragraph from '../components/Paragraph'
 import defaultPage from '../hocs/defaultPage'
-
-const Speech = styled.div`
-  margin: 30px;
-  background-color: rgba(255, 255, 255, 0.72);
-  padding: 65px 80px;
-  border-radius: 15px;
-  border-width: 1;
-  border-color: #BBB8A9,
-  border-style: solid;
-  color: #444;
-  box-shadow: 1px 1px 3px grey;
-  text-shadow: 0.2px 0.2px lightgrey;
-  @media (max-width: 769px) {
-    padding: 15px;
-    margin: 15px;
-  }
-`
+import Container from '../components/Container'
+import Speech from '../components/Speech'
 
 const Logo = styled.img`
   border-radius: 100px;
@@ -29,16 +14,6 @@ const Logo = styled.img`
   @media (max-width: 769px) {
     display: none;
   }
-`
-
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 15px;
-  color: #fff;
-  max-width: 860px;
 `
 
 const About = () => (
