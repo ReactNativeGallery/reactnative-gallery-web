@@ -3113,9 +3113,9 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
-elasticsearch@15.0.0:
-  version "15.0.0"
-  resolved "https://registry.yarnpkg.com/elasticsearch/-/elasticsearch-15.0.0.tgz#d888ceb858bba30221b68698d72c54bdcfdf2fba"
+elasticsearch@15.1.1:
+  version "15.1.1"
+  resolved "https://registry.yarnpkg.com/elasticsearch/-/elasticsearch-15.1.1.tgz#242f2378fccd601586ff763a8a933cd5d41c945f"
   dependencies:
     agentkeepalive "^3.4.1"
     chalk "^1.0.0"
@@ -6009,9 +6009,9 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-newrelic@4.1.5:
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-4.1.5.tgz#e7ac0852ba81977c9090c728fd3251e507f5ce45"
+newrelic@4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-4.2.1.tgz#7ec5938aa945df2067bb381822ca807e721146d1"
   dependencies:
     "@newrelic/koa" "^1.0.0"
     "@tyriar/fibonacci-heap" "^2.0.7"
