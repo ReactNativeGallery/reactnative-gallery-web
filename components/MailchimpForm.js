@@ -5,16 +5,26 @@ import Check from 'react-feather/dist/icons/check'
 import Hideable from './Hideable'
 import CleanHr from './CleanHr'
 
+const Container = styled.div`
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 100%;
+  margin: auto 0;
+  text-align: center;
+`
+
 const MailchimpForm = styled.form`
   margin: 0 auto;
   width: 100%;
-  max-width: 300px;
+  max-width: 250px;
   display: flex;
   flex-direction: row;
-  padding-top: 30px;
-  padding-bottom: 30px;
 `
 
+const SmallLabel = styled.small`
+  color: white;
+  font-size: 14px;
+`
 export const MailchimpInput = styled.input`
   border-width: 0;
   border-radius: 5px 0 0 5px;
@@ -60,7 +70,7 @@ export const MailchimpButton = styled.button`
 const Mailchimp = ({
   action, type, onChange, email, memberCount
 }) => (
-  <div>
+  <Container>
     <CleanHr />
     <MailchimpForm
       name="form"
@@ -72,7 +82,7 @@ const Mailchimp = ({
       <MailchimpInput
         type="email"
         name="EMAIL"
-        placeholder={`Join yet ${memberCount} members`}
+        placeholder="Enter email"
         ariaRequired="true"
         required="required"
         value={email}
@@ -80,14 +90,19 @@ const Mailchimp = ({
       />
 
       <MailchimpButton type="submit">
-        <Hideable xs>JOIN</Hideable>
+        <Hideable xs>
+          <strong>JOIN</strong>
+        </Hideable>
         <Hideable md>
           <Check />
         </Hideable>
       </MailchimpButton>
       <input type="hidden" name="TYPE" value={type} />
     </MailchimpForm>
-  </div>
+    <SmallLabel>
+      Join yet <strong>{memberCount}</strong> members
+    </SmallLabel>
+  </Container>
 )
 
 Mailchimp.defaultProps = {

@@ -33,7 +33,7 @@ const NoticeText = styled.small`
 const Notice = () => (
   <NoticeContainer>
     <Info size={17} />
-    <NoticeText>Hover to play app video, tap button to detail</NoticeText>
+    <NoticeText>Hover to play app video</NoticeText>
   </NoticeContainer>
 )
 

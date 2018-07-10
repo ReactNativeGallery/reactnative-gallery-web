@@ -47,7 +47,6 @@ class Gif extends Component {
 
   state = {
     play: this.props.autoplay,
-    mouseover: false,
     buttonHover: false,
     buttonClicked: false
   }
@@ -57,7 +56,7 @@ class Gif extends Component {
       return
     }
     this.play()
-    this.setState({ play: true, mouseover: true })
+    this.setState({ play: true })
   }
 
   onMouseLeaveHandler = () => {
@@ -65,20 +64,12 @@ class Gif extends Component {
       return
     }
     this.pause()
-    this.setState({ play: false, mouseover: false })
+    this.setState({ play: false })
   }
 
   onClick = () => {
-    if (this.props.autoplay) {
-      return
-    }
-    if (this.state.play && !this.state.mouseover) {
-      this.pause()
-      this.setState({ play: false })
-    } else {
-      this.play()
-      this.setState({ play: true })
-    }
+    const { username, slug } = this.props
+    window.location.href = `/${username}/${slug}`
   }
 
   pause = () => {

@@ -1,35 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<MailchimpForm /> toMatchSnapshot 1`] = `
-<div>
+<div
+  className="MailchimpForm__Container-s1jd0qpd-0 loDsvJ"
+>
   <div
     className="CleanHr-u75eti-0 fnhkPK"
   />
   <form
     action="test"
-    className="MailchimpForm-s1jd0qpd-0 kJixxp"
+    className="MailchimpForm-s1jd0qpd-1 fHspRs"
     method="POST"
     name="form"
     noValidate=""
     target="_blank"
   >
     <input
-      className="MailchimpForm__MailchimpInput-s1jd0qpd-1 gCennv"
+      className="MailchimpForm__MailchimpInput-s1jd0qpd-3 boglBc"
       name="EMAIL"
       onChange={[Function]}
-      placeholder="Join yet 1 members"
+      placeholder="Enter email"
       required="required"
       type="email"
       value="test@email.com"
     />
     <button
-      className="MailchimpForm__MailchimpButton-s1jd0qpd-2 dnChpm"
+      className="MailchimpForm__MailchimpButton-s1jd0qpd-4 jIwtxb"
       type="submit"
     >
       <span
         className="Hideable-lb4mgy-0 bDYHzV"
       >
-        JOIN
+        <strong>
+          JOIN
+        </strong>
       </span>
       <span
         className="Hideable-lb4mgy-0 UfVDy"
@@ -57,5 +61,14 @@ exports[`<MailchimpForm /> toMatchSnapshot 1`] = `
       value="test"
     />
   </form>
+  <small
+    className="MailchimpForm__SmallLabel-s1jd0qpd-2 guIjDO"
+  >
+    Join yet 
+    <strong>
+      1
+    </strong>
+     members
+  </small>
 </div>
 `;
