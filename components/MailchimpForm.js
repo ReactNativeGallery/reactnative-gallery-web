@@ -24,6 +24,7 @@ const MailchimpForm = styled.form`
 const SmallLabel = styled.small`
   color: white;
   font-size: 14px;
+  margin-left: -16px;
 `
 export const MailchimpInput = styled.input`
   border-width: 0;
@@ -100,7 +101,7 @@ const Mailchimp = ({
       <input type="hidden" name="TYPE" value={type} />
     </MailchimpForm>
     <SmallLabel>
-      Join yet <strong>{memberCount}</strong> members
+      Join <strong>{memberCount}</strong> members
     </SmallLabel>
   </Container>
 )

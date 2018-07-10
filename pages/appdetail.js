@@ -11,7 +11,6 @@ import Octicon from '../components/Octicon'
 import defaultPage from '../hocs/defaultPage'
 import SocialBar from '../components/SocialBar'
 import MailchimpForm from '../components/MailchimpForm'
-import CleanHr from '../components/CleanHr'
 import {
   getGifBySlugAsync,
   getGifInfo,
@@ -45,6 +44,7 @@ const Author = styled.h5`
 `
 
 const Job = styled.div`
+  margin-top: 45px;
   color: #fff;
   font-size: 16px;
   display: flex;
@@ -202,9 +202,11 @@ class AppDetail extends React.Component {
           email={email}
           onChange={mel => this.setState({ email: mel })}
         />
-        <CleanHr />
         <Job>
-          <Briefcase />
+          <Briefcase size={15} />
+          <small style={{ fontSize: 10, marginBottom: 5, marginTop: -3 }}>
+            job
+          </small>
           <a href={job.siteUrl} target="_blank" rel="noopener noreferrer">
             {job.title}
           </a>

@@ -62,9 +62,9 @@ exports[`<MailchimpForm /> toMatchSnapshot 1`] = `
     />
   </form>
   <small
-    className="MailchimpForm__SmallLabel-s1jd0qpd-2 guIjDO"
+    className="MailchimpForm__SmallLabel-s1jd0qpd-2 fFWHHo"
   >
-    Join yet 
+    Join 
     <strong>
       1
     </strong>
