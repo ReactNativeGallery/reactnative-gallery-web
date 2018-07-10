@@ -6009,9 +6009,9 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-newrelic@4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-4.2.1.tgz#7ec5938aa945df2067bb381822ca807e721146d1"
+newrelic@4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-4.3.0.tgz#6af5bbf6189d0e332105aeeaa833052713ce34c3"
   dependencies:
     "@newrelic/koa" "^1.0.0"
     "@tyriar/fibonacci-heap" "^2.0.7"
@@ -7013,9 +7013,9 @@ react-dom@^15.6.2:
     object-assign "^4.1.0"
     prop-types "^15.5.10"
 
-react-feather@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/react-feather/-/react-feather-1.1.0.tgz#f0aa692497de952237ca1f3b118ebcb5427152e1"
+react-feather@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-feather/-/react-feather-1.1.1.tgz#dd59143af457601e68f2cd3bf32c0d94d30f89e7"
 
 react-is@^16.3.1:
   version "16.3.2"
