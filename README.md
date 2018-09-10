@@ -1,4 +1,4 @@
-# 🎨 [reactnative.gallery](https://reactnative.gallery) website
+# Awesome [reactnative.gallery](https://reactnative.gallery) website
 
 <p align="center">
   <a href="https://reactnative.gallery">
