@@ -11,7 +11,7 @@
 [![Join the community on Spectrum](https://withspectrum.github.io/badge/badge.svg)](https://spectrum.chat/reactnative-gallery)
 [![reactnative.gallery](https://img.shields.io/badge/reactnative.gallery-%F0%9F%8E%AC-green.svg)](https://reactnative.gallery)
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
-
+## 
 ## 🗣 Pitch
 
 **Reactnative.gallery** is a website where you can visualize apps and open source components as videos. Created by a react-native developer who realized that a way to visually share applications and simple mobile developments was sorely lacking, in particular for animations, navigation transitions, navigation drawers or simply smooth, fluid applications.
@@ -29,3 +29,6 @@ For those who are searching for a particular component, you can search by catego
 ## 🏗 ToDo list
 
 * [ ] Edit video
+
+## Hire an expert!
+Looking for a ReactNative freelance expert with more than 12 years experience? Contact me from my [website](https://xaviercarpentier.com)!
