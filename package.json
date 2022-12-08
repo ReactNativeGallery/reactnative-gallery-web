@@ -35,7 +35,7 @@
     "csurf": "1.9.0",
     "dotenv": "6.0.0",
     "elasticsearch": "15.1.1",
-    "express": "4.16.3",
+    "express": "4.17.3",
     "helmet": "3.12.1",
     "history": "4.7.2",
     "hoist-non-react-statics": "2.5.5",
